@@ -1,0 +1,194 @@
+<header class="header-wrap">
+    <div class="masthead-wrap">    
+        <div class="banner-4 masthead">
+            <div class="container masthead-heading masthead-heading--b">
+                <div>
+                    <h1><span class="light">Create My</span></h1>
+                    <h1><span class="green-wrap">Employer Profile</span></h1>
+                </div>
+                <div class="">
+                    <span class="beam-right">   </span>
+                    <span class="dash-forward">//</span>
+                    <span class="beam-left"></span>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<main class="" data-ng-init="getEmployerProfile()">
+    <div class="container user-profile-new">
+        <div class="user-img-bubble bubblemedia">
+            <img data-ng-src="{{ profilePicture == '' ? 'assets/images/avatar-placeholder.png' : profilePicture }} " alt="">
+        </div>
+        <!-- <label for=""> -->
+        <div class="user-img-update">
+               <input 
+                   type="file" name="pic"  id="user-img-upload"
+                   ngf-select 
+                   ng-model="profilePic" 
+                   ng-change="uploadProfilePicture(profilePic,errorFile)"
+                   ngf-max-size="2MB" 
+                   ngf-model-invalid="errorFile"
+                   ngf-pattern="'.jpg,.png,.jpeg'"
+                   accept="image/*">
+            
+            <label for="user-img-upload">
+                <span class="icon-frame img-upload-button"></span><span class="semibold">Update Picture</span></label>
+        </div>
+		<div class="text-danger" data-ng-show=" errorFile.$errorMessages.maxSize==true || 
+											    errorFile.$errorMessages.pattern == true">
+			Only JPG,JPEG and PNG images are allowed and the limit should not be exceeded beyond 2MB.
+		</div>
+    </div>
+    
+  
+    
+    <h3>Create My - Employer Profile</h3>
+    <div class="margin-top-2x">
+        <span class="beam-right">   </span>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+    </div>
+    <div class="container semi-width text-left margin-top-4x">
+        <div class="form-container card-wd"> 
+            <form data-ng-init="submitted=false;" 
+                  name="profile" 
+                  data-ng-submit="profile.$valid ? saveProfileFirstStep() : submitted = true" 
+                  class="team-form" novalidate>  
+                <label class="margin-top-5x">Name </label>
+                <input data-ng-init="firstProfile.name = firstProfile.first_name+' '+firstProfile.last_name" 
+                       data-ng-model="firstProfile.employer_name"  
+                       name="name" 
+                       type="text"  
+                       data-ng-maxlength="80">
+             
+                <div ng-messages="profile.name.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.name.$touched">
+<!--                    <div ng-message="required">Name is required.</div>-->
+                    <div ng-message="maxlength">Maximum 80 characters allowed</div>
+                </div>
+                
+                <label class="margin-top-5x">Company Name <sup class="text-danger">&bigstar;</sup></label>
+                <input data-ng-model="firstProfile.companies.company_name" 
+                       type="text"
+                       name="companyName" 
+                       data-ng-maxlength="100"
+                       required>
+                <div ng-messages="profile.companyName.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.companyName.$touched">
+                    <div ng-message="required">Please enter company name.</div>
+                    <div ng-message="maxlength">Maximum 100 characters allowed</div>
+                </div>
+                
+                <label class="margin-top-5x">Sector <sup class="text-danger">&bigstar;</sup></label>
+                <select class='form-control' data-ng-model="firstProfile.companies.sector_id" 
+                     data-ng-options="option.name for option in sectors track by option.id" 
+                     name="companySector" required>
+                     <option value="">Select company sector</option>
+                </select>
+                  <div ng-messages="profile.companySector.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.sector_id.$touched">
+                    <div ng-message="required">Please enter company sector.</div>
+                  </div>
+                
+                <div data-ng-if="firstProfile.companies.sector_id.id==20">
+                    <label class="margin-top-5x">Sector Description <sup class="text-danger">&bigstar;</sup></label>
+                    <input data-ng-model="firstProfile.companies.other_sector" 
+                           type="text"
+                           name="sectorDescription"
+                           data-ng-maxlength="200" required>
+                  <div ng-messages="profile.sectorDescription.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.sectorDescription.$touched">
+                    <div ng-message="required">Please enter sector description.</div>
+                    <div ng-message="maxlength">Maximum 200 characters allowed</div>  
+                  </div>
+                </div>
+               
+                
+                <br>
+                <label for="" class="margin-top-5x">Size of Company <sup class="text-danger">&bigstar;</sup></label>
+                 <select 
+                     class = 'form-control'      
+                     data-ng-model="firstProfile.companies.company_size" 
+                     data-ng-options="key as value for (key , value) in companySize"
+                     name="companySize" required>  
+                      <option value="">Size of Company</option>
+                </select>
+                 <div ng-messages="profile.companySize.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.companySize.$touched">
+                    <div ng-message="required">Please enter size of company.</div>
+                  </div>
+                
+                <div data-ng-repeat="loc in firstProfile.location track by $index">
+                   <label class="margin-top-5x">Address <sup class="text-danger">&bigstar;</sup></label>
+                   <input custom="firstProfile" counter="$index" ng-autocomplete  data-ng-model="firstProfile.location[$index].address" type="text"
+						  name="location-{{$index}}-address"  data-ng-maxlength="100" required>
+					
+				  <div ng-messages="profile['location-'+$index+'-address'].$error" class="text-danger" 
+						data-ng-if=" submitted || profile['location-'+$index+'-address'].$touched">
+                    <div ng-message="required">Please enter address.</div>
+                    <div ng-message="maxlength">Maximum 100 characters allowed</div>  
+                  </div>
+                    
+                   
+                   <label class="margin-top-5x">City <sup class="text-danger">&bigstar;</sup></label>
+                   <input custom="firstProfile" counter="{{$index}}"   data-ng-model="firstProfile.location[$index].city" type="text"
+				   name="location-{{$index}}-city"  data-ng-maxlength="50" required>
+				  
+				  <div ng-messages="profile['location-'+$index+'-city'].$error" class="text-danger" 
+						data-ng-if=" submitted || profile['location-'+$index+'-city'].$touched">
+                    <div ng-message="required">Please enter city.</div>
+                    <div ng-message="maxlength">Maximum 50 characters allowed</div>  
+                  </div>  
+                    
+                   <label class="margin-top-5x">Country <sup class="text-danger">&bigstar;</sup></label>
+                   <input custom="firstProfile" counter="{{$index}}"  data-ng-model="firstProfile.location[$index].country" type="text"
+						  name="location-{{$index}}-country" data-ng-maxlength="50" required>
+				  <div ng-messages="profile['location-'+$index+'-country'].$error" class="text-danger" 
+						data-ng-if=" submitted || profile['location-'+$index+'-country'].$touched">
+                    <div ng-message="required">Please enter country.</div>
+                    <div ng-message="maxlength">Maximum 50 characters allowed</div>  
+                  </div> 
+                   <!--    
+                   <label class="margin-top-5x">Zipcode <sup class="text-danger">&bigstar;</sup></label>
+                   <input custom="firstProfile"  counter="{{$index}}" data-ng-model="firstProfile.location[$index].zipcode" type="text" name="location-{{$index}}-zipcode" data-ng-maxlength="20" required>
+				  <div ng-messages="profile['location-'+$index+'-zipcode'].$error" class="text-danger" 
+						data-ng-if=" submitted || profile['location-'+$index+'-zipcode'].$touched">
+                    <div ng-message="required">Please enter zipcode.</div>
+                    <div ng-message="maxlength">Maximum 20 characters allowed</div>  
+                  </div> 
+                   -->
+                   <input data-ng-hide="$index==0" 
+						  style="margin-top: 10px;" 
+						  class="btn btn-primary" 
+						  data-ng-click="removeLocation($index)"
+						  type="button"
+						  name="Remove Location" 
+						  value="Remove location {{$index+1}}" />    
+                </div>
+                
+                
+                <div class="form-button--a margin-top-6x">
+                    <span class="icon-location"></span>
+                    <a data-ng-click="addLocation()" href="javascript:void(0)">Add Location</a>  
+                </div>
+                <br>
+                <label class="margin-top-5x">Description of your Company <sup class="text-danger">&bigstar;</sup></label>
+                <textarea name="company_description" 
+                          data-ng-model="firstProfile.companies.company_description"  c
+                          lass="margin-top-10x"
+                          data-ng-maxlength="200" required></textarea>
+                 <div ng-messages="profile.company_description.$error" 
+                     class="text-danger" data-ng-if=" submitted || profile.company_description.$touched">
+                    <div ng-message="required">Please enter company description.</div>
+                    <div ng-message="maxlength">Maximum 200 characters allowed</div>  
+                 </div>
+                
+                <input type="submit" name="submit" class="greenify-btn medium margin-top-4x">
+            </form>
+        </div>
+    </div>
+</main>

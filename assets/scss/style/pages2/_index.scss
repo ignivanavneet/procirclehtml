@@ -1,0 +1,614 @@
+.banner-1 {
+    background: url(../images/banner-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+// gimmicks start
+
+.dash-forward {
+    transform: skew(-12deg);
+    font-size: 18px;
+    display: inline-block;
+    color: #8c969f;
+}
+
+.dash-back {
+    transform: skew(5deg);
+    display: inline-block;
+    margin-left: 52px;
+}
+
+.flip {
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.beam-left:before {
+    margin-left: 2px;
+
+    @include stroke-before;
+}
+
+.beam-right:after {
+    margin-top: 1px;
+    margin-left: -52px;
+
+    @include stroke-before;
+}
+
+a {
+    color: $link-color;
+}
+
+.stroke-left:after {
+    @include stroke-before;
+}
+
+.stroke-right:before {
+    @include stroke-after;
+}
+
+.stroke {
+    @include stroke-after;
+}
+
+.square-dot-two:before {
+    content: '';
+    background: #367914;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    display: inline-block;
+    left: 9px;
+    bottom: -5px;
+}
+
+.square-dot-two:after {
+    content: '';
+    background: #367914;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    display: inline-block;
+    left: 179px;
+    bottom: -5px;
+}
+
+.square-dot-one:before {
+    content: '';
+    background: #367914;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    display: inline-block;
+    left: 9px;
+    bottom: 48px;
+}
+
+.square-dot-one:after {
+    content: '';
+    background: #367914;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    display: inline-block;
+    bottom: 48px;
+    left: 179px;
+}
+
+// gimicks end
+
+// SVG Icons start
+@font-face {
+    font-family: 'Glyphter';
+    src: url("../fonts/Glyphter.eot");
+    src: url("../fonts/Glyphter.eot?#iefix") format("embedded-opentype"), url("../fonts/Glyphter.woff") format("woff"), url("../fonts/Glyphter.ttf") format("truetype"), url("../fonts/Glyphter.svg#Glyphter") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway-regular';
+    src: url("../fonts/raleway-regular-webfont.eot");
+    src: url("../fonts/raleway-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-regular-webfont.woff") format("woff"), url("../fonts/raleway-regular-webfont.ttf") format("truetype");
+
+    // url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway-semibold';
+    src: url("../fonts/raleway-semibold.eot");
+    src: url("../fonts/raleway-semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-semibold.woff") format("woff"), url("../fonts/raleway-semibold.ttf") format("truetype");
+
+    // url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway-medium';
+    src: url("../fonts/raleway-medium-webfont.eot");
+    src: url("../fonts/raleway-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-medium-webfont.woff") format("woff"), url("../fonts/raleway-medium-webfont.ttf") format("truetype");
+
+    // url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway-light';
+    src: url("../fonts/raleway-light-webfont.eot");
+    src: url("../fonts/raleway-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-light-webfont.woff") format("woff"), url("../fonts/raleway-light-webfont.ttf") format("truetype");
+
+    // url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway-bold';
+    src: url("../fonts/raleway-bold-webfont.eot");
+    src: url("../fonts/raleway-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-bold-webfont.woff") format("woff"), url("../fonts/raleway-bold-webfont.ttf") format("truetype");
+
+    // url('../fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+textarea {
+    resize: none;
+}
+
+[class*='icon-']:before {
+    display: inline-block;
+    font-family: 'Glyphter';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    // vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-linkedin:before {
+    content: '\0041';
+}
+
+.icon-facebook-outlined:before {
+    content: '\0042';
+}
+
+.icon-nucleus:before {
+    content: '\0043';
+}
+
+.icon-light-bulb:before {
+    content: '\0044';
+}
+
+.icon-atom-molecule:before {
+    content: '\0045';
+}
+
+.icon-twitter:before {
+    content: '\0046';
+}
+
+.icon-send:before {
+    content: '\0047';
+}
+
+.icon-file:before {
+    content: '\0048';
+}
+
+.icon-user:before {
+    content: '\0049';
+}
+
+.icon-user-2:before {
+    content: '\004a';
+}
+
+.icon-speech-bubble:before {
+    content: '\004b';
+}
+
+.icon-right-arrow:before {
+    content: '\004c';
+    vertical-align: middle;
+}
+
+.icon-clock:before {
+    content: '\004d';
+}
+
+.icon-calendar:before {
+    content: '\004e';
+}
+
+.icon-add:before {
+    content: '\004e';
+}
+
+.icon-like:before {
+    content: '\004f';
+}
+
+.icon-location:before {
+    content: '\0050';
+}
+
+.icon-phone-call-button:before {
+    content: '\0051';
+}
+
+.icon-mail:before {
+    content: '\0052';
+}
+
+.icon-heart:before {
+    content: '\0053';
+}
+
+.icon-edit:before {
+    content: '\0054';
+}
+
+.icon-result:before {
+    content: '\0055';
+}
+
+.icon-login:before {
+    content: '\0056';
+}
+
+.icon-support:before {
+    content: '\0057';
+}
+
+.icon-blogger-logo:before {
+    content: '\0058';
+}
+
+.icon-upload:before {
+    content: '\0059';
+}
+
+.icon-reply-all:before {
+    content: '\005a';
+}
+
+.icon-eye:before {
+    content: '\0061';
+}
+
+.icon-calendar:before {
+    content: '\0062';
+}
+
+.icon-flag:before {
+    content: '\0063';
+}
+
+.icon-frame:before {
+    content: '\0064';
+}
+
+.icon-notification:before {
+    content: '\0065';
+}
+
+.icon-search:before {
+    content: '\0066';
+}
+
+.icon-three-dots:before {
+    content: '\0067';
+}
+
+.icon-location-2:before {
+    content: '\0068';
+}
+
+.icon-location-3:before {
+    content: '\0069';
+}
+
+.icon-link-1:before {
+    content: '\006a';
+}
+
+.icon-link-2:before {
+    content: '\006b';
+}
+
+.icon-checked:before {
+    content: '\006c';
+}
+
+.icon-share:before {
+    content: '\006d';
+}
+
+.icon-share-2:before {
+    content: '\006e';
+}
+
+.icon-right-arrow-forward:before {
+    content: '\006f';
+}
+
+.icon-right-arrow-2:before {
+    content: '\0070';
+}
+
+.icon-left-arrow-back:before {
+    content: '\0071';
+}
+
+// SVG Icons end
+
+header {
+    padding: 0px;
+
+    .banner-wrap {
+        .heading-banner {
+            // transform: translateY(106%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            span:first-child {
+                font-style: italic;
+            }
+
+            .title-alpha {
+                @include heading-lgx;
+
+                margin: 0 24px;
+
+                @media (max-width: 1199px) {
+                    font-size: 32px;
+                }
+            }
+
+            button, .buttons {
+                padding: 12px 20px;
+                background: rgba(0, 0, 0, 0.14);
+                border: 1px solid #367914;
+                display: inline-block;
+
+                // full border button design
+                // border-top: 1px solid #367914; matrix button design
+                // border-bottom: 1px solid #367914; matrix-button design
+                font-family: raleway-bold;
+                font-size: $text-level-two;
+                color: $green-three;
+                margin-right: 10px;
+                margin-top: 30px;
+
+                @media (max-width: 768px) {
+                    font-size: $text-level-one;
+                    padding: 8px 12px;
+                }
+
+                span {
+                    font-size: 21px;
+                    padding-left: 24px;
+                }
+            }
+
+            .intro-btn-b {
+                // full border button design
+                color: $white-one;
+                border: 1px solid $white-one;
+
+                @media (max-width: 425px) {
+                    display: block;
+                    margin-top: 10px;
+                }
+            }
+
+            .intro-btn-a {
+                @media (max-width: 425px) {
+                    margin-top: 46px;
+                }
+            }
+        }
+
+        position: relative;
+        z-index: 9;
+        width: 100%;
+        height: 710px;
+    }
+}
+
+main {
+    text-align: center;
+
+    @media (max-width: 961px) {
+        h2 {
+            font-size: 28px !important;
+        }
+    }
+
+    .community-title {
+        text-align: center;
+
+        h2 {
+            @include heading-lg;
+        }
+
+        .crafty-title {
+            margin: 0% 1% 0% 5%;
+            display: $inline;
+        }
+    }
+
+    .feature-box {
+        ul {
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            padding: 1rem 3rem;
+
+            div {
+                background: $white-one;
+                margin: auto;
+
+                @include bubble;
+
+                .feature-icon {
+                    font-size: 56px;
+                    display: inline-block;
+                    transform: translateY(50%);
+                    color: #383d40;
+                }
+            }
+
+            &:nth-child(2) div {
+                .feature-icon {
+                    color: $white-one;
+                }
+
+                background: $green-one;
+            }
+
+            &:nth-child(2) h3 {
+                color: $green-one;
+            }
+
+            .dash-sml {
+                height: 1px;
+                width: 18px;
+                background: $faded-border;
+                display: block;
+                margin: auto;
+                margin-top: 20px;
+            }
+
+            p {
+                max-width: 90%;
+                margin: 20px auto;
+            }
+        }
+    }
+
+    .bg-box {
+        background: url(../images/banner-2.jpg);
+        height: 512px;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        h2 {
+            @include heading-lg;
+
+            color: $white-one;
+        }
+
+        p {
+            width: 49%;
+            margin: 40px auto;
+        }
+
+        .square-button {
+            button, .s-btn {
+                span {
+                    font-size: 21px;
+                    padding-left: 3px;
+                }
+
+                display: inline-block;
+                font-size: 18px;
+                color: $ghost-white;
+                padding: 1rem 3rem;
+
+                // @include button-border(1px, solid, $ghost-white) matrix button design
+                border: 1px solid $white-one;
+
+                // full border button
+           
+            }
+        }
+
+        // div {
+        // 	position: relative;
+        //     transform: translateY(50%);
+        //     top: 50%;
+        // } the translateY trick works here and not in the one above
+   
+    }
+}
+
+// responsive code
+
+@media (max-width: 1199px) {
+    .heading-banner.container {
+        width: 90%;
+        text-align: left;
+    }
+
+    // .title-alpha {
+    // 	font-size:34px;
+    // }
+}
+
+@media (max-width: 1399px) {
+    main {
+        .feature-box {
+            li {
+                padding: 1rem 2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        // text-align:left;
+   
+    }
+
+    main {
+        .bg-box {
+            .square-button {
+                button {
+                    font-size: 15px;
+                    padding: .5rem 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .heading-banner.container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 414px) {
+    main {
+        .bg-box {
+            p {
+                width: 100%;
+                margin: 30px 10px;
+            }
+        }
+    }
+}

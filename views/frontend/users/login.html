@@ -1,0 +1,74 @@
+<header class="header-wrap" > 
+    <div class="masthead-wrap">    
+        <div class="banner-3 masthead">
+            <div class="container masthead-heading">
+                <div>
+                    <!-- <h1><span class="green-wrap">Join</span> <span class="light">Our Community</span></h1> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<main class="main--" data-ng-init="twitter_login()">
+    <div class="block-second block-secondsign">
+        <div class="block-first">
+            <span class="icon-login"></span>
+        </div>
+        <h2 class="bold margin-bottom-2x">Log In</h2>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+        <form class="margin-top-4x" data-ng-init="submitted = false;
+                isDisabled = false" name="userlogin" data-ng-submit="userlogin.$valid ? signIn() : submitted = true" novalidate>
+            <div class="form-container">
+                <div class="signuppage">
+                    Email / Username
+                    <input data-ng-model="signin.username" type="text" name="username" class="margin-bottom-4x margin-top-2x" required>
+                    <div ng-messages="userlogin.username.$error" class="text-danger signupform" role="alert" ng-if=" submitted || userlogin.username.$touched">
+                        <div ng-message="required">Please enter Username or Email!</div>
+                    </div>
+                </div>
+                <div class="signuppage">
+                    Password
+                    <input data-ng-model="signin.password" type="password" name="password" id="password" class="margin-bottom-4x margin-top-2x" stopccp required>
+                    <div ng-messages="userlogin.password.$error" class="text-danger signupform" role="alert" ng-if="submitted || userlogin.password.$touched">
+                        <div ng-message="required">Please enter Password!</div>
+                    </div>
+                </div>
+
+                <button class="semibold buttongreen" type="submit" data-ng-disabled="isDisabled">Sign In <span class="icon-right-arrow semibold"></span></button>
+            </div>
+        </form>
+    </div>
+    <div class="block-last bg-texture-1">
+        <div>
+            <ul>
+                <li><a data-ui-sref="signup" class="green-wrap">Register</a></li>
+                <li>|</li>
+                <li><a data-ui-sref="forgot_password">Forgot Password?</a></li>
+            </ul>
+            <p class="margin-top-4x margin-bottom-2x">OR</p>
+            <p>Log In Using</p>
+            <div class="">
+                <span class="beam-right"></span>
+                <span class="dash-forward">//</span>
+                <span class="beam-left"></span>
+            </div>
+            <div class="login-btns">
+                <div>
+                    <button class="sign-btn sign-btn-fb" fb-login type="button">
+                        <span class="fa fa-facebook vm"></span>Login with Facebook
+                    </button>
+                    <button class="sign-btn sign-btn-twt" onclick="window.location='http://procircledev.ignivastaging.com/api/auth/twitter';" >
+                        <span class="fa fa-twitter vm"></span>Login with Twitter
+                    </button>
+                </div>
+                <div>
+                    <button class="sign-btn sign-btn-lnkd" linked-in type="button">
+                        <span class="fa fa-linkedin vm"></span>Login with LinkedIn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

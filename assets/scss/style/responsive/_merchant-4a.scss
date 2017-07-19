@@ -1,0 +1,8 @@
+@include media("<=1200px") {
+    .main-content-left {
+        .social-share {
+            left: auto;
+            right: 10px;
+        }
+    }
+}

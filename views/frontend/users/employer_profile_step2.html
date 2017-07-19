@@ -1,0 +1,148 @@
+  <header class="header-wrap">
+            <div class="masthead-wrap">
+                <div class="banner-4 masthead">
+                    <div class="container masthead-heading masthead-heading--b">
+                        <div>
+                            <h1><span class="light">Create My</span></h1>
+                            <h1><span class="green-wrap">Employer Profile</span></h1>
+                        </div>
+                        <div class="">
+                            <span class="beam-right">   </span>
+                            <span class="dash-forward">//</span>
+                            <span class="beam-left"></span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="clearfix"></div>
+        <main data-ng-init="getEmployerProfileStepTwo()">
+        <div class="container user-profile-new">
+            <div class="user-img-bubble bubblemedia">
+               <img data-ng-src="{{ profilePicture == '' ? 'assets/images/avatar-placeholder.png' : profilePicture }} " alt="">
+            </div>
+			<div class="user-img-update">
+                 <input 
+                   type="file" name="pic"  id="user-img-upload"
+                   ngf-select 
+                   ng-model="profilePic" 
+                   ng-change="uploadProfilePicture(profilePic)"
+                   ngf-max-size="2MB" 
+                   ngf-model-invalid="errorFile"
+                   ngf-pattern="'.jpg,.png,.jpeg'"
+                   accept="image/*">
+                <label for="user-img-upload"><span class="icon-frame img-upload-button"></span><span class="semibold">Update Picture</span></label>
+            </div>
+			<div class="text-danger" data-ng-show=" errorFile.$errorMessages.maxSize==true || 
+											    errorFile.$errorMessages.pattern == true">
+			Only JPG,JPEG and PNG images are allowed and the limit should not be exceeded beyond 2MB.
+		    </div>
+			
+           
+        </div>
+        <h3>Create My- Employer Profile</h3>
+        <div class="margin-top-2x">
+            <span class="beam-right">   </span>
+            <span class="dash-forward">//</span>
+            <span class="beam-left"></span>
+        </div>
+        <div class="note container semi-width margin-top-10x mediaeach">
+            </div>
+            <div class="media-body padding-left-4x padding-top-4x ">
+                <!-- <p class="bold"><strong>Building candidate profiles:</strong></p> -->
+                <p class="medium semi-width container-fluid text-left">Each candidate profile should contain the candidate specification of <strong>ONE</strong> type of professional that you are looking to recruit.
+                    If you are looking to hire <strong>more than one</strong> professional, you will have the option to create another candidate profile, after you have completed the personality specifications.
+                A professional will be classified as a suitable match for you as long as they match any <strong>ONE</strong> of the criteria in each section and they are a personality match.</p>
+            </div>
+       
+        <div class="stray-heading container semi-width margin-top-8x standard-black">
+            <h5 class="h5 text-left semibold">Candidate Requirements</h5>
+            <span class="form-dash"></span>
+        </div>
+        <div class="user-form-professional form-container container margin-top-10x">
+            <div class="col-md-12">
+                <form data-ng-init=" submitted = false;" name="profile" data-ng-submit="profile.$valid ? candidateProfile() : submitted = true " novalidate>
+                    <div class="form-wrapper">
+					<div data-ng-repeat="data in details track by $index" class="form-section margin-bottom-2x padding-bottom-1x">
+                        <div class="check-box-heading semibold">{{ data.title }} <sup class="text-danger" data-ng-show="data.is_mandatory=='1'">&bigstar;</sup>
+
+                            <span class="form-dash"></span>
+                        </div>
+                        <div  data-ng-init="outerIndex = $index" class="check-box-body margin-top-4x">
+                            <ul class="check-box-col">
+                                <li data-ng-repeat="list in data.attribute_options track by $index">
+                                 
+                                    <label class="ch-checkBox margin-right-3x" data-ng-if="data.input_type=='checkbox'">
+                                        <input 
+                                               type="checkbox" 
+                                               data-ng-true-value='true'
+                                               data-ng-false-value='false'
+                                               name="checkBox[{{outerIndex}}]"
+											   data-ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                               data-ng-model="details[outerIndex].attribute_options[$index].is_checked"
+                                               />
+                                        <span class="_inner" data-ng-bind="list.title"></span>
+                                    </label>
+                                    
+                                    <label class="ch-radioBox margin-right-3x" data-ng-if="data.input_type=='radio'">
+                                        <input 
+                                               data-ng-value=details[outerIndex].attribute_options[$index].id
+                                               data-ng-model="details[outerIndex].selectedValue"
+                                               name="radioOption[{{outerIndex}}]"
+											   ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                               type="radio" name="wrk-lvl"> 
+                                        <span class="_inner" data-ng-bind="list.title"></span>
+                                    </label>
+                                    
+                                    <div data-ng-if="data.input_type=='text'">
+                                       
+                                       <input type="text"
+                                              data-ng-model="details[outerIndex].attribute_options[$index].attribute_value" 
+                                              name="Name" 
+                                               placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+											  ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                              class="margin-bottom-4x">
+                                    </div>
+                                    
+                                    <input data-ng-if="list.info=='1' && 
+                                                       data.input_type=='checkbox' &&
+                                                       details[outerIndex].attribute_options[$index].is_checked == true" type="text" 
+                                           name="details[outerIndex].attribute_options[$index].attribute_value"
+                                            placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+                                           data-ng-model="details[outerIndex].attribute_options[$index].attribute_value"
+										   ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                           class="margin-bottom-4x margin-top-4x" placeholder="">
+                                    
+                                    <input data-ng-if="list.info=='1' && 
+                                                       data.input_type=='radio' &&
+                                                       details[outerIndex].selectedValue == details[outerIndex].attribute_options[$index].id" 
+                                           type="text" 
+                                           placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+                                           name="details[outerIndex].attribute_options[$index].attribute_value" 
+                                           data-ng-model="details[outerIndex].attribute_options[$index].attribute_value"
+										   ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                           class="margin-bottom-4x margin-top-4x" placeholder="">
+                                       
+                                </li>
+                            </ul>
+                         </div>
+                        <div class="text-danger" data-ng-bind="data.validationMessage"></div>
+                    </div>
+                    </div>
+                    <div class="container semi-width two-face-end margin-bottom-lg">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 text-center">
+                            <input type="submit" class="bold h4 inputprofile" value="Continue to Personality Profiling" name="submit" />
+                        </div>
+                        <div class="col-md-3 pull-right"></div>
+                    </div>
+                    
+                </form>
+            </div>
+           
+            </div>
+            
+            </main>
+         

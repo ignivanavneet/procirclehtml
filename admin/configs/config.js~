@@ -1,0 +1,14 @@
+/*
+ * @file: config.js
+ * @description: File carrying all the constant values required by the application
+ * @author: Mukesh
+ * @date: 08-03-2017
+ * */
+
+angular.module('app.constants', [])
+    .constant('API_URL','http://ignitrack.ignivastaging.com:8015/v1/')
+    .constant('IMAGE_URL', 'http://ignitrack.ignivastaging.com:8006/')
+    .constant('SOCKET_URL', 'ws://ignitrack.ignivastaging.com:8016')
+    .constant('BASE_PATH', 'http://ignitrack.ignivastaging.com:8015/')
+    
+

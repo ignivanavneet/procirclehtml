@@ -1,0 +1,67 @@
+.professionals {
+	h3 {
+		line-height:1.5;
+	}
+	.stats-img {
+		margin-bottom: 4rem;
+	}
+	.stats-img img {
+		width:100%;
+	}
+	h4 {
+		font-size:18px
+	}
+}
+
+.green-section {
+	background:$green-one;
+	padding-top: 2rem;
+    padding-bottom: 2rem;
+	.container, h3, h4 {
+		color:$white-one;
+	}
+		.dash-forward {
+			color:$white-one;
+		}
+		.beam-left:before {
+			border-bottom:1px solid $white-one;
+		}
+		button {
+			color:$white-one;
+			border-color:$white-one;
+			margin-bottom: 1rem;
+		}
+		a {
+			color:$white-one;
+			border-color:$white-one;
+			margin-bottom: 1rem;
+		}
+}
+
+.testimonials {
+	margin-top: 2rem;
+	margin-bottom: 8rem;
+	.col-md-4 {
+		margin-top:45px;
+	}
+	.testi-img {
+		width:68px;
+		display:inline-block;
+		margin-right:10px;
+		margin-bottom:10px;
+		img {
+			max-width:100%;
+			border-radius: 130px;
+		}
+	}
+	.testi-designation {
+		display:inline-block;
+		vertical-align: middle;
+		@include raleway-semibold;
+		h5 {
+			&:nth-child(2) {
+				margin-top:10px;
+			}
+		}
+	}
+}

@@ -1,0 +1,93 @@
+// THEME AND COLOR
+
+
+$white: #ffffff !default;
+$textcolor: #707070 !default;
+$themecolor: #067cb6 !default;
+$bluecolor:#067cb6 !default;
+$pinkcolor: #ef5f5f !default;
+$lightpinkcolor: #f09a9a !default;
+$yellowcolor:#f2b562 !default;
+$graycolor:#838d93 !default;
+$blackcolor: #313234 !default;
+$darkblue:#0370a6 !default;
+$greencolor:#3cb878;
+
+
+// pro circle brand colors
+
+$green-one:#3eb308;
+$green-two:#74d018;
+$green-three:#409c05;
+$green-four:#5bbf09;
+$blue-one:#0589b5;
+$white-one:#ffffff;
+$white-two:#f5f5f7;
+
+// pro circle text colors
+$standard-black:#3d3d3d;
+$semi-black:#2e2e2e;
+$dark-grey:#242e35;
+$medium-grey:#494949;
+$light-grey:#c3c3c3; 
+$link-color:#7a7a7a;
+$ghost-white:rgba(255, 255, 255, 0.78);
+
+// Hover and other colors
+
+$body-background:#f5f5f7;
+$basic-hover:#f0f0f0;
+$faded-border:#d6d6d6;
+
+
+// font 
+
+$plain-text:16px;
+$text-level-one:14px;
+$text-level-two:18px;
+$text-level-three:24px;
+$h3:30px;
+
+// OLD VARS
+
+//hover and other colors
+$color01: #e76048 !default;
+$color02: #ff0303 !default;
+
+
+$action: $color01 !default;
+$highlight: $color02 !default;
+$cancel: #b2b3bc !default;
+$info: #7c7f8e !default;
+$wlcme-bg: #488ac2;
+
+
+$img-upload-btn: #dedede;
+
+$accordion-tab:#3594c2;
+$accordion-bg: #eae9e9;
+$graycolor-light:#dbdbdb ;
+
+//block divs
+
+$block: block;
+$inline: inline-block;
+
+// PATH & FONT NAME
+$font-family: "raleway-regular", arial, sans-serif !default;
+
+$imgpath: "../images/" !default;
+$primary-font-path: "../fonts" !default;
+$url: $imgpath !default;
+
+// FONTS and TEXT STYLE
+$fontnormal: 15px !default;
+$fontsmall: 13px !default;
+$lineheight: 1.5 !default;
+$lineheight-sm: 1.2 !default;
+$fontawesome: FontAwesome !default;
+$spacing: 5px !default;
+$uppercase: uppercase;
+
+//TRANSITION EFFECT
+$trasition_all: all 0.4s ease-in-out 0s !default;

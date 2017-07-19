@@ -1,0 +1,110 @@
+@include media("<=1200px") {
+    .offer-list {
+        .fh-checkbox > [type="checkbox"] {
+            &:checked,
+            &:not(:checked) {
+                & + label {
+                    @include padding-left(30);
+
+                    @include fontsize(13);
+                }
+            }
+        }
+    }
+
+    .offer-box {
+        .media-left {
+            @include padding-right(15);
+        }
+
+        .offer-txt {
+            .offer-info {
+                & > ul {
+                    & > li {
+                        span {
+                            float: none;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=1400px") {
+    .offer-box {
+        .offer-txt {
+            .offer-info {
+                & > ul {
+                    & > li {
+                        @include fontsize(14);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=767px") {
+    .offer-list {
+        li {
+            width: 50%;
+        }
+    }
+}
+
+
+@include media("<=568px") {
+    .offer-box {
+        .offer-txt {
+            .offer-info {
+                & > ul {
+                    & > li {
+                        display: $inline;
+
+                        @include padding(0);
+
+                        border: 0;
+
+                        @include margin-right(5);
+
+                        span {
+                            display: $inline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=479px") {
+    .offer-box {
+        .media-left, .media-body {
+            display: block;
+            width: 100%;
+        }
+
+        .media-left {
+            img {
+                @include margin-bottom(15);
+            }
+        }
+    }
+
+    .offer-list {
+        li {
+            width: 100%;
+        }
+    }
+
+    .switch {
+        .slider {
+            @include margin(0 10);
+        }
+    }
+}

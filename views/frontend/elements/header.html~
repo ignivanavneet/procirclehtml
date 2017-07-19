@@ -1,0 +1,55 @@
+<nav role="navigation" class="navigation">
+    <div class="container">
+        <div class="logo-wrap media-left margin-right-4x">
+            <img src="/assets/images/pro-circle-logo.png" alt="procircle_logo" class="logo">
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item"><a href="#">Employers</a></li>
+                <li class="nav-item"><a href="#">Professionals</a></li>
+                <li class="nav-item"><a href="#">Pricing</a></li>
+                <li class="nav-item"><a href="#">Community</a></li>
+                <li class="nav-item"><a href="#">Blog</a></li>
+                <li class="nav-item"><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="nav-2 margin-right-6x">
+            <ul>
+                <li>
+                    <span class="margin-right-2x icon-login"></span>
+                    <a data-ui-sref="login">Log In</a></li>
+                <li>
+                    <span class="margin-right-2x">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </span>
+                    <a data-ui-sref="signup">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+        <button class="liney" id="nav-icon1">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+<div>
+    <aside class="aside">
+        <nav>
+            <ul>
+                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item"><a href="#">Employers</a></li>
+                <li class="nav-item"><a href="#">Professionals</a></li>
+                <li class="nav-item"><a href="#">Pricing</a></li>
+                <li class="nav-item"><a href="#">Community</a></li>
+                <li class="nav-item"><a href="#">Blog</a></li>
+                <li class="nav-item"><a href="#">Contact Us</a></li>
+            </ul>       
+            <ul>
+                <li><span class="margin-right-2x icon-login"></span><a href="">Log In</a></li>
+                <li><span class="margin-right-2x"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a href="">Sign Up</a></li>
+            </ul>
+        </nav>
+    </aside>
+</div>

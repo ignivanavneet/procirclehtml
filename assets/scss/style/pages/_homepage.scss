@@ -1,0 +1,82 @@
+.main-heading {
+    color: $white;
+    text-transform: uppercase;
+
+    @include fontsize(32);
+
+    text-align: center;
+
+    & > span {
+        @include fontsize(45);
+
+        @include padding-right(40);
+
+        vertical-align: middle;
+    }
+}
+
+.fafo-block {
+    @include padding(50 0 30);
+
+    .f-slider {
+        @include padding(50 0);
+    }
+}
+
+.f-box {
+    text-align: center;
+
+    @include padding(30 50);
+
+    figure {
+        @include margin(0);
+
+        .f-img {
+            & > img {
+                display: $inline;
+                width: 220px;
+                height: 220px;
+
+                @include circle;
+
+                @include border(2, solid, $white);
+            }
+        }
+    }
+
+    figcaption {
+        @include margin-top(25);
+
+        h2 {
+            color: $white;
+
+            @include fontsize(23);
+
+            text-transform: capitalize;
+        }
+
+        .f-rate {
+            @include margin(5 0 15);
+        }
+    }
+
+    &:hover {
+        background-color: rgba(#067cb6, 0.7);
+    }
+}
+
+.view-btn {
+    text-transform: $uppercase;
+
+    & > .fa {
+        @include margin-left(10);
+
+        @include fontsize(20);
+
+        vertical-align: middle;
+    }
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}

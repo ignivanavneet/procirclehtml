@@ -1,0 +1,149 @@
+// alpha
+
+.dash-sml {
+    height: 1px;
+    width: 18px;
+    background: $light-grey;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+main {
+    .block-first-alpha {
+        left: -53px;
+        position: absolute;
+
+        // padding: 4rem 5rem;
+        z-index: 3;
+
+        // width: 20%;
+        bottom: 200px;
+
+        span {
+            padding: 1.5rem 2rem;
+            background: lighten($green-four, 5%);
+            color: white;
+            font-size: 36px;
+            display: inline-block;
+        }
+    }
+
+    .block-second-alpha {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        //width: 46%;
+        max-width: 750px;
+        top: -150px;
+        background: $white-one;
+        text-align: center;
+        padding: 45px 0px;
+        border: 1px solid;
+        z-index: 2;
+
+        @media (max-width: 1024px) {
+            position: static;
+            width: 100%;
+        }
+
+        h2 {
+            @include heading-md;
+        }
+
+        .user-types {
+            div {
+                display: inline-block;
+                @media (max-width:580px) {
+                    display:block;
+                }
+            }
+
+            a {
+                @include button-border(1px, solid, $dark-grey);
+                display:inline-block;
+                padding: 5px 30px;
+                color: $dark-grey;
+
+                &:hover {
+                    color: $green-four;
+
+                    @include button-border(1px, solid, $green-three);
+                }
+            }
+
+            .employer, .applicant {
+                width: 20%;
+                @media (max-width: 580px) {
+                    margin-left:0!important;
+                    margin-right:0;
+                    width:100%;
+                }
+            }
+
+            .employer {
+                margin-right: 10%;
+                @media (max-width: 580px) {
+                    margin-bottom:3rem;
+                    margin-right: 0;
+                }
+            }
+
+            .applicant {
+                margin-left: 8%;
+                @media (max-width: 580px) {
+                    margin-top:3rem;
+                }
+            }
+
+            .user-type-icon {
+                @include heading-lg;
+
+                color: $dark-grey;
+            }
+
+            .or {
+                box-shadow: 0px 0px 5px 0px #b7b5b5;
+                border-radius: 173px;
+                padding: 3px 6px;
+                font-size: 14px;
+                bottom: 80px;
+                position: relative;
+                @media (max-width:580px) {
+                    width: 28px;
+                    margin: auto;
+                    bottom:auto;
+                }
+            }
+        }
+    }
+
+    .block-last-alpha {
+        margin: 40px auto 0;
+
+        //width: 54%;
+        max-width: 960px;
+        padding: 300px 0px 40px 0px;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        ul {
+            li {
+                display: inline;
+            }
+        }
+    }
+}
+
+main .block-first-- {
+    position: absolute;
+    z-index: 3;
+    width: 150px;
+    top: 173px;
+    left: -53px;
+}

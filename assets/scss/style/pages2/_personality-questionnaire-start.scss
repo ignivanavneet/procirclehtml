@@ -1,0 +1,38 @@
+main {
+	.semi-width-card {
+		max-width: 1140px;
+	    background: #fff;
+	    box-shadow: 1px 1px 3px rgba(97, 97, 97, 0.3);
+	}
+	.qstn-card {
+		padding:9rem 3rem 3rem;
+		margin-top:8%;
+		position:relative;
+		@media (max-width:768px) {
+			padding:5rem 0rem 3rem;
+		}
+	}
+	.semi-width-p {
+		width:70%;
+	}
+	.static-tile--a {
+		width: 120px;
+	    font-size:70px;
+    	line-height: 130px;
+    	background:$blue-one;
+    	color:$white-one;
+    	position:absolute;
+    	top:-79px;
+    	left:0;
+    	right:0;
+    	span {
+    		vertical-align: middle;
+    	}
+    	@media (max-width:768px) {
+    		width: 74px;
+    		font-size: 46px;
+    		line-height: 94px;
+    		top:-35px;
+    	}
+	}
+}

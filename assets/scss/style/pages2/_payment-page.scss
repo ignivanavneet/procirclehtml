@@ -1,0 +1,52 @@
+.static-tile {
+    color: #dddddd;
+    width: 78px;
+    font-size:38px;
+    line-height: 90px;
+	box-shadow: 1px 1px 3px rgba(97, 97, 97, 0.3);
+    span {
+    	vertical-align: middle;
+    }
+}
+
+select.form-control {
+	border: none;
+    border-bottom: 1px solid $faded-border;
+    border-radius: 0px;
+    @media (max-width:768px) {
+    	font-size:12px;
+    }
+}
+
+main {
+
+	.half-wit {
+		max-width: 66%;
+	    margin: auto;
+	    @media (max-width:768px) {
+	    	max-width:100%;
+	    }
+		.payment-form {
+			.form-group {
+				label {
+					font-family:raleway-semibold;
+				}
+			}
+		}
+	}
+	.card-padding-2 {
+		    padding: 10px 50px;
+		    @media (max-width:768px) {
+		    	padding:10px 20px;
+		    }
+	}
+	.button-bottom-wrap {
+		a {
+			width: 65%;
+    		padding: 12px 0;
+    		position: relative;
+		    top: -21px;
+		    display:inline-block;
+		}
+	}
+}

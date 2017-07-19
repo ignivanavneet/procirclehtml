@@ -1,0 +1,43 @@
+main {
+	.faq-section {
+		h4 {
+			@include raleway-medium;
+			font-size:24px;
+		}
+		ul {
+			// li {
+			// 	background:$link-color;
+			// 	color:$white-one;
+			// }
+		}
+	}
+	.text-block {
+		.text-block-group {
+			background:$white-one;
+			&:first-child div{
+				border-bottom:none;
+			}
+			&:last-child div{
+				border-bottom:1px solid $faded-border;
+			}
+			.text-block-head {
+				cursor:pointer;
+				overflow:hidden;
+				position:relative;
+				padding:25px!important;
+				border-top:1px solid $faded-border;
+				i {
+					float: right;
+				}
+			}
+			.text-block-body {
+				padding:25px;
+				display: none;
+			}
+		}
+	}
+}
+
+.nav-tabs > li > .selected {
+	background: #0589b5;
+}

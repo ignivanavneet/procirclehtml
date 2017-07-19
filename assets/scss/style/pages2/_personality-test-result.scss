@@ -1,0 +1,9 @@
+.test-prog-bar {
+	width:80%;
+	text-align:left;
+	li {
+		h4 {
+			@include raleway-bold;
+		}
+	}
+}

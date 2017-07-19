@@ -1,0 +1,53 @@
+.date-time-heading {
+	font-size: 18px;
+	span {
+		font-size: 16px;
+		color:#9aa2a7;
+	}
+}
+.m-size {
+	color:#53636d!important;
+}
+
+.expand-btn {
+	span:nth-child(1) {
+		span {
+			font-weight: bold;
+		}
+	}
+}
+
+.my-review-section {
+	.offer-box {
+		border:none;
+	}
+	.offer-box:nth-child(odd) {
+		background:#e9ebed;
+	}
+	.media-left {
+		display: inline-block;
+	}
+	.media-right {
+		display: inline-block;
+		float: right;
+		 .user-thumbnail {
+		    background: url(../images/john-smith.jpg);
+	    	height: 54px;
+	    	width: 50px;
+	    	margin-left: 20px;
+	    	float:right;
+		}
+		.user-text {
+			font-weight: 600;
+	    	text-transform: uppercase;
+	    	color: #444a4d;
+		}
+	}
+	h4 {
+		font-weight: 600;
+		i {
+			font-weight: bold;
+			color: #df3632;
+		}
+	}	
+}

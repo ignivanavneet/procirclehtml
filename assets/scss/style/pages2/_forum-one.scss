@@ -1,0 +1,168 @@
+.masthead-heading--a {
+	// transform:translateY(150%)!important;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
+    width:100%;
+}
+
+
+// .layer-wrap > layer-box
+// .layer-pos-top > .layer-top
+// .layer-pos-below > .layer-below
+// .layer-pos-empty > .layer-empty
+
+.layer-wrap {
+	margin:0 auto;
+	position:relative;
+	left:0;
+	right:0;
+}
+.layer-pos-top {
+	margin: auto;
+	// position:absolute;
+	left:0;
+	right:0;
+	z-index:25;
+}
+
+.layer-pos-below {
+	position:absolute;
+	margin:auto;
+	left:0;
+	box-shadow: 3px 5px 16px #acacac;
+	z-index:24;
+}
+
+.layer-pos-empty {
+	margin: auto;
+	background: rgb(245, 245, 247);
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.layer-box {
+	@extend .layer-wrap;
+	margin-top: 80px;
+    .layer-top {
+	    @extend .layer-pos-top;
+	    background:$blue-one;
+	    color: #fff;
+	    width: 68px;
+	    line-height: 80px;
+	    font-size:24px;
+	    top:-40px;
+	    i {
+	    	vertical-align: middle;
+	    }
+    }
+    .layer-below {
+    	@extend .layer-pos-below;
+    	height: 80px;
+	    width: 68px;
+    	bottom: 28px;
+    	right: -14px;
+    }
+    .layer-empty {
+	    @extend .layer-pos-empty;
+    	width: 87%;
+	    height: 87px;
+	    top: -7px;
+    }
+    h4 {
+    	z-index:27;
+    	position:relative;
+    }
+}
+
+.thread-badge {
+	position:relative;
+	max-width: 200px;
+    margin: auto;
+	.badge-icon {
+		span {
+			font-size:68px;
+		}
+	}
+	.brackets:after {
+		content: '';
+	    position: absolute;
+	    height: 4.5rem;
+	    width: 1rem;
+	    border: 1px dashed #bbb;
+	    border-left: none;
+	    top: 36px;
+	    right: 0px;
+	}
+	.brackets:before {
+		content: '';
+	    position: absolute;
+	    height: 4.5rem;
+	    width: 1rem;
+	    border: 1px dashed #bbb;
+	    border-right: none;
+	    top: 36px;
+	    left: 0px;
+	}
+}
+
+.forum-grid {
+	div {
+		padding:0;
+		&:nth-of-type(1) {
+			div {
+				border-bottom:1px solid $faded-border;
+			}
+		}
+		&:nth-of-type(2) {
+			div {
+				border-bottom:1px solid $faded-border;
+			}
+		}		
+		&:nth-of-type(3) {
+			div {
+				border-bottom:1px solid $faded-border;
+			}
+		}
+		&:nth-of-type(3n+2) {
+			div {
+				@include border-right(1,solid,$faded-border); 
+				@include border-left(1,solid,$faded-border);
+			}
+		}
+		div {
+			padding:6rem 2rem;
+			&:hover {
+					background:$white-one;
+					span {
+						color:$green-one;
+					}
+					h4 {
+						color:$dark-grey;
+					}
+			}
+			span {
+				font-size:45px;
+				color:$dark-grey;
+			}
+			h4 {
+				@include raleway-medium;
+				color:$link-color;
+
+			}
+		}
+	}
+	button {
+		float:right;
+	}
+}
+
+@media (max-width:991px) {
+	.forum-grid {
+		div a div {
+			border-bottom:1px solid $faded-border;
+		}
+	}
+}

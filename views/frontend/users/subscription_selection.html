@@ -1,0 +1,68 @@
+<div class="clearfix"></div>
+<main class="" data-ng-init="getPlanInfoById()">
+    <h3 class="mediasmall">SELECT YOUR SUBSCRIPTION</h3>
+    <div class="margin-top-2x">
+        <span class="beam-right">   </span>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+    </div>
+    <div class="container card-container semi-width text-left margin-top-4x">
+        <form data-ng-init="submitted = false" name="sub_select" data-ng-submit=" sub_select.$valid ? selectSubscriptionPlan() : submitted = true " novalidate>
+            <div class="card buy-out">  
+                <div class="buy-out-info mediabuy">
+                    <h4 data-ng-bind="selected_plan.name"></h4>
+                    <div class="plan-switch">
+                        <a data-ui-sref="subscription_info">Change Plan</a>
+                    </div>
+                    <p data-ng-bind="selected_plan.max_emp_text"></p>
+                    <p data-ng-bind="selected_plan.recruit_per_year_txt"></p>
+                </div>
+                <div class="subscription">  
+                    <div data-ng-if="selected_plan.special_offer == '0'">
+                        <div class="duration">
+                            <label class="ch-radioBox">
+                                <input type="radio" data-ng-value="1" data-ng-model="$parent.subscription_type" name="subscription_type" required/>
+                                <span class="_inner">&nbsp;</span>
+                                <div>
+                                    <p>Monthly subscription : <span class="plan-price"><strong>&pound;{{selected_plan.amount}} <sub>pcm </sub></strong></span></p>
+                                    <div data-ng-bind-html="selected_plan.description"></div>
+                                </div>
+                            </label> 
+                        </div>
+                        <div class="duration">
+                            <label class="ch-radioBox">
+                                <input type="radio" data-ng-value="12" data-ng-model="$parent.subscription_type" name="subscription_type" required/>
+                                <span class="_inner">&nbsp;</span>
+                                <div>
+                                    <p>Yearly subscription : <span class="plan-price"><strong>&pound;{{selected_plan.amount}} <sub>pcm </sub> X 12 months</strong></span>
+                                        <span data-ng-if="selected_plan.discount > 0" class="discount">SAVE {{selected_plan.discount}}%</span>
+                                    </p>
+                                    <div data-ng-bind-html="selected_plan.description"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div data-ng-if="selected_plan.special_offer == '1'">
+                        <div class="duration">
+                            <label class="ch-radioBox">
+                                <input type="radio" data-ng-value=selected_plan.interval_count data-ng-model="$parent.subscription_type" name="subscription_type" required/>
+                                <span class="_inner">&nbsp;</span>
+                                <div>
+                                    <p>Monthly subscription : <span class="plan-price"><strong>&pound;{{selected_plan.amount}} <sub>pcm </sub></strong></span></p>
+                                    <div data-ng-bind-html="selected_plan.description"></div>
+                                </div>
+                            </label> 
+                        </div>
+                    </div>
+                    <input type="hidden" data-ng-model="selected_plan.id" name="plan_id"/>
+                </div>
+                <div class="text-danger" ng-messages="sub_select.subscription_type.$error" ng-if="submitted || sub_select.subscription_type.$touched">
+                    <div ng-message="required">Please select atleast one subscription</div>
+                </div>
+            </div>
+            <div class="container half-wit text-center button-bottom-wrap">
+                <button type="submit" id="{{selected_plan.id}}" class="greenify-btn medium buttongreenplan">Continue to Payment</button>
+            </div>
+        </form>
+    </div>
+</main>

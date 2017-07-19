@@ -1,0 +1,133 @@
+.messages {
+	> h3 {
+		display:inline-block;
+	}
+	.message-block {
+		margin-top: 40px;
+		margin-bottom: 40px;
+    	display: inline-block;
+	}
+	.msg-search {
+		display:inline-block;
+		float:right;
+		input {
+			border:none;
+		}
+	}
+	.msg-left {
+		width:35%;
+		overflow:hidden;
+		float: left;
+		    box-shadow: 1px 2px 6px rgba(97, 97, 97, 0.3);
+		padding-top:2rem;
+		padding-bottom:4rem;
+		.msg-selector {
+			padding:1.5rem 1.5rem;
+			img {
+				height:80px;
+				border-radius:130px;
+			}
+			h4 {
+				display:inline-block;
+				margin-bottom:5px;
+				@include raleway-semibold;
+			}
+			small {
+				display: inline-block;
+				float:right;
+				color:$standard-black;
+			}
+			p {
+				font-size:13px;
+				@include raleway-light;
+			}
+			.media-body {
+				padding-left:10px;
+			}
+		}
+		.msg-active {
+			background:$green-one;
+			color:$white-one;
+			padding:1.2rem 1.5rem;
+			h4, small {
+				color:$white-one;
+			} 
+		}
+	}
+}
+	.msg-right {
+		width:65%;
+		padding: 1rem 0 1rem 2rem;
+		float:right;
+		overflow: hidden;
+		.msg-thread-list {
+			img {
+				height:95px;
+				border-radius:130px;
+				box-shadow: 1px 2px 6px rgba(97, 97, 97, 0.3);
+				border: 2px solid #fff;
+			}
+			.thread-list-item--a {
+				width:80%;
+				margin-bottom:30px;
+				p {
+					font-size:14px;
+				}
+				h4 {
+					font-size:24px;
+					@include raleway-bold;
+				}
+				.media-left {
+					position:relative;
+				}
+				.media-body {
+					padding-left:20px;
+				}
+				span.user-like {
+					position: absolute;
+    				bottom: 15px;
+    				right: 10px;
+    				background: $light-grey;
+    				color: white;
+    				border-radius: 149px;
+    				height: 34px;
+    				padding: 7px;
+				    border: 2px solid #fff;
+				}
+			}
+			.thread-list-item--b {
+				width: 80%;
+    			margin-left: auto;
+    			.media-body {
+    				padding-right:25px;
+    			}
+				p {
+					font-size:14px;
+				}
+				h4 {
+					font-size:24px;
+					@include raleway-bold;
+				}
+			}
+		}
+	}
+
+.msg-response {
+	margin-top:50px;
+	textarea {
+		border:none;
+		background:$white-one;
+		height:80px;
+		width:87%;
+		padding:10px 20px;
+		float: left;
+	}
+	input[type="submit"] {
+		border: none;
+		background:$green-one;
+		color:$white-one;
+		height:80px;
+		width:13%;
+		@include raleway-semibold;
+	}
+}

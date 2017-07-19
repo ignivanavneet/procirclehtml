@@ -1,0 +1,346 @@
+.navigation {
+    .logo-wrap {
+        float: left;
+
+        img {
+            padding: 12px 0 8px;
+        }
+    }
+
+    li {
+        display: inline-block;
+
+        // padding:20px 22px;
+        padding: 18px 20px;
+
+        &.nav-item {
+            a {
+                @include pos(r, null);
+
+                &:after {
+                    content: "";
+
+                    @include pos(ab, 100% 0 null);
+
+                    border-bottom: 1px solid transparent;
+
+                    @include margin-top(5);
+                }
+            }
+
+            &.active {
+                a {
+                    &:after {
+                        border-color: $green-two;
+                    }
+                }
+            }
+        }
+
+        &:hover, &.active {
+            background-color: transparent;
+
+            a, span {
+                //color:$medium-grey;
+                color: $green-two;
+            }
+        }
+    }
+
+    .nav, .nav-2 {
+        display: inline-block;
+        transition: 1s all ease-in;
+
+        @media (max-width: 1023px) {
+            display: none;
+        }
+    }
+
+    .nav {
+        margin-left: 16%;
+    }
+
+    .nav-2 {
+        float: right;
+
+        @media (min-width: 1440px) {
+            margin-right: 70px;
+        }
+
+        .nav-signed {
+            .nav-signed-item {
+                font-size: 20px;
+                padding: 15px 10px;
+                color: $standard-black;
+
+                .icon-notification {
+                    position: relative;
+                }
+
+                a {
+                    color: $standard-black;
+                }
+
+                &:last-child {
+                    padding: 0;
+
+                    img {
+                        height: 45px;
+                        border-radius: 130px;
+                        padding-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Notification Count
+span.notif-cnt {
+    position: absolute;
+    font-size: 10px;
+    top: -3px;
+    right: -5px;
+    background: red;
+    border-radius: 130px;
+    padding: 3px;
+    color: white;
+    z-index: 99999;
+}
+
+// mobile menu
+
+.aside {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    border-left: 1px solid #e0e0e0;
+    right: -250px;
+    z-index: 1001;
+    transition: .8s all ease-out;
+    overflow: scroll;
+
+    .nav-item-m {
+        padding: 0rem 0rem 0rem 2rem;
+        line-height: 65px;
+        font-size: 14px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .nav-in-m li {
+        padding: 0rem 0rem 0rem 2rem;
+        line-height: 65px;
+        font-size: 14px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .notif-cnt-m {
+        margin-left: 4px;
+        background: red;
+        border-radius: 130px;
+        color: white;
+        padding: 3px;
+        font-size: 8px;
+    }
+}
+
+// matches drop down menu
+
+.matches-trigger {
+    position:relative;
+    & > a {
+        &:hover {
+            & + .matches-drp-dwn {
+                display: block;
+            }
+        }
+    }
+}
+
+.matches-drp-dwn {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    background: #f5f5f7;
+    min-width: 285px;
+    width: 100%;
+    right:0;
+
+    .media-right, .media-left {
+        font-size: 14px;
+    }
+
+    .media-right {
+        vertical-align: middle;
+    }
+
+    .accept, .reject {
+        display: inline-block;
+        padding: 2px 5px;
+        border-radius: 3px;
+
+        a {
+            color: $white-one !important;
+        }
+    }
+
+    .accept {
+        background: $green-two;
+
+        &:hover a {
+            box-shadow: 0px 3px 15px 3px $green-two;
+        }
+    }
+
+    .reject {
+        background: red;
+
+        &:hover a {
+            box-shadow: 0px 3px 15px 3px red;
+        }
+    }
+
+    li {
+        display: block;
+
+        &:nth-child(4) {
+            padding: 0;
+
+            a {
+                color: $blue-one !important;
+                font-size: 14px;
+            }
+        }
+
+        &:last-child {
+            padding: 5px 0px;
+
+            a {
+                color: $green-three !important;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.toggle-on {
+    right: 0px;
+    transition: .8s all ease-in;
+}
+
+.toggle-off {
+    right: -250px;
+}
+
+// notifications drop down menu
+
+.notif-trigger {
+    position:relative;
+   
+        &:hover {
+           .notif-drp-dwn {
+                display: block;
+            }
+        }
+    
+}
+
+.notif-drp-dwn {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    background: #f5f5f7;
+    min-width: 285px;
+    width: 100%;
+    right:0;
+
+    li {
+        display: block;
+
+        p {
+            font-size: 12px;
+        }
+
+        &:last-child {
+            padding: 5px 0px;
+
+            a {
+                color: $green-three !important;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+// header responsive code
+@media (max-width: 1399px) {
+    .navigation {
+        .nav {
+            margin-left: 10%;
+        }
+
+        li {
+            padding: 20px 12px;
+            transition: 1s all ease-in;
+        }
+
+        // .nav-2 {
+        //     margin-right:30px;
+        // }
+   
+    }
+}
+
+@media (max-width: 1199px) {
+    .navigation {
+        .nav {
+            margin-left: 3%;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .navigation {
+        li {
+            font-size: 15px;
+        }
+
+        .nav-2 {}
+    }
+
+    .heading-banner.container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .navigation {
+        li {
+            padding: 20px 13px;
+        }
+
+        .nav-2 {
+            margin-right: 0;
+
+            ul {
+                li {
+                    &:last-child {
+                        padding-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .aside {
+        display: none;
+    }
+
+    .liney {
+        display: none !important;
+    }
+}

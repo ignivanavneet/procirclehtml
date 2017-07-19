@@ -1,0 +1,131 @@
+.bg-17 {
+	background: url(#{$imgpath}bg-slide17.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+
+
+
+.text-block {
+	// background: red;
+
+	.text-block-group {
+		@include border-bottom(1, solid, #bcbcbc);
+
+		h5 {
+			color:$pinkcolor!important;
+		}
+	}
+	.text-block-head {
+		background:transparent;
+		cursor: pointer;
+    	font-size: 0.87em;
+    	overflow: hidden;
+    	padding: 24px 0 24px;
+    	position: relative;
+	}
+
+// Drop-down arrow styling start
+
+	.text-block-head:after {
+    font-family: 'FontAwesome';
+    content: "\f107";    
+    margin-top: -10px;
+    position: absolute;
+    font-size: 25px;
+    right: 15px;
+    top: 50%;
+    color:$textcolor;
+		}
+
+	.text-block-head.open:after {    
+    content: "\f106";
+    margin-top: -20px;  
+		}	
+
+// Drop-down arrow styling end
+
+	 .text-block-body {
+            border-bottom: 1px solid #fff;
+            padding: 20px 0 20px;
+            height: auto;
+            display: none;
+        }
+}
+
+
+.offer-accordion{
+   
+     .offer-accordion-group:first-child {
+          .offer-accordion-head {
+              // background-color: $pinkcolor!important;
+                 h5, p{
+                color: $pinkcolor;
+              }
+          }
+
+
+     }
+          .offer-accordion-group:nth-child(2) {
+          .offer-accordion-head {
+              // background-color: $lightpinkcolor !important;
+              p{
+                // color: $white;
+              }
+
+        .offer-accordion-head:after {
+            // color:$white;
+            }
+          }
+
+     }
+
+      .offer-accordion-group:nth-child(odd) {
+
+        .offer-accordion-head {
+              // background-color: $white;
+              cursor: pointer;
+              font-size: 0.87em;
+              overflow: hidden;
+              padding: 13px;
+              position: relative;
+              }
+
+        .offer-accordion-head:after {
+            color:$textcolor;
+            }
+        p{
+            color: $textcolor;
+            }
+      }
+
+      .offer-accordion-group:nth-child(even) {
+
+        .offer-accordion-head {
+              background-color: $accordion-tab;
+              cursor: pointer;
+              font-size: 0.87em;
+              overflow: hidden;
+              padding: 13px;
+              position: relative;
+              }
+
+        .offer-accordion-head:after {
+            color:$white;
+            }
+        p{
+            color: $white;
+            }
+      }
+
+      .offer-accordion-body{
+        background-color: $accordion-bg;
+      }
+
+      li {
+            list-style: outside none number;
+        }
+}

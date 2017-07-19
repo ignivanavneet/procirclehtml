@@ -1,0 +1,102 @@
+.bg-15{
+    background: url(#{$imgpath}bg-slide15.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+.talk-to-koji{
+//accordion bg color
+
+ .offer-accordion{
+   .offer-accordion-modifier {
+      padding: 20px 0;
+      background-color: $yellowcolor;
+   }
+
+   .offer-accordion-body-modifier {
+      padding:0;
+   } 
+     .offer-accordion-group:first-child {
+          .offer-accordion-head {
+              background-color: $pinkcolor!important;
+                 h4, p{
+                color: $white;
+              }
+          }
+            .offer-accordion-head:after {
+                color:$white!important;
+                }
+
+     }
+          .offer-accordion-group:nth-child(2) {
+          .offer-accordion-head {
+              background-color: $lightpinkcolor !important;
+              h4, p{
+                color: $white;
+              }
+
+        .offer-accordion-head:after {
+            color:$white;
+            }
+          }
+      
+     }
+
+      .offer-accordion-group:nth-child(odd) {
+
+        .offer-accordion-head {
+              background-color: $white;
+              cursor: pointer;
+              font-size: 0.87em;
+              overflow: hidden;
+              padding: 13px;
+              position: relative;
+              }
+
+        .offer-accordion-head:after {
+            color:$textcolor;
+            }
+
+         h4{
+            color:$textcolor;
+            }
+        p{
+            color: $textcolor;
+            }
+      }
+
+      .offer-accordion-group:nth-child(even) {
+
+        .offer-accordion-head {
+              background-color: $accordion-tab;
+              cursor: pointer;
+              font-size: 0.87em;
+              overflow: hidden;
+              padding: 13px;
+              position: relative;
+              }
+
+        .offer-accordion-head:after {
+            color:$white;
+            }
+
+         h4{
+            color:$white;
+            }
+        p{
+            color: $white;
+            }
+      }
+
+      .offer-accordion-body{
+        background-color: $accordion-bg;
+      }
+
+      li {
+            list-style: outside none number;
+        }
+}
+
+}

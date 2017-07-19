@@ -1,0 +1,60 @@
+.card-padding {
+    padding: 10px 50px;
+    @media (max-width:768px) {
+        padding:10px 20px
+    }
+}
+.card {
+    max-width: 780px;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(97, 97, 97, 0.3);
+    .h5.semibold {
+        @media (max-width:768px) {
+            font-size:16px;
+        }
+    }
+    .team-form {
+        max-width:60%;
+        font-family: raleway-semibold;
+        @media (max-width:768px) {
+            max-width:100%;
+            font-size:12px;
+        }
+    	input {
+    		padding: 0px 0px;
+    		margin-bottom: 25px;
+    	}
+    }
+}
+
+.card +	button.greenify-btn {
+		padding:1rem 6rem;
+		float:none;
+		color:#fff;
+        @media(max-width:768px) {
+            padding:.5rem 3rem;
+        }
+}
+
+.prsn-instruction {
+        margin-top:1rem;
+        li {
+            list-style: circle;
+            margin-left:2rem;
+            font-size:14px;
+        }
+}
+
+.send-blue {
+    font-size: 14px;
+    background: $blue-one;
+    color: white;
+    padding: 8px;
+    margin-bottom:20px;
+    a {
+        color:$white-one;
+        span {
+            margin-left: 10px;
+        }
+    }
+}

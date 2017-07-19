@@ -1,0 +1,92 @@
+ <header class="header-wrap">
+        <div class="masthead-wrap">    
+            <div class="banner-3 masthead">
+                <div class="container masthead-heading">
+                    <div>
+                        <h1><span class="green-wrap">Join</span> <span class="light">Our Community</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="clearfix"></div>
+    <main class="main--">
+        <div class="block-second">
+            <div class="block-first cnt--">
+                <span class=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+            </div>
+            <h2 class="bold margin-bottom-2x">Contact Us</h2>
+            <small>
+                <p>We're here to help.</p>
+                <p>Got any questions about how our platform works or our pricing plans? Drop us a line and we'll get back to you. You can also check out our <a data-ui-sref-opts="{reload: true}" data-ui-sref="faq" class="green-wrap semibold">FAQ</a></p>
+            </small>
+            <div class="form-container">
+                <form class="inb margin-top-4x" data-ng-init="submitted=false;" 
+                  name="contact" 
+                  data-ng-submit="contact.$valid ? sendContactUs() : submitted = true" 
+                  class="team-form" novalidate>
+                    <div class="signuppage">
+                    Name
+                    <input type="text" 
+						   name="name" 
+						   data-ng-model="user.name"
+						   data-ng-maxlength="80"
+						   class="margin-bottom-4x" required>
+				<div ng-messages="contact.name.$error" 
+                     class="text-danger contactform" data-ng-if=" submitted || contact.name.$touched">
+                    <div ng-message="required">Name is required.</div>
+                    <div ng-message="maxlength">Maximum 80 characters allowed</div>
+                </div>
+                    </div>
+                     <div class="signuppage">
+                    Email
+                    <input type="text" name="email"  data-ng-model="user.email" data-ng-pattern="/^[A-Z0-9._-]+@[A-Z0-9.-]+\.(co|com|uk|org|pro)+$/i" class="margin-bottom-4x" required>
+					
+					<div ng-messages="contact.email.$error" 
+						 class="text-danger contactform" data-ng-if=" submitted || contact.email.$touched">
+						<div ng-message="required">E-mail is required.</div>
+						<div ng-message="email">E-mail is not valid.</div>
+					</div>
+                    </div>
+                     <div class="signuppage">
+                    Message
+                    <textarea name="message"  data-ng-model="user.message" cols="30" rows="10"  data-ng-maxlength="800" required></textarea>
+					<div ng-messages="contact.message.$error" 
+						 class="text-danger contactformmessage" data-ng-if=" submitted || contact.message.$touched">
+						<div ng-message="required">Message is required.</div>
+						<div ng-message="maxlength">Maximum 800 characters allowed.</div>
+					</div>
+                    </div>
+                    <button type="submit" class="button-send semibold margin-top-8x margin-right-3x">Send <span class="icon-send semibold corner-plane"></span></button>
+                </form>
+            </div>
+        </div>
+        <div class="block-last-theta bg-texture-1">
+            <div class="row">
+                <ul>
+                    <li>
+                        <div>
+                            <span class="icon-phone-call-button"></span>
+                        </div>
+                        <p class="margin-top-8x"><a href="tel:+917838218233">7838218233</a></p>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="icon-mail"></span>
+                        </div>
+                        <p class="margin-top-8x"><a href="mailto:info@procircle.com" target="_top">info@procircle.com</a></p>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="icon-location"></span>
+                        </div>
+                        <p class="margin-top-8x">
+                            3243 Shadowmar Drive, <br>
+                             New Orleans, 
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    

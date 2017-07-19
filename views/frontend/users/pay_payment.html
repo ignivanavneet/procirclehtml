@@ -1,0 +1,176 @@
+<div class="clearfix"></div>
+<main class="" data-ng-init="initatePayment()">
+    <h3 class="mediasmall">PAYMENT</h3>
+    <div class="margin-top-2x">
+        <span class="beam-right">   </span>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+    </div>
+</main>
+<div class="container">
+    <div class="row">
+        <!-- You can make it whatever width you want. I'm making it full width
+             on <= small devices and 4/12 page width on >= medium devices -->
+        <div class="col-xs-12 col-md-4">
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="assets/images/imgpsh_fullsize.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                    <form name="paymentForm"  novalidate
+                          data-ng-submit="paymentForm.$valid ? processPayment() : submitted = true" 
+                          data-ng-init="submitted = false">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="card_number" 
+                                               data-ng-model="payment.card_number" 
+                                               data-ng-pattern="/^[0-9]+$/" 
+                                               data-ng-minlength="15" 
+                                               data-ng-maxlength="19" 
+                                               placeholder="Valid Card Number" required>
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                    <div ng-messages="paymentForm.card_number.$error" class="text-danger" role="alert" 
+                                         ng-if=" submitted || paymentForm.card_number.$touched">
+                                        <div ng-message="required">Please enter card number.</div>
+                                        <div ng-message="pattern">Card must consist of only numbers.</div>
+                                        <div ng-message="minlength">Card number minimum must be 16 digits.</div>
+                                        <div ng-message="maxlength">Card number minimum must be 19 digits.</div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group exp-date">
+                                    <label for="cardExpiry">
+                                        <span class="hidden-xs">EXPIRATION DATE</span>
+                                    </label>
+                                    <input type="text" data-ng-minlength="2" data-ng-maxlength="2" data-ng-pattern="/^[0-9]+$/" data-ng-model="payment.expiry_month" class="form-control" name="card_expiry_month" placeholder="MM" required>
+                                    <input type="text" data-ng-minlength="2" data-ng-maxlength="2" data-ng-pattern="/^[0-9]+$/" data-ng-model="payment.expiry_year" class="form-control" name="card_expiry_year" placeholder="YY" required>
+
+                                </div>
+                                <div ng-messages="paymentForm.card_expiry_month.$error" class="text-danger" role="alert" 
+                                     ng-if=" submitted || paymentForm.card_expiry_month.$touched">
+                                    <div ng-message="required">Please enter expiry month.</div>
+                                    <div ng-message="pattern">Month must consist of only numbers.</div>
+                                    <div ng-message="minlength">Month must be 2 digits minimum.</div>
+                                    <div ng-message="maxlength">Month must be 2 digits maximum.</div>
+                                </div>
+                                <div ng-messages="paymentForm.card_expiry_year.$error" class="text-danger" role="alert" 
+                                     ng-if=" submitted || paymentForm.card_expiry_year.$touched">
+                                    <div ng-message="required">Please enter expiry year.</div>
+                                    <div ng-message="pattern">Year must consist of only numbers.</div>
+                                    <div ng-message="minlength">Year must be 2 digits minimum.</div>
+                                    <div ng-message="maxlength">Year must be 2 digits maximum.</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input type="text" class="form-control" name="security_code" 
+                                           data-ng-model="payment.security_code" 
+                                           data-ng-pattern="/^[0-9]+$/" 
+                                           data-ng-minlength="3" 
+                                           data-ng-maxlength="4" 
+                                           placeholder="CVC" required>
+                                </div>
+                                <div ng-messages="paymentForm.security_code.$error" class="text-danger" role="alert" ng-if=" submitted || paymentForm.security_code.$touched">
+                                    <div ng-message="required">Security code is required.</div>
+                                    <div ng-message="minlength">Security code must be 3 digits.</div>
+                                    <div ng-message="maxlength">Security code must be maximum 4 digits.</div>
+                                    <div ng-message="pattern">Security code must contain only numbers.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>-->
+                        <div class="row">    
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+        </div>  
+        <div class="col-xs-12 col-md-8" style="font-size: 12pt; line-height: 2em;">  
+            <div class="well">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6"></div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+<!--                        <p><em data-ng-bind="current_date_time | date:'MMMM, dd yyyy'"></em></p>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1></h1>
+                    </div>
+                    </span>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Plan</th>
+                                <th></th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-9"><em data-ng-bind="invoice_data.plan.name"></em></h4></td>
+                                <td class="col-md-1" style="text-align: center" data-ng-bind="invoice_data.plan.quantity"></td>
+                                <td class="col-md-1 text-center" data-ng-bind-html="invoice_data.plan.currency_symbol + ' ' + invoice_data.plan.price"></td>
+                                <td class="col-md-1 text-center" data-ng-bind-html="invoice_data.plan.currency_symbol + ' ' + invoice_data.plan.total"></td>
+                            </tr>
+                            <tr data-ng-show="invoice_data.discount">
+                                <td class="col-md-9"><em>Discount</em></h4></td>
+                                <td class="col-md-1" style="text-align: center" data-ng-bind="invoice_data.discount.quantity"></td>
+                                <td class="col-md-1 text-center" data-ng-bind="invoice_data.discount.price"></td>
+                                <td class="col-md-1 text-center" data-ng-bind-html="invoice_data.plan.currency_symbol + ' ' + invoice_data.discount.total"></td>
+                            </tr>
+                            <tr data-ng-show="invoice_data.offer">
+                                <td class="col-md-9"><em data-ng-bind="invoice_data.offer.name"></em></h4></td>
+                                <td class="col-md-1" style="text-align: center" data-ng-bind="invoice_data.offer.quantity"></td>
+                                <td class="col-md-1 text-center" data-ng-bind="invoice_data.offer.price"></td>
+                                <td class="col-md-1 text-center" data-ng-bind-html="invoice_data.plan.currency_symbol + ' ' + invoice_data.offer.total"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right">
+                                    <p><strong>Subtotal: </strong></p>
+                                    <p><strong>Tax: </strong></p>
+                                </td>
+                                <td class="text-center">
+                                    <p><strong data-ng-bind="invoice_data.sub_total"></strong></p>
+                                    <p><strong data-ng-bind="invoice_data.tax"></strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                                <td class="text-center text-danger"><h4><strong data-ng-bind="invoice_data.total"></strong></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

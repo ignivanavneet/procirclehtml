@@ -1,0 +1,81 @@
+    .profile-block {
+        margin:25px 0;
+        @include raleway-semibold;
+        h4 {
+            color:#707070;
+        }
+    }
+    .profile-info {
+        width:80%;
+        display:inline-block;
+        font-size:14px;
+        margin-top:5px;
+        p {
+            @media(max-width:425px) {
+                font-size:12px;
+            }
+        }
+    }
+.profiles {
+    max-width: 1140px;
+    .profile-btns {
+        width:15%;
+        display:inline-block;
+        float:right;
+        text-align:left;
+        // border:1px solid $blue-one;
+        a {
+            color:$blue-one;
+            display:inline-block;
+            padding:.5rem 1rem;
+            font-size:12px;
+            &:first-child {
+
+            }
+            @media(max-width:768px) {
+                // padding:0rem .2rem;
+            }
+            span {
+                margin-right:5px;
+            }
+        }
+    }
+}
+    .basic-btn {
+        font-size: 18px;
+        color: $green-three;
+        padding: 1rem 3rem;
+        border:1px solid $green-three;
+        @include raleway-semibold;
+        margin-top:4rem;
+        margin-bottom:6rem;
+        @media(max-width:425px) {
+            padding:1rem 2rem;
+        }
+    }
+
+.text-declare {
+    @include button-border(1px, solid, black);
+    padding:2% 0;
+    margin-top:4rem;
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        padding:0 10px;
+        span {
+            border-radius:130px;
+            width:48px;
+            padding:1rem;
+            color:white;
+        }
+        &:nth-child(2) span {
+            background:#5d77c1;
+        }
+        &:nth-child(3) span {
+            background:#3e94d7;
+        }
+        &:last-child span {
+            background:#5583b3;
+        }
+    }
+}

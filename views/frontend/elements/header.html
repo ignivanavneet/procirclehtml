@@ -1,0 +1,208 @@
+<nav role="navigation" class="navigation">
+    <div class="container">
+        <div class="logo-wrap media-left margin-right-4x">
+            <a data-ui-sref="main.index">
+                <img src="assets/images/pro-circle-logo.png" alt="procircle_logo" class="logo">
+            </a>
+        </div>
+        <div class="nav headernav">
+            <ul>
+                <!--<li ng-if="role_id == 2" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="employer_about_us">About Us</a></li>
+                <li ng-if="role_id == 3" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="professional_about_us">About Us</a></li>
+                <li ng-if="role_id == undefined" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="about_us">About Us</a></li>-->
+                <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="about_us">About</a></li>
+                <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="employers">Employers</a></li>
+                <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="professionals">Professionals</a></li>
+                <li data-ui-sref-active="active" class="nav-item"><a href="#">Pricing</a></li>
+                <li data-ui-sref-active="active" class="nav-item"><a href="#">Community</a></li>
+                <li data-ui-sref-active="active" class="nav-item"><a href="http://procircle.ignivastaging.com/blog/">Blog</a></li>
+                <!--                <li data-ui-sref-active="active" class="nav-item"><a href="#">Personality Trait</a></li>-->
+                <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="contact-us">Contact Us</a></li>
+                <div  data-ng-hide="isLoggedIn == true" class="nav-2 margin-right-6x">
+                    <ul>
+                        <li data-ui-sref-active="active"><span class="margin-right-2x icon-login vm"></span><a data-ui-sref="login">Log In</a></li>
+                        <li data-ui-sref-active="active"><span class="margin-right-2x"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a data-ui-sref="signup">Sign Up</a></li>
+                    </ul>
+                </div>
+                <!-- After Login -->
+                <div data-ng-show="isLoggedIn == true" class="nav-2 margin-right-6x">
+                    <ul class="nav-signed">
+                        <li class="nav-signed-item"><a href=""><span class="icon-search"></span></a></li>
+                        <li class="nav-signed-item matches-trigger">
+                            <a href=""><span class="icon-three-dots"></span></a>
+                            <ul class="matches-drp-dwn">
+                                <li class="match-rqst">
+                                    <div class="media-left">
+                                        <h5 class="semibold">John Doe</h5>
+                                        <p>Extroversion 89%</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <div class="accept">
+                                            <a href="#">Accept</a>
+                                        </div>
+                                        <div class="reject">
+                                            <a href="#">Reject</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="match-rqst">
+                                    <div class="media-left">
+                                        <h5 class="semibold">John Doe</h5>
+                                        <p>Extroversion 89%</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <div class="accept">
+                                            <a href="#">Accept</a>
+                                        </div>
+                                        <div class="reject">
+                                            <a href="#">Reject</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="match-rqst">
+                                    <div class="media-left">
+                                        <h5 class="semibold">John Doe</h5>
+                                        <p>Extroversion 89%</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <div class="accept">
+                                            <a href="#">Accept</a>
+                                        </div>
+                                        <div class="reject">
+                                            <a href="#">Reject</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="match-expnd text-center">
+                                    <a href="#" class="semibold">5 New Matches</a>
+                                </li>
+                                <li class="match-expnd text-center">
+                                    <a href="#" class="green-wrap">View All <span class="icon-right-arrow"></span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-signed-item"><a href=""><span class="icon-mail"></span></a></li>
+                        <li class="nav-signed-item notif-trigger">
+                            <a href=""><span class="icon-notification"><span class="notif-cnt">01</span></span></a>
+                            <ul class="notif-drp-dwn">
+                                <li class="">
+                                    <h5 class="semibold">Blogs</h5>
+                                    <p>XYZ liked your post</p>
+                                </li>
+                                <li class="">
+                                    <h5 class="semibold">Pricing</h5>
+                                    <p>XYZ liked your post</p>
+                                </li>
+                                <li class="">
+                                    <h5 class="semibold">Community</h5>
+                                    <p>XYZ liked your post</p>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="green-wrap">View All <span class="icon-right-arrow"></span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-signed-item notif-trigger ">
+                            <a ng-if="role_id == 3"
+                               data-ui-sref-opts="{reload: true}" 
+                               data-ui-sref="get_professional_profile">
+                                <img data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
+                            </a>
+                            <a ng-if="role_id == 2"
+                               data-ui-sref-opts="{reload: true}" 
+                               data-ui-sref="employer_profile_view">
+                                <img data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
+                            </a>
+                            <ul class="notif-drp-dwn">
+                                <li>
+                                    <h5><a href="">Change Subscription</a></h5>
+                                </li>
+                                <li>
+                                    <h5><a href="">Change Password</a></h5>
+                                </li>
+                                <li ng-if="role_id == 2">
+                                    <h5>
+                                        <a data-ui-sref-opts="{reload: true}" data-ui-sref="employer_profile_edit">Edit Profile</a>
+                                    </h5>
+                                </li>
+                                <li ng-if="role_id == 3">
+                                    <h5>
+                                        <a data-ui-sref-opts="{reload: true}" data-ui-sref="professional_profile_edit">Edit Profile</a>
+                                    </h5>
+                                </li>
+
+                                <li ng-if="role_id == 3" data-ng-show="step_completed == 3 || step_completed == 4">
+                                    <h5><a data-ui-sref-opts="{reload: true}" data-ui-sref="start_professional_personality_test">Personality Trait</a></h5>
+                                </li>
+                                <li ng-if="role_id == 3" data-ng-show="step_completed == 2">
+                                    <h5><a data-ui-sref-opts="{reload: true}" data-ui-sref="start_professional_personality_test">Personality Questionnaire</a></h5>
+                                </li>
+                                <li>
+                                    <h5><a href="">My Blogs</a></h5>
+                                </li>
+                                <li>
+                                    <h5><a data-ng-click="logout();" href="javascript:void(0);">Logout</a></h5>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+
+        <button class="liney" id="nav-icon1">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<aside class="aside" id="asideOpen">
+    <span class="close closetime">&times;</span>
+    <nav>
+        <ul class="nav-in-m" data-ng-hide="isLoggedIn == true">
+            <li><span class="margin-right-2x icon-login"></span>
+                <a data-ui-sref="login">Log In</a>
+            </li>
+            <li><span class="margin-right-2x">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                <a data-ui-sref="signup">Sign Up</a>
+            </li>
+        </ul>
+
+        <center>
+            <img class="img-circle" width="80" data-ng-show="isLoggedIn == true" data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} ">
+        </center>
+
+        <ul class="global-items-m">			
+            <li data-ui-sref-active="active" class="nav-item-m">
+                <a data-ui-sref="about_us">About</a>
+            </li>
+            <li data-ui-sref-active="active" class="nav-item-m"><a data-ui-sref="employers">Employers</a></li>
+            <li data-ui-sref-active="active" class="nav-item-m"><a data-ui-sref="professionals">Professionals</a></li>
+            <li data-ui-sref-active="active" class="nav-item-m"><a href="#">Pricing</a></li>
+            <!--<li data-ui-sref-active="active" class="nav-item"><a href="#">Community</a></li>--->
+            <li data-ui-sref-active="active" class="nav-item-m"><a href="#">Blog</a></li>
+            <li data-ui-sref-active="active" class="nav-item-m"><a data-ui-sref="contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<script>
+    var lineyBtn = document.getElementById("nav-icon1");
+    var mobileMenu = document.getElementById("asideOpen");
+    var span = document.getElementsByClassName("close")[0];
+    lineyBtn.onclick = function () {
+        mobileMenu.style.right = "0";
+    };
+    span.onclick = function () {
+        mobileMenu.style.right = "-250px";
+    };
+    window.onclick = function (event) {
+        if (event.target == mobileMenu) {
+            mobileMenu.style.right = "-250px";
+        }
+    };
+</script>

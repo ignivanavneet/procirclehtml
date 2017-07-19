@@ -1,0 +1,55 @@
+<aside class="app-sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a class="sidebar-brand" data-ui-sref="employers"><img src="assets/images/pro-circle-logo.png" /></a>
+    <button type="button" class="sidebar-toggle">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+  <div class="sidebar-menu">
+    <ul class="sidebar-nav">
+      <li class="" data-ui-sref-active="active">
+        <a data-ui-sref="employers">
+          <div class="icon">
+            <i class="fa fa-tasks" aria-hidden="true"></i>
+          </div>
+          <div class="title">Employers</div>
+        </a>
+      </li> 
+      <li class="" data-ui-sref-active="active">
+        <a data-ui-sref="professionals" >
+          <div class="icon">
+            <i class="fa fa-tasks" aria-hidden="true"></i>
+          </div>
+          <div class="title">Professional</div>
+        </a>
+      </li> 
+      <li class="" data-ui-sref-active="active">
+        <a data-ui-sref="changepassword">
+          <div class="icon">
+            <i class="fa fa-key" aria-hidden="true"></i>
+          </div>
+          <div class="title">Change Password</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar-footer">
+    <ul class="menu">
+      <li>
+        <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</aside>
+
+<script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+  <div class="dropdown-background">
+    <div class="bg"></div>
+  </div>
+  <div class="dropdown-container">
+    {{list}}
+  </div>
+</script>

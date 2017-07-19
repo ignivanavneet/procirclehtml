@@ -1,0 +1,88 @@
+<script type="text/ng-template" id="sidebar-dropdown.tpl.html">
+    <div class="dropdown-background">
+    <div class="bg"></div>
+    </div>
+    <div class="dropdown-container">
+    {{list}}
+    </div>
+</script>
+<div class="app-container">
+
+    <nav class="navbar navbar-default" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-collapse collapse in">
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="navbar-title"><span class="highlight">Organizers</span></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">        
+                    <li class="dropdown notification danger" ng-controller="loginCtrl">
+                        <a data-ng-click="adminLogout()" title="Logout" class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+                        </a>          
+                    </li>        
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row" ng-controller="dashboardCtrl" ng-init="organizerListing()">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Search : </h4>
+                    <div class="col-xs-9">
+                    <form name="organizersearchform ">
+                        <div class="col-md-4"> 
+                        <select class="form-control" name="sort" ng-model="sort" ng-change="organizerListing('sort')">
+                            <option value="1">All</option>
+                            <option value="2">Active</option>
+                            <option value="3">Deactive</option>
+                        </select>
+                        </div>
+                        <div class="col-md-4">
+                        <input class="form-control" type="text" name="search" ng-model="search" placeholder="Enter text for search"  />
+                        </div>
+                        <div class="col-md-3">
+                        <input class="form-control btn btn-success" type="submit" value="Search"  ng-click="organizerListing('search')"/>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">                               
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone No</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat = "data in listing">
+                                        <th scope="row">{{ $index + 1 + skip}}</th>
+                                        <td>{{ data.user_name}}</td>
+                                        <td>{{ data.user_email}}</td>
+                                        <td>{{ data.user_phoneno}}</td>
+                                        <td>{{ data.user_status == 1? 'Activated' : 'Deactivated' }}</td>
+                                        <td> 
+                                            <a ng-click="activateUser(data.user_id)" data-ng-if="data.user_status != 1" title="Activate User"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                            <a ng-click="deactivateUser(data.user_id)" data-ng-if="data.user_status == 1" title="Deactivate User"><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>        
+                                </tbody>
+                            </table>
+                            <ul uib-pagination total-items="total_records" items-per-page="limit" ng-model="currentPage" max-size="maxSize" class="pagination-sm pull-right" boundary-link-numbers="true" rotate="false" ng-change="organizerListing()"></ul>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

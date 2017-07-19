@@ -1,0 +1,67 @@
+@include media("<=1400px") {
+    .r-box {
+        .r-offer-info {
+            & > ul {
+                & > li {
+                    @include fontsize(14);
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=1200px") {
+    .r-box {
+        .r-offer-info {
+            @include margin-top(10);
+        }
+    }
+}
+
+
+@include media("<=767px") {
+    .cat-heading {
+        text-align: center;
+
+        span.ico {
+            @include margin-right(0);
+
+            @include margin-bottom(10);
+        }
+    }
+}
+
+
+@include media("<=568px") {
+    .offer-dtl {
+        .offer-dtls {
+            .media-left, .media-right, .media-body {
+                display: block;
+                width: auto;
+            }
+
+            .media-left {
+                img {
+                    @include margin-bottom(10);
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=479px") {
+    .r-box {
+        .media-left, .media-right, .media-body {
+            display: block;
+            width: auto;
+        }
+
+        .media-left {
+            img {
+                @include margin-bottom(15);
+            }
+        }
+    }
+}

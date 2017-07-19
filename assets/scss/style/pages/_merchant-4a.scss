@@ -1,0 +1,82 @@
+.main-content-left {
+    //background: url(#{$imgpath}side-bg-1.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center bottom;
+    width: 40%;
+    min-height: 100%;
+    float: left;
+    overflow: hidden;
+
+    // background-attachment:fixed;
+    @include pos(rel, null);
+
+    header {
+        @include pos(ab, null);
+
+        width: 100%;
+        z-index: 10;
+    }
+
+    .social-share {
+        left: 50%;
+    }
+
+    .map-view {
+        @include pos(ab, null);
+
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+    }
+
+    .image-view {
+        @include pos(ab, null);
+
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+
+      
+    }
+
+    #map {
+        height: 100%;
+    }
+
+    .copy-txt {
+        display: $inline;
+
+        @include pos(ab, null null 20px 15px);
+
+        z-index: 10;
+        color: $white;
+    }
+}
+
+.main-content-right {
+    width: 50%;
+    height: 100%;
+    float: left;
+
+    .r--block {
+        @include padding(30 80);
+
+        height: 100%;
+    }
+}
+
+.u-info {
+    .media-left {
+        @include padding-right(30);
+
+        img {
+            width: 138px;
+            height: 138px;
+        }
+    }
+
+    .title {
+        @include margin-top(10);
+    }
+}

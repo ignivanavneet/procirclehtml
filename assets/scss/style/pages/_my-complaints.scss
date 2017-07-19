@@ -1,0 +1,66 @@
+// .user-thumbnail-wrap {
+	
+// }
+
+.complaint-section {
+	.user-support-thumbnail {
+		float: left;
+	}
+
+	.response-box {
+		display:none;
+		.response-box-text {
+			float: left;
+	    	width: 84%;
+	    	margin-left:18px;
+	    	textarea {
+	    		width: 100%;
+	    		height:60px;
+	    		border: none;
+	    		border-bottom:1px solid $graycolor;
+	    	}
+	    	p {
+	    		color: $accordion-tab;
+	    	}
+		}
+	}
+	.offer-action-btns a {
+		margin-top: 0;
+	}
+
+	.offer-action-btns:hover + div .response-box {
+			display:block;
+			transition: 1s all ease-in;
+	}
+	.complaint-info {
+		width:98%!important;
+		.complaint-list {
+			.complaint-item-one {
+				display: inline-block;
+				float: left;
+				border: none!important;
+			}
+
+			.user-thumbnail-wrap {
+				float: right;
+
+				.user-text {
+					float: left!important;
+					font-weight: 600;
+    				text-transform: uppercase;
+    				color: #444a4d;
+				}
+				.user-thumbnail {
+					background: url(../images/john-smith.jpg);
+			    	height: 54px;
+			    	width: 50px;
+			    	margin-left: 20px;
+				}
+			}
+		}
+	}
+}
+
+// .offer-action-btns:hover + div .response-box {
+//     display: block;
+// }

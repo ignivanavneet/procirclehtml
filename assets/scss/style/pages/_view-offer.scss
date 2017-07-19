@@ -1,0 +1,75 @@
+.bg-2{
+    background: url(#{$imgpath}bg-slide2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+
+.bg-18{
+    background: url(#{$imgpath}bg-slide18.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+p {
+	letter-spacing: .5px;
+}
+
+.main-content-right {
+	width: 60%;
+}
+
+.p-info-section {
+
+	.h3-solo {
+		display: table-cell;
+    	vertical-align: top;
+	}
+
+	.nav-small {
+		// display: table-cell;
+		float: right;
+    	margin-top: -131px;
+
+		li {
+			height:30px;
+			width:30px;
+			display: inline-block;
+		}
+
+		.edit-icon {
+			background: url(../../icons/edit-icon.png);
+		}
+		.trash-icon {
+			background: url(../../icons/trash-icon.png);
+		}
+	}
+
+	.offer-accordion-head-passsive {
+			padding: 20px;
+			background-color:$white;
+	}
+	.offer-accordion-group:nth-child(0) {
+		.offer-accordion-head-passsive {
+			background-color:$yellowcolor;
+		}
+	}
+
+	.offer-accordion-group:nth-child(odd) {
+				.offer-accordion-head-passsive {
+				background-color:$white;
+				color: $blackcolor;
+			}
+	}
+
+	.offer-accordion-group:nth-child(even) {
+		color: $white;
+		.offer-accordion-head-passsive {
+			background-color:$accordion-tab;
+		}
+	}
+}

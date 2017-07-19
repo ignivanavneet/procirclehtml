@@ -1,0 +1,142 @@
+/*
+ * @file: dashboardCtrl.js
+ * @description:
+ * */
+
+angular.module("ignitrack").controller("backlogCtrl", function ($scope, $interpolate, $state, $rootScope, $window, ModalService) {
+    $scope.heading = "Backlogs";
+    var action = $state.current.name;
+
+    $scope.attachmentModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/attachment_view.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+    $scope.userStoryModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/user_story_modal.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+    $scope.issueModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/issue_track.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+  
+
+    $scope.addUserStoryDetailModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/add_user_story_details_modal.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+
+      $scope.issueModal = function() {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/issue_track.html',
+            controller: 'issuesCtrl',
+            scope: $scope
+        }).then(function(modal) {
+            modal.element.modal();
+        });
+    }
+
+   
+
+
+
+    $scope.importModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/import_activities.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+    $scope.ApprovedUserStories = function () {
+        swal({
+            title: "Are you sure you want to Approve this User Story?",
+            text: "You will not be able to recover this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false,
+            html: false
+        }, function () {
+            swal("Deleted!", "Data has been deleted.", "success");
+        });
+    }
+
+
+    $scope.estimateModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/estimate_stories.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+    $scope.copyPhaseModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/phase_copy.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+    $scope.deleteUserStories = function () {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false,
+            html: false
+        }, function () {
+            swal("Deleted!", "Data has been deleted.", "success");
+        });
+    }
+
+    $scope.estimatedtimeModal = function () {
+        ModalService.showModal({
+            templateUrl: 'views/backlogs/estimted_table.html',
+            controller: 'backlogCtrl',
+            scope: $scope
+        }).then(function (modal) {
+            modal.element.modal();
+        });
+    }
+
+
+})
+
+
+

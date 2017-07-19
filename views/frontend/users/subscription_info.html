@@ -1,0 +1,95 @@
+<header class="header-wrap">
+    <div class="masthead-wrap">    
+        <div class="banner-4 masthead">
+            <div class="container masthead-heading masthead-heading--a">
+                <div>
+                    <h1><span class="green-wrap">Payment</span></h1>
+                </div>
+                <div class="">
+                    <span class="beam-right"></span>
+                    <span class="dash-forward">//</span>
+                    <span class="beam-left"></span>
+                </div>
+                <div>
+                    <div class="breadcrumbs margin-top-4x">
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Sign Up</li>
+                            <li>/</li>
+                            <li>Payment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<main class="">
+    <!--<h3>Before we make your profile public, <br>we will need to take payment :</h3>
+    <div class="margin-top-2x">
+        <span class="beam-right">   </span>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+    </div>-->
+    <!--<div>
+        <div class="container static-tile margin-top-8x">
+            <span class="icon-checked"></span>
+        </div>
+    </div>-->
+    <!--<h4 class="semibold h5 margin-top-4x margin-bottom-4x standard-black"><span class="green-wrap">Payment</span> taken</h4>-->
+    <!--<div class="dash-sml"></div>-->
+    <!--<p class="medium standard-black margin-top-2x">Via secure payment gateway</p>-->
+    <form class="payment-form margin-top-10x" data-ng-init=" submitted = false" name="planinfo" data-ng-submit=" planinfo.$valid ? saveSubscriptionInfo() : submitted = true " novalidate>
+        <div class="container card-container semi-width text-left margin-top-4x">
+            <div class="card card-padding-2 card-cntr-margin--a form-container margin-top-4x">  
+                <div class="half-wit">
+                    <!-- <h5 class="h5 standard-black semibold text-left"> Last step</h5> -->
+                    <!-- <div class="form-dash"></div> -->
+                        <!-- <p class="standard-black">Please select number of employees in your  company</p> -->
+                        <!-- <input type="text"> -->
+                    <div class="form-group">
+                        <label for="sell" class="h4">Please select number of employees in your company</label>
+                        <select class="form-control" id="sell" name="employees" required data-ng-model="sub_info.employees" 
+                                data-ng-options="key as value for (key , value) in no_of_employees">
+                            <option selected="selected" value="">Select Option</option>
+                        </select>
+                        <div class="text-danger" ng-messages="planinfo.employees.$error" ng-if="submitted || planinfo.employees.$touched">
+                            <div ng-message="required">Please select number of employees you have in your company</div>
+                        </div>
+                    </div>
+                    <!-- <p class="standard-black">How many years has the company been going?</p> -->
+                    <!-- <input type="text"> -->
+                    <div class="form-group">
+                        <label for="years" class="h4">How many years has the company been active ?</label>
+                        <select name="years" class="form-control" id="years" data-ng-model="sub_info.years" required>
+                            <option value="">Select Option</option>
+                            <option data-ng-repeat="years in company_years" value="{{years}}">{{years}}</option>
+                        </select>
+                        <div class="text-danger" ng-messages="planinfo.years.$error" ng-if="submitted || planinfo.years.$touched">
+                            <div ng-message="required">Please select number of years</div>
+                        </div>
+                    </div>
+                    <!-- <p class="standard-black">How many professionals do you tend to recruit per year?</p> -->
+                    <!-- <input type="text"> -->
+                    <div class="form-group margin-bottom-lg">
+                        <label for="recruitment" class="h4">How many accounting professionals do you recruit per year ?</label>
+                        <select name="recruitment" class="form-control" id="recruitment" data-ng-model="sub_info.recruitment" required
+                                data-ng-options="key as value for (key , value) in recruit_per_year">
+                            <option value="">Select Option</option>
+                        </select>
+                        <div class="text-danger" ng-messages="planinfo.recruitment.$error" ng-if="submitted || planinfo.recruitment.$touched">
+                            <div ng-message="required">Please select number of recruitments you do in a year</div>
+                        </div>
+                    </div>
+                    <!-- <label >Enter discount code</label>
+                    <input type="text" class="margin-bottom-lg"> -->
+                </div>
+            </div>
+            <div class="container half-wit text-center button-bottom-wrap">
+                <button class="greenify-btn medium buttongreenplan" type="submit">Find My pricing Plan</button>
+            </div>
+        </div>
+    </form>
+</main>

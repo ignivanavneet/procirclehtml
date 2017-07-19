@@ -1,0 +1,30 @@
+.notifications-mobile {
+	li {
+		margin: 0px;
+    	border-bottom: 1px solid $faded-border;
+    	padding: 10px;
+    	&:last-child {
+    		border:none;
+    	}
+	}
+}
+.notif-mobile {
+}
+
+.matches-mobile {
+	.lft {
+		display:inline-block;
+	}
+	.rgt {
+		float:right;
+		display:inline-block;
+	}
+	.accept a{
+		color:$green-two;
+		@include raleway-semibold;
+	}
+	.reject a{
+		color:red;
+		@include raleway-semibold;
+	}
+}

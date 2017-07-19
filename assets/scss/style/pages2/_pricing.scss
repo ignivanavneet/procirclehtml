@@ -1,0 +1,145 @@
+.fees-title {
+	display: inline-block;
+    // @include button-border (1px, dashed, $faded-border);
+    padding: 15px;
+    margin-bottom: 45px;
+    text-transform:uppercase;
+    font-size: 1.9rem;
+    @inlcude raleway-bold;
+}
+
+.pricing {
+	margin-top:5%;
+	.pricing-block .plan-title, .pricing-block .plan-info  {
+		margin-left:1rem;
+		margin-right:1rem;
+	}
+	.pricing-block {
+		margin-right:2%;
+		margin-left:2%;
+		box-shadow: 1px 1px 3px rgba(97, 97, 97, 0.3);
+    	transition: .5s all ease-out;
+    	padding: 0rem 0 1rem;
+		@media (min-width:992px) {
+			width:21%;
+			min-height: 690px;
+		}
+		&:hover {
+			// border:1px solid $green-three;
+    		transition: .5s all ease-out;
+		}
+		.plan-flag {
+			height:42px;
+			h4 {
+				font-size:24px;
+				background: #149ac6;
+				padding: .5rem 0;
+    			color: $white-one;
+			}
+		}
+	}
+	.plan-title {
+		margin-top:2rem;
+		h4 {
+			height:44px;
+			@include raleway-bold;
+			text-transform:uppercase;
+		}
+		h3 {
+			margin-bottom:35px;
+			margin-top:20px;
+			font-size: 4rem;
+			span {
+				font-size:33px;
+			}
+			sub {
+				font-size:1rem;
+				@include raleway-medium;
+			}
+		}
+	}
+	.plan-info {
+		min-height: 264px;
+		margin-bottom:2rem;
+		p {
+			font-size:14px;
+			text-align:left;
+		}
+		.plan-off {
+			color:$blue-one;
+			@extend .h4;
+			@include raleway-bold;
+		}
+		& + a {
+			margin:25px 0 15px;
+			border: 1px solid $green-two;
+    		color: $white-one;
+		    font-family: raleway-semibold;
+    		padding: 10px 30px;
+    		transition: .3s all ease-out;
+    		background:$green-two;
+    		bottom: -54px;
+    		position: relative;
+    		display:inline-block;
+    		&:hover {
+    			background: $white-one;
+    			color: $green-two;
+    			padding: 10px 40px;
+    			transition: .3s all ease-out;
+    		}
+		}
+		li {
+			margin:15px 0;
+			text-align:left;
+			color: #2e2e2e;
+			@include raleway-semibold;
+		}
+	}
+}
+
+.pricing-beta {
+	margin-top:5%;
+	.pricing-card {
+		border:1px solid #bbb;
+		text-align:left;
+		position:relative;
+		padding:2rem 4rem;
+		height:200px;
+		margin-left:10%;
+
+		h4 {
+			@include raleway-semibold;
+			color:black;
+		}
+
+		h5 {
+			@include raleway-semibold;
+			margin-top:10px;
+		}
+		.dash-sml-left {
+			margin:15px 0;
+		}
+		a {
+			padding:0;
+			@include raleway-bold;
+			color:black;
+			margin-top:10px;
+		}
+	}
+}
+
+.offer-tag {
+	  position: absolute;
+	  top: 50%; 
+	  bottmo:36%;
+	  left: 0;
+	  transform: translate(-50%,-50%);
+	  span {
+    	background: $white-one;
+	    border: 1px dashed #000;
+	    display: block;
+	    font-size: 36px;
+	    padding: 2rem;
+	    border-radius: 120px;
+	  }
+}

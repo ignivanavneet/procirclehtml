@@ -1,0 +1,83 @@
+<header class="header-wrap">
+        <div class="masthead-wrap">    
+            <div class="banner-4 masthead">
+                <div class="container masthead-heading masthead-heading--b">
+                    <div>
+                        <h1><span class="light">Create My</span></h1>
+                        <h1><span class="green-wrap">Employer Profile</span></h1>
+                    </div>
+                    <div class="">
+                    	<span class="beam-right">   </span>
+            			<span class="dash-forward">//</span>
+            			<span class="beam-left"></span>
+            		</div>
+            		<div>
+
+            		</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="clearfix"></div>
+    <main ng-init="employerProfileListing()">
+        <div class="container user-profile-new">
+            <div class="user-img-bubble">
+            <img data-ng-src="{{ profilePicture == '' ? 'assets/images/avatar-placeholder.png' : profilePicture }} " alt="">
+        </div>
+        <div class="user-img-update">
+             <input 
+                           type="file" name="pic"  id="user-img-upload"
+                           ngf-select 
+                           ng-model="profilePic" 
+                           ng-change="uploadProfilePicture(profilePic)"
+                           ngf-max-size="2MB" 
+                           ngf-model-invalid="errorFile"
+                           ngf-pattern="'.jpg,.png,.jpeg'"
+                           accept="image/*">
+            
+            <label for="user-img-upload"><span class="icon-frame img-upload-button"></span><span class="semibold">Update Picture</span></label>
+        </div> 
+			<div class="text-danger" data-ng-show=" errorFile.$errorMessages.maxSize==true || 
+											    errorFile.$errorMessages.pattern == true">
+			Only JPG,JPEG and PNG images are allowed and the limit should not be exceeded beyond 2MB.
+		    </div>
+        </div>
+        <h3>Congratulations, your profile is complete!</h3>
+        <div class="margin-top-2x">
+            <span class="beam-right">   </span>
+            <span class="dash-forward">//</span>
+            <span class="beam-left"></span>
+        </div>
+        <div class="profiles container margin-top-10x">
+            <h4 class="text-left bold">Your Professional Profiles</h4>
+                <div class="profile-block text-left" ng-repeat = "listing in data.data">
+                <h4 data-ng-bind="listing.profile"></h4>
+                <div class="profile-info">                    
+                    <span ng-repeat="title in  listing.attribute_title">
+                        {{title}}: {{listing.options[$index]}}  {{$index!=(listing.attribute_title.length-1)?'|':''}}                         
+                    </span>
+                </div>
+                <div class="profile-btns">
+                    <div>
+                        <a data-ui-sref="employer_profile_step_two({ id: listing.profile_id, type : 1 })"><span class="fa fa-pencil"></span> Edit</a>
+                        <a data-ng-click="deleteClient(listing.profile_id);" href="javascript:void(0);"><span class="fa fa-trash"></span> Delete</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a data-ui-sref="employer_profile_step_two({ id: 0, type : 1 })">
+              <h4  class="text-left semibold green-wrap margin-top-6x">
+                 <span class="fa fa-plus"> </span> Create Another Candidate Profile
+              </h4>
+            </a>
+            <div class="text-declare">
+                <ul>
+                    <li><h3 class="light">Share Your Procircle Profile Now!</h3></li>
+                    <li><span class="fa fa-facebook"></span></li>
+                    <li><span class="fa fa-twitter"></span></li>
+                    <li><span class="fa fa-linkedin"></span></li>
+                </ul>
+            </div>
+            <button class="basic-btn">Search Professionals <span class="icon-right-arrow"></span></button>
+        </div>
+    </main>

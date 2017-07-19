@@ -1,0 +1,44 @@
+<div class="clearfix"></div>
+<main class="" data-ng-init="personalityQuestionair();">
+    <div class="container margin-top-4x">
+        <h3>PERSONALITY QUESTIONNAIRE </h3>
+        <div class="margin-top-2x">
+            <span class="beam-right">   </span>
+            <span class="dash-forward">//</span>
+            <span class="beam-left"></span>
+        </div>
+        <p class="margin-top-2x">Rate each statement according to how well it describes you. Please answer the questions honestly.</p>
+        <div class="container semi-width margin-top-12x">
+            <div class="check-box-body">
+                <table class="check-box-table" >
+                    <tr class="greenify">
+                        <th colspan="2">For each question, say whether you</th>
+                        <th class="text-center">Agree</th>
+                        <th class="text-center">Neutral</th>
+                        <th class="text-center">Disagree</th>
+                    </tr>
+                    <tr data-ng-repeat="questions in data.data track by $index">                           
+                        <td><span class="cnt">{{ ((currentPage - 1) * data.per_page) + $index + 1}}</span></td>
+                        <td>{{ questions.question_title}}</td>
+                        <td data-ng-repeat="option in questions.options">                            
+                            <input data-ng-value=option.id
+                                   data-ng-model="questions.selected_option"
+                                   data-ng-change="saveAnswers(questions.id, option.id)"
+                                   name="option{{questions.id}}" 
+                                   type="radio" 
+                                   style="display:block"  />
+                        </td>   
+                    </tr>
+                </table>
+            </div>
+            <div class="margin-top-10x">
+                <ul uib-pagination total-items="data.total" items-per-page="data.per_page"
+                     data-ng-model="currentPage" class="pagination-sm"
+                     boundary-link-numbers="true" rotate="true" ng-change="personalityQuestionair()"></ul>                
+               <a data-ng-click="sendTestResult()" ng-show="currentPage == 5 && data.total == totalAnswer" class="btn btn-info">Submit</a>
+               <a ng-show="currentPage == 5 && data.total != totalAnswer" data-ng-disabled="true" class="btn btn-info margin-top-4x">Submit</a>              
+                
+            </div>
+        </div>
+    </div>
+</main>

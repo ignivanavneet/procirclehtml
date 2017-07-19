@@ -1,0 +1,151 @@
+.bg-2 {
+    background: url(#{$imgpath}bg-slide2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+.cat-heading {
+    span.ico {
+        width: 56px;
+        height: 56px;
+
+        @include circle;
+
+        line-height: 56px;
+        color: $white;
+        display: $inline;
+        text-align: center;
+
+        @include fontsize(28);
+
+        @include margin-right(15);
+
+        vertical-align: middle;
+    }
+
+    h4 {
+        display: $inline;
+
+        @include fontsize(16);
+
+        text-transform: $uppercase;
+
+        @include open-semibold;
+    }
+
+    &.c-1 {
+        span.ico {
+            background-color: $pinkcolor;
+        }
+
+        h4 {
+            color: $pinkcolor;
+        }
+    }
+
+    &.c-3 {
+        span.ico {
+            background-color: $darkblue;
+        }
+
+        h4 {
+            color: $darkblue;
+
+            span {
+                @include fontsize(14);
+                text-transform:none;
+            }
+        }
+    }
+
+    &.c-2 {
+        span {
+            background-color: $yellowcolor;
+        }
+
+        h4 {
+            color: $yellowcolor;
+        }
+    }
+}
+
+.offer-dtl {
+    .offer-dtls {
+        .media-left {
+            @include padding-right(30);
+        }
+    }
+
+    .dtl-address {
+        .op-time {
+            text-align: right;
+
+            .time {
+                @include margin-left(20);
+
+                @include padding(2 10);
+            }
+        }
+    }
+
+    .related-section {
+        @include margin-top(40);
+    }
+}
+
+.r-box {
+
+
+    .media-left {
+        @include padding-right(25);
+
+        img {
+            width: 135px;
+            height: 135px;
+        }
+    }
+
+    .r-title {
+        text-transform: $uppercase;
+
+        @include fontsize(16);
+
+        display: $inline;
+
+        @include pos(rel, null);
+
+        @include padding-bottom(15);
+    }
+
+    .r-offer-info {
+        // @include margin-top(20);
+
+        & > ul {
+            display: table;
+            width: 100%;
+
+            & > li {
+                display: table-cell;
+                color: $graycolor;
+
+                @include fontsize(16);
+
+                @include padding(0 10);
+
+                @include border-right(1, solid, $graycolor);
+
+                &:first-child {
+                    @include padding-left(0);
+                }
+
+                &:last-child {
+                    border: 0;
+                }
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,60 @@
+.settings-button > a {
+	opacity: 1;
+}
+.settings-button > a:hover {
+	opacity:1!important;
+	.settings-dropdown {
+		display: block;
+	}	
+}
+
+.settings-btn {
+	background-color:#067cb6;
+}
+
+.report-table {
+	background: #fff;
+	width:100%;
+	font-weight:bold;
+	th {
+		border-bottom: 1px solid #067cb6;
+		padding:2.5rem 0rem;
+		h4 {
+			font-weight:bold;
+		}
+	}
+	td {
+		padding: 2.5rem 1rem;
+	}
+	th, td {
+		text-align: center;
+
+	}
+}
+
+.offer-section {
+	.settings-dropdown {
+		ul {
+			li {
+				border-top:1px solid #d3dbe0;
+				h5 {
+					color: #8e8e8e;
+					padding: 1.7rem 1rem;
+					font-weight: bold;
+				}
+				h5:hover {
+				color:#067cb6;
+				}
+			}
+			li:first-child {
+				border-top: none;
+			}
+		}
+		width: 190px;
+		display: none;
+    	background: #fff;
+    	right: 4.4%;
+    	position: absolute;
+    	box-shadow: #b5b5b5 0px 0px 12px 2px;
+	}
+}

@@ -1,0 +1,267 @@
+.bg-6{
+    background: url(#{$imgpath}creare-offer-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+
+.nav-section {
+    @include margin-bottom(40);
+
+    & > ul {
+        & > li {
+            display: inline-block;
+
+            @include margin-right(30);
+
+            &:last-child {
+                @include margin(0);
+            }
+
+            & > a {
+                @include open-semibold;
+
+                text-transform: $uppercase;
+                color: lighten(#444a4d, 8%);
+                vertical-align: middle;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px transparent;
+                position: relative;
+                overflow: hidden;
+                display: block;
+
+                @include padding-bottom(10);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    left: 50%;
+                    right: 50%;
+                    bottom: 0;
+                    background: #444a4d;
+                    height: 1px;
+                    -webkit-transition-property: left, right;
+                    transition-property: left, right;
+                    -webkit-transition-duration: 0.3s;
+                    transition-duration: 0.3s;
+                    -webkit-transition-timing-function: ease-out;
+                    transition-timing-function: ease-out;
+                }
+
+                &:hover, &:focus {
+                    color: #444a4d;
+
+                    &:before {
+                        left: 0;
+                        right: 0;
+                    }
+                }
+
+                &.active {
+                    color: #444a4d;
+
+                    &:before {
+                        left: 0;
+                        right: 0;
+                    }
+                }
+
+                & > span {
+                    @include fontsize(20);
+
+                    @include padding-right(10);
+
+                    vertical-align: sub;
+                }
+            }
+        }
+    }
+}
+
+
+
+.content-section {
+    @include margin(30 0);
+}
+
+
+//offer form
+
+.offer-section{
+   .c-field {
+        h4 {
+            text-transform: $uppercase;
+
+            @include fontsize(16);
+
+            @include open-semibold;
+
+            @include margin-bottom(15);
+        }
+
+         .text-control {
+            width: 100%;
+            background: transparent;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+
+            @include fontsize(16);
+
+            color: $textcolor;
+            resize: none;
+        }
+
+        .input-control {
+            width: 100%;
+            background: transparent;
+         
+
+            @include padding(10);
+
+            @include fontsize(16);
+
+            color: $textcolor;
+        }
+
+       
+        .field {
+            .text-control {
+                @include border-bottom(0, solid, #ccc);
+
+                &:focus {
+                    border-color: $bluecolor;
+                }
+            }
+
+            .input-control {
+                @include border(2, dotted, #ccc);
+
+                &:focus {
+                    border-color: $bluecolor;
+                }
+            }
+            
+            .upload-btn {
+                background: $img-upload-btn;
+                height: 100px;
+                text-align: center;
+                vertical-align: middle;
+                width: 100px;
+                i {
+                  display: block;
+                  font-size: 21px;
+                  margin-top: 30px;
+                }
+                    p {
+                        font-weight: normal;
+                    }
+            }
+   
+        }
+
+
+    }
+
+   }
+
+
+   //accordtion css
+
+ .offer-accordion {
+  
+       .offer-accordion-head {
+            color: #fff;
+            background-color: $white;
+            border-bottom: 1px solid #fff;
+            position: relative;
+            padding: 13px;
+            font-size: 0.87em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                filter: alpha(opacity=80);
+                opacity: 0.80;
+            }
+            h4{
+            color:$textcolor;
+            }
+             p{
+             color: $textcolor;
+             font-weight: normal;
+             line-height: 1.5;
+            }
+        }
+        .offer-accordion-head * {
+            cursor: pointer;
+        }
+
+        .offer-accordion-body {
+            border-bottom: 1px solid #fff;
+            padding: 20px;
+            height: auto;
+            display: none;
+        }
+
+//arrow style 
+.offer-accordion-head:after {
+    font-family: 'FontAwesome';
+    content: "\f107";    
+    margin-top: -10px;
+    position: absolute;
+    font-size: 25px;
+    right: 15px;
+    top: 50%;
+    color:$textcolor;
+}
+.offer-accordion-head.open:after {    
+    content: "\f106";
+    margin-top: -20px;  
+}
+
+            .close{
+              float: none;
+              opacity: 1;
+              text-shadow: inherit;
+            }
+ }
+
+//accordion bg color
+
+ .offer-accordion{
+   
+     .offer-accordion-group:first-child {
+          .offer-accordion-head {
+              background-color: #f2b562;
+          }
+
+     }
+      .offer-accordion-group:nth-child(2n+1) {
+
+        .offer-accordion-head {
+              background-color: $accordion-tab;
+              border-bottom: 1px solid $white;
+              cursor: pointer;
+              font-size: 0.87em;
+              overflow: hidden;
+              padding: 13px;
+              position: relative;
+              }
+
+        .offer-accordion-head:after {
+            color:$white;
+            }
+
+         h4{
+            color:$white;
+            }
+        p{
+            color: $white;
+            }
+      }
+}

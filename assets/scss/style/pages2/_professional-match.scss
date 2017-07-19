@@ -1,0 +1,127 @@
+.pMatchWarpper {
+    text-align: left;
+
+    .matchBlks {
+        h4 {
+            font-size: 20px;
+            color: #000;
+            font-weight: 600;
+
+            @include pos(r, null);
+
+            @include padding(0 0 15);
+
+            @include margin-bottom(0);
+
+            &:after {
+                content: "";
+
+                @include pos(ab, null null 0 0);
+
+                border-bottom: 1px solid #d6d6d6;
+                width: 18px;
+            }
+        }
+
+        .matchSlider {
+            @include margin-bottom(40);
+
+            @include padding-bottom(30);
+
+            &:before {
+                content: "";
+
+                @include pos(ab, null 0 0);
+
+                background-color: #1b1b1b;
+                width: 85%;
+                margin: 0 auto;
+                min-height: 100px;
+            }
+
+            .owl-stage-outer {
+                @include padding(30 0 0);
+            }
+
+            .item {
+                //@include padding(0 20);
+                @include transition(all 0.5s linear);
+
+                .imgblk {
+                    display: block;
+                    border: 1px solid #000;
+
+                    @include pos(r, null);
+
+                    @include fluid-ratio(1 1, img);
+
+                    overflow: hidden;
+
+                    img {
+                        bottom: auto;
+                    }
+                }
+
+                .__overlay {
+                    @include pos(ab, null 1px 1px);
+
+                    @include padding(10 15);
+
+                    @include rgba(#000, 0.8, bg);
+
+                    @include transition(all 0.4s ease-out);
+
+                    @include opacity(0);
+
+                    h5 {
+                        font-size: 16px;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        color: #a3a3a3;
+                    }
+                }
+            }
+
+            .owl-item {
+                &.active {
+                    &.center {
+                        .item {
+                            //@include padding(0 40);
+                            @include transform-origin(bottom, center);
+
+                            @include scale(1.1);
+
+                            .imgblk {
+                                border-color: $green-four;
+                            }
+
+                            .__overlay {
+                                @include opacity(1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .owl-nav {
+                .owl-prev, .owl-next {
+                    @include pos(ab, 50% null null);
+
+                    @include translateY(-40%);
+                }
+
+                .owl-prev {
+                    left: -30px;
+                }
+
+                .owl-next {
+                    right: -30px;
+                }
+            }
+        }
+    }
+}

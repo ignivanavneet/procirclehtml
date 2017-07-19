@@ -1,0 +1,400 @@
+
+<header class="header-wrap">
+    <div class="masthead-wrap">    
+        <div class="banner-4 masthead">
+            <div class="container masthead-heading masthead-heading--a">
+                <div>
+                    <h1><span class="light">Frequently Asked </span><span class="green-wrap">Questions</span></h1>
+                </div>
+                <div>
+                    <span class="beam-right">   </span>
+                    <span class="dash-forward">//</span>
+                    <span class="beam-left"></span>
+                </div>
+                <div>
+                    <div class="breadcrumbs margin-top-4x">
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>FAQ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<main class="">
+    <div class="container faq-section text-left" data-ng-init="employerTab = false; professionalsTab = true;">
+
+        <ul class="nav nav-tabs ">
+            <li ><a href="javascript:void(0);"
+					ng-class="{'active': employerTab, '': !employerTab}"
+					ng-click="employerTab = false; professionalsTab = true;">Employer</a></li>
+            <li> <a href="javascript:void(0);" 
+					ng-class="{'active': professionalsTab, '': !professionalsTab}"
+					ng-click="employerTab = true; professionalsTab = false;">Professionals</a></li>
+        </ul>
+        
+        <div class="margin-top-8x margin-left-4x">
+            <h4>Frequently Asked<span class="bold"> Questions</span></h4>
+            <div class="margin-top-4x">
+                <span class="dash-forward">//</span>
+                <span class="beam-left"></span>
+            </div>
+            <p class="margin-top-2x">We want you to get the most out of our platform. Make it your hub to connect with your next team member.
+                Please refer to our detailed FAQ’s below or <a data-ui-sref="contact-us" href="javascript:void(0)">Get in touch</a> now </p>
+        </div>
+        <div class="tab-content">
+             <div uib-collapse="employerTab">
+				<div  class="margin-top-12x margin-bottom-lg text-block " data-ng-init="isCollapsed = true; isCollapsed1 = true; isCollapsed2 = true; isCollapsed3 = true; isCollapsed4 = true; isCollapsed5 = true; isCollapsed6 = true; isCollapsed7 = true; isCollapsed8 = true; isCollapsed9 = true; isCollapsed10 = true;">
+					<!-- text-block start 1 -->
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed = !isCollapsed">
+							<span class="semibold semi-black">How does ProCircle work?</span>
+							<i ng-class="{'fa fa-plus': isCollapsed, 'fa fa-minus': !isCollapsed}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed">
+							<p class="paracollapase">After <a data-ui-sref="second_signup({ url: 'signup', type : 'employer' })">registration</a> you will be guided through building your employer profile page. Once you're done, your page is made public and becomes visible to top accounting professionals on the Procircle platform. </p>
+							<p class="paracollapase">When creating your profile page, you can specify exactly what type of accounting or tax professional(s) you are looking for. You can also specify the personality profile of the person best suited to your team using our specialised personality testing tools. </p>
+							<p class="paracollapase">The system then suggests dynamic matches for you based on your specified criteria. You can also perform an advanced search for suitable candidates through our Search Professionals page.</p>
+							<p class="paracollapase">You can send match requests to potential candidates and receive match requests from accounting professionals and you can choose to accept or reject any request you receive.</p>
+							<p class="paracollapase">Suitable match requests, meeting your criteria, will be separated from unsuitable ones, giving you the liberty to decide. </p>
+							<p class="paracollapase">If a match request is accepted, both sides can communicate via our messaging system.</p>
+							<p><br/></p>
+	
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div  ng-click="isCollapsed1 = !isCollapsed1">
+
+
+						<div class="text-block-head">
+							<span class="semibold semi-black">What if I’m looking for a number of different candidates?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed1, 'fa fa-minus': !isCollapsed1}"
+							   ></i>
+						</div>
+							 </div>
+						<div uib-collapse="isCollapsed1">
+							<p class="paracollapase">That’s fine!</p>
+							<p class="paracollapase">You can create a maximum of 5 candidate profiles. Once you have completed your first candidate specification, you will have the option to create more candidate profiles.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed2 = !isCollapsed2">
+							<span class="semibold semi-black">What happens if I get an unsuitable match request?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed2, 'fa fa-minus': !isCollapsed2}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed2">
+							<p class="paracollapase">A match request is unsuitable if a professional sends you a request but their profile does not match your specifications. </p>
+							<p class="paracollapase">This request will go into an ‘All requests’ folder, rather than your ‘Match Requests’ folder. You can then choose to ignore the request if you wish or take a chance and accept!</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed3 = !isCollapsed3">
+							<span class="semibold semi-black">Why should I sign up to ProCircle rather than LinkedIn?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed3, 'fa fa-minus': !isCollapsed3}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed3">
+							<p class="paracollapase">ProCircle is for accounting and tax professionals only.</p>
+							<p class="paracollapase">Why waste your time looking through thousands of other types of professionals? </p>
+							<p class="paracollapase">In a survey of UK chartered accountants, 80% of those aged under 35 and 50% of those aged 35-50 found a job through a recruitment firm. </p>
+							<p class="paracollapase">That’s a lot of money in recruitment fees, indicating that the other offerings out there just aren’t working well enough!</p>
+							<p class="paracollapase">Our advanced matching system saves you time by suggesting matches based on qualifications, experience and personality of a candidate, meaning you are most likely to get the perfect fit for your team and save on expensive recruitment fees.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed4 = !isCollapsed4">
+							<span class="semibold semi-black">How is my participation score calculated?</span>
+							<i ng-class="{'fa fa-plus': isCollapsed4, 'fa fa-minus': !isCollapsed4}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed4">
+							<p class="paracollapase">The more active you are on the platform, the higher your participation score. Your scores will be calculated as follows based on two criteria:</p>
+							<p class="paracollapase"><b>Logging into the platform</b></p>
+							<ul class="paracollapase">
+								<li>Log on every day – 100%</li>
+								<li>Log on 2-3 x per week – 80%</li>
+								<li>Log on every week – 60%</li>
+								<li>Log on once a month – 40%</li>
+								<li>Log on once every 3 months – 20%</li>
+							</ul>
+							<p class="paracollapase"><b>Blog activity</b></p>
+							<ul class="paracollapase">
+								<li>Writing blogs – when someone adds a blog, their participation for that month – 100%</li>
+								<li>Regularly liking and sharing blogs (once a week), both their own blogs and other peoples – 80%</li>
+								<li>Regularly reading the blogs (once a week) – 60% </li>
+								<li>Occasionally liking and sharing blogs (once every 2-3 weeks), both their own blogs and other peoples – 40%</li>
+								<li>Regularly reading the blogs (once every 2-3 weeks) – 20%</li>
+							</ul>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed5 = !isCollapsed5">
+							<span class="semibold semi-black">What is your pricing structure?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed5, 'fa fa-minus': !isCollapsed5}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed5">
+							<p class="paracollapase">It starts from as little as £26.33/month. Please find details of our pricing structure <a>here</a>.</p>
+							<p class="paracollapase">We have a package to suit you based on your company size and recruiting needs.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed6 = !isCollapsed6">
+							<span class="semibold semi-black">Can I send the personality questionnaires to my existing employees?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed6, 'fa fa-minus': !isCollapsed6}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed6">
+							<p class="paracollapase">Yes, you have the option to send the personality questionnaire to 5 members of your team per month. You just need to enter their email addresses.</p>
+							<p class="paracollapase">You will then be able to review their results through the dashboard.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed7 = !isCollapsed7">
+							<span class="semibold semi-black">What Personality Questionnaire do you use?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed7, 'fa fa-minus': !isCollapsed7}"
+								></i>
+						</div>
+						<div uib-collapse="isCollapsed7">
+							<p class="paracollapase">Our system is based on the OCEAN test.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed9 = !isCollapsed9">
+							<span class="semibold semi-black">How do I update my 'employer profile'?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed9, 'fa fa-minus': !isCollapsed9}"
+							   ></i>
+						</div>
+						<div uib-collapse="isCollapsed9">
+							<p class="paracollapase">You will be able to log in through your account and edit any section of your profile easily through your employer dashboard.</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+					<div class="text-block-group">
+						<div class="text-block-head"  ng-click="isCollapsed10 = !isCollapsed10">
+							<span class="semibold semi-black">Why do you not use job boards?</span>
+							<i 
+								ng-class="{'fa fa-plus': isCollapsed10, 'fa fa-minus': !isCollapsed10}"
+								></i>
+						</div>
+						<div uib-collapse="isCollapsed10">
+							   <p><br/></p>
+							<p class="paracollapase">We believe that job boards are old fashioned!</p>
+							<p class="paracollapase">Often, people do not bother to read the job description fully before applying, so you lose time filtering through unsuitable CV’s.</p>
+							<p class="paracollapase">When you do get an application that looks good on paper, a candidate may still be unsuitable for your team and working environment.</p>
+							<p class="paracollapase">That’s why we’ve added the human element to job-searching – people talking to people!</p>
+							  <p><br/></p>
+						</div>
+						<!-- text-block content ends -->
+					</div>
+				</div>
+            </div>
+            <div uib-collapse="professionalsTab">
+              <div  class="margin-top-12x margin-bottom-lg text-block " 
+				   data-ng-init="isCollapsed11 = true; isCollapsed12 = true; isCollapsed13 = true; isCollapsed14 = true; isCollapsed15 = true; isCollapsed16 = true; isCollapsed17 = true; isCollapsed18 = true; isCollapsed19 = true; isCollapsed20 = true; isCollapsed21 = true;">
+            <!-- text-block start 1 -->
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed11 = !isCollapsed11">
+                    <span class="semibold semi-black">How does ProCircle work?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed11, 'fa fa-minus': !isCollapsed11}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed11">
+                    <p class="paracollapase">After <a data-ui-sref="second_signup({ url: 'signup', type : 'professional' })">registration</a> you will be guided through building your professional profile page. Once you have completed the mandatory sections of your profile and your Personality Questionnaire, your profile is made public and becomes visible to employers on the Procircle platform </p>
+                    <p class="paracollapase">The system then suggests dynamic matches for you based on your skills, experience and personality type. You can also perform an advanced search for employers through our Search Employers page </p>
+                    <p class="paracollapase">You can send and receive match requests from potential employers and you can choose to accept or reject any request you receive.</p>
+                    <p class="paracollapase">Suitable match requests, where you meet an employer’s criteria, will be separated from unsuitable ones, giving you the liberty to decide. </p>
+                    <p class="paracollapase">If a match request is accepted, both sides can communicate via our messaging system.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed12 = !isCollapsed12">
+                    <span class="semibold semi-black">What happens if I get an unsuitable match request?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed12, 'fa fa-minus': !isCollapsed12}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed12">
+                    <p class="paracollapase">A match request is unsuitable if an employer sends you a request even though you do not match what they are looking for. </p>
+                    <p class="paracollapase">This request will go into an ‘All requests’ folder, rather than your 'Match Requests' folder. </p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed13 = !isCollapsed13">
+                    <span class="semibold semi-black">Why do I have to do a Personality Questionnaire?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed13, 'fa fa-minus': !isCollapsed13}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed13">
+                    <p class="paracollapase">It’s for your own good! </p>
+                    <p class="paracollapase">We believe having the right qualifications is only half of the story. By completing the personality questionnaire, you increase your chances of finding a company whose culture and values align with your own.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed14 = !isCollapsed14">
+                    <span class="semibold semi-black">Can I redo my personality questionnaire?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed14, 'fa fa-minus': !isCollapsed14}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed14">
+                    <p class="paracollapase">No, unfortunately not.</p>
+                    <p class="paracollapase">You should answer the questions as honestly as possible and going back and changing it later would create an untrue result.</p>  
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed15 = !isCollapsed15">
+                    <span class="semibold semi-black">How is ProCircle different from LinkedIn?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed15, 'fa fa-minus': !isCollapsed15}"
+                        ></i>
+                </div>
+                <div uib-collapse="isCollapsed15">
+                    <p class="paracollapase">ProCircle is for accounting and tax professionals only. Why waste your time searching through thousands of jobs and employers not matching your qualifications or personality?</p>
+                    <p class="paracollapase">In a survey of UK chartered accountants, 80% of those aged under 35 and 50% of those aged 35-50 found a job through a recruitment firm. Perhaps indicating that LinkedIn isn’t working for the majority of accounting professionals.</p>
+                    <p class="paracollapase">Our advanced matching system saves you time by suggesting matches based on your profile, meaning you are more likely to get a job working in an environment that is right for you.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed16 = !isCollapsed16">
+                    <span class="semibold semi-black">I don’t want my current employer to be able to see me.</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed16, 'fa fa-minus': !isCollapsed16}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed16">
+                    <p class="paracollapase">You can search for a particular employer on the platform and then you have the option to hide your profile from them.</p>  
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed17 = !isCollapsed17">
+                    <span class="semibold semi-black">What is your pricing structure?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed17, 'fa fa-minus': !isCollapsed17}"
+                        ></i>
+                </div>
+                <div uib-collapse="isCollapsed17">
+                    <p class="paracollapase">The platform is free for the professional user.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed18 = !isCollapsed18">
+                    <span class="semibold semi-black">What Personality Questionnaire do you use?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed18, 'fa fa-minus': !isCollapsed18}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed18">
+                    <p class="paracollapase">Our system is based on the OCEAN test.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed19 = !isCollapsed19">
+                    <span class="semibold semi-black">How do I update my profile?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed19, 'fa fa-minus': !isCollapsed19}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed19">
+                    <p class="paracollapase">You will be able to log in through your account and edit any section of your profile easily through your user dashboard.</p>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed20 = !isCollapsed20">
+                    <span class="semibold semi-black">How is my participation score calculated?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed20, 'fa fa-minus': !isCollapsed20}"
+                      ></i>
+                </div>
+                <div uib-collapse="isCollapsed20">
+                    <p class="paracollapase">The more active you are on the platform, the higher your participation score. Your scores will be calculated as follows based on two criteria:</p>
+                    <p class="paracollapase"><b>Logging into the platform </b></p>
+                    <ul class="paracollapase">
+                        <li>Log on every day – 100% </li>
+                        <li>Log on 2-3 x per week – 80%</li>
+                        <li>Log on every week – 60%</li>
+                        <li>Log on once a month – 40%</li>
+                        <li>Log on once every 3 months – 20%</li>                       
+                    </ul>
+                    <p  class="paracollapase"><b>Blog activity</b></p>
+                    <ul class="paracollapase">
+                        <li>Writing blogs – when someone adds a blog, their participation for that month – 100%</li>
+                        <li>Regularly liking and sharing blogs (once a week), both their own blogs and other peoples – 80%</li>
+                        <li>Regularly reading the blogs (once a week) – 60% </li>
+                        <li>Occasionally liking and sharing blogs (once every 2-3 weeks), both their own blogs and other peoples – 40%</li>
+                        <li>Regularly reading the blogs (once every 2-3 weeks) – 20%</li>                       
+                    </ul>
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+            <div class="text-block-group">
+                <div class="text-block-head"  ng-click="isCollapsed21 = !isCollapsed21">
+                    <span class="semibold semi-black">Why do you not use job boards?</span>
+                    <i 
+                        ng-class="{'fa fa-plus': isCollapsed21, 'fa fa-minus': !isCollapsed21}"
+                       ></i>
+                </div>
+                <div uib-collapse="isCollapsed21">
+                    <p class="paracollapase">We believe that job boards are old fashioned!</p>
+                    <p class="paracollapase">That’s why we’ve added the human element to job-searching – people talking to people!</p>  
+                      <p><br/></p>
+                </div>
+                <!-- text-block content ends -->
+            </div>
+        </div>
+        </div>
+        </div>
+        
+    </div>
+</main>
+

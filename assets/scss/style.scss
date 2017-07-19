@@ -1,0 +1,18 @@
+// This is the main build file.
+// This project was built using a Sublime Text plugin called SASS-Build.
+// crtl + b and it compiles SASS to the targeted .css file.
+
+// Cortwiiter-linke Variables == Mixins == fonts == Reset
+@import 'style/base';
+
+//Helpers = Fonts / Globle / Normalize
+@import 'style/helpers';
+
+//buttons
+@import 'button/buttons';
+
+// Layout = Header/footer = Other Common Elements
+@import 'style/layout'; 
+
+// All Pages
+@import 'style/pages2';

@@ -1,0 +1,60 @@
+<div class="app app-default">
+    <div class="app-container app-login">
+        <div class="flex-center">
+            <div class="app-header"></div>
+            <div class="app-body">
+                <div class="loader-container text-center">
+                    <div class="icon">
+                        <div class="sk-folding-cube">
+                            <div class="sk-cube1 sk-cube"></div>
+                            <div class="sk-cube2 sk-cube"></div>
+                            <div class="sk-cube4 sk-cube"></div>
+                            <div class="sk-cube3 sk-cube"></div>
+                        </div>
+                    </div>
+                    <div class="title">Logging in...</div>
+                </div>
+                <div class="app-block">
+                    <div class="app-form">
+                        <div class="form-header">
+                            <div class="app-brand"><span class="highlight">Simply</span>Because</div>
+                        </div>
+                        <form ng-submit="adminlogin()" name="adminloginform" >
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="email" class="form-control" placeholder="Email" name="email" ng-model="email" required />
+                            </div>
+                            <span style = "color:red" ng-show = "adminloginform.email.$dirty && adminloginform.email.$invalid">
+                                <span ng-show = "adminloginform.email.$error.required">Email is required.</span>
+                                <span ng-show = "adminloginform.email.$error.email">Invalid email address.</span>
+                            </span>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" placeholder="Password" ng-model="password" name="password" required />
+                            </div>
+                            <span style = "color:red" ng-show = "adminloginform.password.$dirty && adminloginform.password.$invalid">
+                                <span ng-show = "adminloginform.password.$error.required">Password is required.</span>
+                            </span>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-success btn-submit" value="Login" ng-disabled="adminloginform.$invalid">
+                            </div>
+                        </form>
+
+                        <div class="form-line">
+                            <div class="title">OR</div>
+                        </div>
+                        <div class="form-footer">
+                            <a href="javascript:void(0);" data-ng-click="forgotPasswordModal()"  class="forgot-password">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-footer">
+            </div>
+        </div>
+    </div>
+</div>

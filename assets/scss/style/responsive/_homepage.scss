@@ -1,0 +1,24 @@
+
+
+@include media("<=767px") {
+    .f-box {
+        @include padding(20);
+    }
+
+    .main-heading {
+        & > span {
+            @include padding-right(15);
+        }
+    }
+}
+
+
+@include media("<=479px") {
+    .main-heading {
+        & > span {
+            @include padding-right(0);
+
+            display: block;
+        }
+    }
+}

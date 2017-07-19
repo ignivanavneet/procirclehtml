@@ -1,0 +1,37 @@
+<div class="clearfix"></div>
+<main class="" ng-init="getProfessionalPersoanlityTestResult(); getProfessionalStepCompleted();">
+    <div class="container margin-top-4x">
+        <div class="semi-width-card container qstn-card">
+            <div class="container-fluid static-tile--a">
+                <span class="icon-result"></span>
+            </div>
+            <h3><span class="medium">PERSONALITY TEST</span><br> RESULT </h3>
+            <div class="margin-top-2x">
+                <span class="beam-right">   </span>
+                <span class="dash-forward">//</span>
+                <span class="beam-left"></span>
+            </div>
+            <p class="margin-top-4x"><span class="bold">Congratulations! </span> You have completed the personality questionnaire and can now create your profile.</p>
+            <div class="test-prog-bar container-fluid">
+                <ul>
+                    <li ng-repeat="listing in data">                            
+                        <h4>{{ listing.cat_name}} </h4>
+                        <div>
+                            <div data-ng-if="listing.percentage > 0" class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                     aria-valuemin="0" aria-valuemax="100" 
+                                     style="width:{{ listing.percentage}}%">
+                                    {{ listing.percentage}}%
+                                </div>
+                            </div>
+                            <div data-ng-if="listing.percentage == 0">NA</div>
+                        </div>
+                    </li>                        
+                </ul>
+            </div>
+        </div>
+        <div class="container half-wit text-center button-bottom-wrap" data-ng-hide="step_completed == 4">
+            <a data-ng-click="creatProfessionalFinalStep()" class="greenify-btn medium">Create Profile</a>
+        </div>
+    </div>
+</main>

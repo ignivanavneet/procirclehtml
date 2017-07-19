@@ -1,0 +1,127 @@
+.bg-7{
+    background: url(#{$imgpath}bg-slide7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+.request-page{
+    .main-content-left,   .r--block.s-scroll {
+            overflow: visible !important;
+            position: relative;
+            z-index: 100;
+        }
+
+}
+.respons-reqst{
+
+        .offer-txt{
+            margin-top: 0;
+        }
+
+        p{
+            color:$graycolor;
+             line-height: 1.5;
+        }
+        .offer-info{
+                  width: 80%;
+              }
+    
+    .offer-action-btns {
+        float: left;
+
+         a {
+            border-radius: 0 15px;
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 20px;
+            margin-right: 20px;
+            padding: 0 20px;
+            text-transform: uppercase;
+            width: 130px;
+               &:nth-child(1){
+              background:$graycolor-light ;
+            }
+            
+            &:nth-child(2){
+              background:$bluecolor ;
+            }
+        }
+    }
+}
+
+
+//offer-popup
+
+.offer-box:hover .offer-popup {
+    opacity:1;
+      transition: opacity 0.3s;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.offer-popup {
+   background: rgba(6, 124, 182, 0.8);
+    border: 2px solid #fff;
+    left: -430px;
+    max-width: 400px;
+    padding: 10px 0px 40px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+       opacity:0;
+    transition: opacity 0.3s;
+      -webkit-transition: opacity .25s ease-in-out;
+
+    &:before {
+    border-bottom: 0 solid transparent;
+    border-left: 57px solid rgba(6, 124, 182, 0.8);
+    border-top: 35px solid transparent;
+    content: "";
+    height: 0;
+    left: 100%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+      }
+
+.cancel {
+  color: #fff;
+  text-align: right;
+    a {
+        background: transparent !important;
+        color: #fff;
+        font-size: 23px;
+    }
+}
+
+.offer-popup-content {
+  margin: 0 auto;
+  width: 280px;
+}
+
+
+.ib_v {
+  float: left;
+}
+   label{
+      color: $white;
+      font-size:20px !important;
+     }
+
+     .fh-radio > [type="radio"]:checked + label::before, .fh-radio > [type="radio"]:not(:checked) + label::before {
+      border-color: #fff;
+        }
+        .fh-radio > [type="radio"]:checked + label::before {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px #fff inset, 1px 0 13px #0370a6;
+  text-align: center;
+}
+
+.fh-checkbox > [type="checkbox"]:checked + label::before, .fh-checkbox > [type="checkbox"]:not(:checked) + label::before, .fh-radio > [type="radio"]:checked + label::before, .fh-radio > [type="radio"]:not(:checked) + label::before {
+  top: 4px;
+}
+
+}

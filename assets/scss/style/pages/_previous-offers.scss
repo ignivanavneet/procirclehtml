@@ -1,0 +1,21 @@
+.bg-19 {
+    background: url(#{$imgpath}bg-slide19.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    min-height: 100%;
+}
+    
+
+.offer-section {
+	.cat-heading-modifier {
+		width: 80%;
+    	display: inline-block;
+	}
+	hr {
+		width: 13%;    
+	    margin: 16px 0 0px;
+    	border-top: 1px solid #b2b2b2;
+	}
+
+}

@@ -1,0 +1,18 @@
+//Fonts
+@import 'style/base/fonts';
+
+//opensans
+
+//font-regular----------------------------
+@include font-face(open_sansregular, #{$primary-font-path}/opensans-regular-webfont, normal, normal);
+//font-light
+@include font-face(open_sanslight, #{$primary-font-path}/opensans-light-webfont, normal, normal);
+//semi-bold
+@include font-face(open_sanssemibold, #{$primary-font-path}/opensans-semibold-webfont, normal, normal);
+//bold
+@include font-face(open_sansbold, #{$primary-font-path}/opensans-bold-webfont, normal, normal);
+
+
+
+// @include font-face(Glyphter, #{$primary-font-path}/Glyphter, normal, normal);
+

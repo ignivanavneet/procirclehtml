@@ -1,0 +1,58 @@
+.buy-out {
+	padding: 40px 30px;
+	margin: 20px auto 0;
+	.buy-out-info {
+        position: relative;
+		margin-bottom:4rem;
+		h4 {
+			display:inline-block;
+			@include raleway-bold;
+		}
+		p {
+			color:#3a3a3a;
+			@include raleway-semibold;
+		}
+	}
+	.plan-switch {
+		background: $blue-one;
+	    padding: .5rem 2rem;
+	    float:right;
+	    a {
+	    	color:$white-one;
+	    }
+	}
+}
+.subscription {
+	margin-bottom:3rem;
+}
+.duration {
+    position: relative;
+	margin-bottom: 2rem;
+	div {
+		display: inline-block;
+    	vertical-align: text-top;
+    	color: #3a3a3a;
+    	.plan-price {
+    		@include raleway-bold;
+    	}
+	}
+}
+
+.discount {
+	background: #5bbf09;
+    color: white;
+    padding: 3px 12px;
+    margin-left: 40px;
+}
+
+@media (max-width:480px) {
+    .discount {
+        margin: 0px 0 0 0px;
+        position: absolute;
+        top: -15px;
+        right: 0;
+    }
+    .profile-block{
+        width: 98%;
+    }
+}

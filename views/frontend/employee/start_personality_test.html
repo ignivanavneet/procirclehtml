@@ -1,0 +1,21 @@
+<div class="clearfix"></div>
+    <main class="" data-ng-init="getvariable();startPersonalityQuestionair();">
+        <div class="container margin-top-4x">
+            <div class="semi-width-card container qstn-card">
+                <div class="container-fluid static-tile--a">
+                    <span class="icon-light-bulb"></span>
+                </div>
+                <h3><span class="medium">TAKE OUR</span><br> PERSONALITY QUESTIONNAIRE </h3>
+                <div class="margin-top-2x">
+                    <span class="beam-right">   </span>
+                    <span class="dash-forward">//</span>
+                    <span class="beam-left"></span>
+                </div>
+                <p class="container-fluid margin-top-4x semi-width-p">Taking our test is an essential part of your candidate profile. It is in your best interests that you answer the questions honestly, as it will increase your chances of finding a workplace culture that aligns with your values.</p>
+                <p class="container-fluid margin-top-4x semi-width-p">Our questionnaire is based on the OCEAN method. </p>
+            </div>
+            <div class="container half-wit text-center button-bottom-wrap" ng-hide="data.total == totalAnswer">
+                <a data-ui-sref="employee_personality_test({employer_id:employer_id,employee_email:employee_email})"  class="greenify-btn medium">Begin Now</a>
+            </div>
+        </div>
+    </main>

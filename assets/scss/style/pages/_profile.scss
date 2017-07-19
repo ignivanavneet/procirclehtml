@@ -1,0 +1,143 @@
+.p-info-section {
+    .c-field {
+        h4 {
+            text-transform: $uppercase;
+
+            @include fontsize(16);
+
+            @include open-semibold;
+
+            @include margin-bottom(15);
+        }
+
+        .text-control {
+            width: 100%;
+            background: transparent;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+
+            @include fontsize(16);
+
+            color: $textcolor;
+            resize: none;
+        }
+
+        .input-control {
+            width: 100%;
+
+            @include max-width(500);
+
+            background: transparent;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+
+            @include padding(0 0 10 0);
+
+            @include fontsize(16);
+
+            color: $textcolor;
+        }
+
+        .field {
+            .text-control {
+                @include border-bottom(2, solid, #ccc);
+
+                &:focus {
+                    border-color: $bluecolor;
+                }
+            }
+
+            .input-control {
+                @include border-bottom(2, solid, #ccc);
+
+                &:focus {
+                    border-color: $bluecolor;
+                }
+            }
+
+            .intl-tel-input {
+                width: 100%;
+
+                @include max-width(500);
+
+                #phone {
+                    @include border-bottom(2, solid, #ccc);
+
+                    width: 100%;
+
+                    @include padding-bottom(10);
+
+                    background: transparent;
+                    border-top: 0;
+                    border-left: 0;
+                    border-right: 0;
+
+                    &:focus {
+                        border-color: $bluecolor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sub-cat-list {
+    li {
+        display: $inline;
+
+        @include margin-right(5);
+    }
+
+    &.fashion-sub {
+        .cat-box input[type=checkbox].css-checkbox {
+            &:checked + label.css-label {
+                background-color: $yellowcolor;
+                color: $white;
+            }
+        }
+    }
+}
+
+.list-pane {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.cat-box input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+
+    & + label.css-label {
+        cursor: pointer;
+        display: block;
+        vertical-align: middle;
+        border-radius: 6px;
+
+        @include padding(10 20);
+
+        background-color: #e3e5e6;
+        color: #2b3134;
+
+        @include margin-bottom(20);
+
+        @include open-semibold;
+    }
+
+    &:checked + label.css-label {
+        background-color: $pinkcolor;
+        color: $white;
+    }
+}

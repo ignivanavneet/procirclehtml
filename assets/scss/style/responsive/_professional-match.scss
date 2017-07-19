@@ -1,0 +1,42 @@
+@include media("<=1200px") {
+    .pMatchWarpper {
+        .matchBlks {
+            .matchSlider {
+                .owl-nav {
+                    .owl-prev, .owl-next {
+                        img {
+                            width: 40px;
+                        }
+                    }
+
+                    .owl-prev {
+                        left: 0;
+                    }
+
+                    .owl-next {
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media("<=599px") {
+    .pMatchWarpper {
+        .matchBlks {
+            .matchSlider {
+                .owl-item {
+                    &.active {
+                        &.center {
+                            .item {
+                                @include scale(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

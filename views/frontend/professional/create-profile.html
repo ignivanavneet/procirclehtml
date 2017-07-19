@@ -1,0 +1,422 @@
+        <header class="header-wrap">
+            <div class="masthead-wrap">
+                <div class="banner-4 masthead">
+                    <div class="container masthead-heading masthead-heading--b">
+                        <div>
+                            <h1><span class="light">Create My</span></h1>
+                            <h1><span class="green-wrap">Professional Profile</span></h1>
+                        </div>
+                        <div class="">
+                            <span class="beam-right">   </span>
+                            <span class="dash-forward">//</span>
+                            <span class="beam-left"></span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="clearfix"></div>
+        <main data-ng-init="getProfessionalProfile(); getProfessionalStepCompleted();">
+            
+        <div class="container user-profile-new">
+            <div class="user-img-bubble">
+                <img data-ng-src="{{ profilePicture == '' ? 'assets/images/avatar-placeholder.png' : profilePicture }} " alt="">
+            </div>
+            <div class="user-img-update">
+               <input 
+                   type="file" name="pic"  id="user-img-upload"
+                   ngf-select 
+                   ng-model="profilePic" 
+                   ng-change="uploadProfilePicture(profilePic,errorFile)"
+                   ngf-max-size="2MB" 
+                   ngf-model-invalid="errorFile"
+                   ngf-pattern="'.jpg,.png,.jpeg'"
+                   accept="image/*">
+            
+            <label for="user-img-upload">
+                <span class="icon-frame img-upload-button"></span><span class="semibold">Update Picture</span></label>
+        </div>
+		<div class="text-danger" data-ng-show=" errorFile.$errorMessages.maxSize==true || 
+											    errorFile.$errorMessages.pattern == true">
+			Only JPG,JPEG and PNG images are allowed and the limit should not be exceeded beyond 2MB.
+		</div>
+            </div>
+       
+        <h3>Create My - Professional Profile {{ most_step_completed }}</h3>
+        <div class="margin-top-2x">
+            <span class="beam-right">   </span>
+            <span class="dash-forward">//</span>
+            <span class="beam-left"></span>
+        </div>
+        <form data-ng-init=" submitted = false;" name="profile" data-ng-submit="profile.$valid ? createProfessionalProfile() : submitted = true " novalidate>
+        <div class="user-form-professional form-container container margin-top-10x">
+		 <div class="form-wrapper">
+		  <div class="form-section margin-bottom-4x padding-bottom-1x"> <!-- static repeat element -->
+			       Candidate's Name <span class="text-danger">&#9733</span>
+                   <input data-ng-model="name" type="text" name="name" class="margin-bottom-4x" data-ng-maxlength="50" required>
+			       
+				  <div ng-messages="profile.name.$error" 
+						 class="text-danger" data-ng-if=" submitted || profile.name.$touched">
+					 <div ng-message="required">Please enter name.</div>
+						<div ng-message="maxlength">Maximum 50 characters allowed</div>
+				  </div>
+			   </div>
+			<div class="form-section margin-bottom-4x padding-bottom-1x" 
+					 data-ng-repeat="data in details track by $index"> <!-- reapeat -->
+					<div data-ng-init="outerIndex = $index">
+						<!--  Text box elements -->
+						<div data-ng-if="data.input_type=='text'">
+					        <div data-ng-repeat="list in data.attribute_options track by $index"> 
+								 {{ data.title }} <span data-ng-show="data.is_mandatory=='1'" class="text-danger">&#9733</span>
+								 <input type="text"
+                                              data-ng-model="details[outerIndex].attribute_options[$index].attribute_value" 
+                                              name="field-{{data.id}}" 
+											  ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                              class="margin-bottom-4x"
+										      data-ng-maxlength="50"
+										      data-ng-required="data.is_mandatory == '1'" >
+								<div ng-messages="profile['field-'+data.id].$error" 
+									 class="text-danger" data-ng-if="submitted || profile['field-'+data.id].$touched">
+									 <div ng-message="required">Please enter {{ data.title }} .</div>
+									 <div ng-message="maxlength">Maximum 50 characters allowed</div>
+							   </div>
+                            </div>  
+					    </div>
+						<!--  Text box elements ends here -->
+						
+						<!--  radio box elements -->
+						<div data-ng-if="data.input_type=='radio'">
+						   <div class="check-box-heading semibold">{{ data.title }} 
+							   <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+							   <span class="form-dash"></span>
+                           </div>
+							<div class="check-box-body margin-top-4x">
+							  <ul class="check-box-col">
+                                <li data-ng-repeat="list in data.attribute_options track by $index">
+                                    <label class="ch-radioBox margin-right-3x">
+										<input 
+                                               data-ng-value=details[outerIndex].attribute_options[$index].id
+                                               data-ng-model="details[outerIndex].selectedValue"
+                                               name="field-{{data.id}}"
+											   ng-change="validationCheck(data.is_mandatory,data.input_type,outerIndex,data)"
+                                               type="radio" name="wrk-lvl"
+											   data-ng-required="data.is_mandatory == '1'"> 
+                                        <span class="_inner" data-ng-bind="list.title"></span>
+                                    </label>
+									
+					            <input data-ng-if="list.info=='1' && 
+                                                       details[outerIndex].selectedValue == details[outerIndex].attribute_options[$index].id" 
+                                           type="text" 
+                                           placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+                                           name="details[outerIndex].attribute_options[$index].attribute_value" 
+                                           data-ng-model="details[outerIndex].attribute_options[$index].attribute_value"
+										   class="margin-bottom-4x margin-top-4x"
+									   >
+                                </li>
+                               </ul>
+								<div ng-messages="profile['field-'+data.id].$error" 
+										 class="text-danger" data-ng-if="submitted || profile['field-'+data.id].$touched">
+										 <div ng-message="required">Please enter {{ data.title }} .</div>
+								</div>
+								
+								
+							</div>
+						</div>	
+						<!--  radio box elements ends here -->
+						
+						<!--  check box elements -->
+						<div data-ng-if="data.input_type=='checkbox'">
+						   <div class="check-box-heading semibold">{{ data.title }}
+							   <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+							   <span class="form-dash"></span>
+                           </div>
+							<div class="check-box-body margin-top-4x">
+							  <ul class="check-box-col">
+                                <li data-ng-repeat="list in data.attribute_options track by $index">
+                                    <label class="ch-checkBox margin-right-3x">
+                                        <input 
+                                               type="checkbox" 
+                                               data-ng-true-value='true'
+                                               data-ng-false-value='false'
+											   data-ng-change="selectBoxChange(details[outerIndex].attribute_options,outerIndex,data.id)"
+                                               name="checkBox[{{outerIndex}}]"
+                                               data-ng-model="details[outerIndex].attribute_options[$index].is_checked"
+                                               />
+                                        <span class="_inner" data-ng-bind="list.title"></span>
+                                    </label>
+									<div data-ng-if="list.info=='1' &&
+                                                       details[outerIndex].attribute_options[$index].is_checked == true">
+									 <input  
+											type="text" 
+                                            name="field-{{data.id}}-checkbox-other"
+                                            placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+                                            data-ng-model="details[outerIndex].attribute_options[$index].attribute_value"
+                                            class="margin-bottom-4x margin-top-4x"
+											required>
+										
+									<div ng-messages="profile['field-'+data.id+'-checkbox-other'].$error" 
+										 class="text-danger" data-ng-if="submitted || profile['field-'+data.id+'-checkbox-other'].$touched">
+									   <div ng-message="required">Please enter {{ data.title }} .</div>
+									</div>
+								</div>		
+                                </li>
+                               </ul>
+								<input 
+									   style="display:none;"
+									   type="text"
+									   id="check-{{data.id}}"
+									   name="field-{{data.id}}-checkbox"
+									   data-ng-model="details[outerIndex].page" 
+									   data-ng-required="data.is_mandatory == '1'" />
+								
+								<div ng-messages="profile['field-'+data.id+'-checkbox'].$error" 
+										 class="text-danger" data-ng-if="submitted || profile['field-'+data.id+'-checkbox'].$touched">
+								   <div ng-message="required">Please enter {{ data.title }} .</div>
+								</div>
+								
+							</div>
+						</div>	
+						<!--  Check box elements ends here -->
+						
+						<!--  dropdown elements -->
+						<div data-ng-if="data.input_type=='dropdown'">
+								<h4 class="margin-bottom-3x semibold">
+								 {{ data.title }} 
+								 <span data-ng-show="data.is_mandatory == '1' " class="text-danger">&#9733</span>
+								</h4> 
+								<span class="form-dash margin-bottom-4x"></span>
+								<div class="form-group padding-bottom-3x">
+								   <select 
+										  data-ng-options="option.title for option in data.attribute_options track by option.id"
+										  data-ng-model="details[outerIndex].selectedValue"
+										  class="form-select"
+										  name="field-{{data.id}}" 
+										  data-ng-required="data.is_mandatory == '1'">
+									<option value="">Please select {{ data.title }}</option>
+								  </select>
+								 <div ng-messages="profile['field-'+data.id].$error" 
+										 class="text-danger" data-ng-if="submitted || profile['field-'+data.id].$touched">
+										 <div ng-message="required">Please enter {{ data.title }} .</div>
+								 </div>	
+								 <input data-ng-if="details[outerIndex].selectedValue.info=='1'" 
+											type="text" 
+                                            placeholder="{{details[outerIndex].selectedValue.error_msg}}"
+                                            data-ng-model="details[outerIndex].selectedValue.professional[0].attribute_value"
+										    name="field-{{data.id}}-other"
+										    class="margin-bottom-4x margin-top-4x" required>
+								 <div ng-messages="profile['field-'+data.id+'-other'].$error" 
+										 class="text-danger" data-ng-if="submitted || profile['field-'+data.id+'-other'].$touched">
+										 <div ng-message="required">{{ details[outerIndex].selectedValue.error_msg }}.</div>
+								 </div>	
+								</div>
+						</div> 	  
+						<!--  dropdown elements ends here -->
+						
+						<!--  file elements -->
+						<div data-ng-if="data.input_type=='file'">
+							<div class="col-md-12 margin-top-8x">
+								<h4 class="margin-bottom-3x semibold classleft">
+								 <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+								</h4> 
+								<span class="form-dash margin-bottom-4x classleft"></span>
+								<div data-ng-repeat="list in data.attribute_options">
+									<span data-ng-show="details[outerIndex].attribute_options[$index].upload_value != ''">
+										<a 
+										   target="_blank" ng-href="{{ baseurl+'/cv/'+list.professional[0].attribute_value}}">
+											View Cv
+										</a>||
+										<a 
+										   data-ng-click="removeCV(outerIndex,$index);" 
+										   href="javascript:void(0);">
+											Delete Cv
+										</a>
+									</span>
+									<div class="upload-input upload-input--a classleft">
+										<input 
+										   type="file" 
+										   name="pic"  
+										   id="upload-doc"
+										   ngf-select 
+										   ng-model="details[outerIndex].attribute_options[$index].upload_value" 
+										   ng-change="uploadCv(details[outerIndex].attribute_options[$index].upload_value,
+														    outerIndex, 
+															$index, 
+															errorFileUpload)"
+										   ngf-max-size="2MB" 
+										   ngf-model-invalid="errorFileUpload"
+										   ngf-pattern="'.doc,.pdf,.docx'">
+										<label for="upload-doc" class="thread-initiate semibold">
+											Upload {{ list.title }}
+										</label>
+									</div>
+									<div class="text-danger" data-ng-show="errorFileUpload.$errorMessages.maxSize==true || 
+											    errorFileUpload.$errorMessages.pattern == true">
+										Only DOC,PDF,DOCX are allowed and the limit should not be exceeded beyond 2MB.
+									</div>
+                                  
+								</div>
+								
+							</div>	
+							
+								 
+						</div> 	  
+						<!--  file elements ends here -->
+						
+						<!--  textarea elements -->
+						<div data-ng-if="data.input_type=='textarea'">
+							<div class="col-md-12 margin-top-8x">
+								<h4 class="margin-bottom-3x semibold classleft">
+								 {{ data.title }} 
+								 <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+								</h4>
+								
+								<span class="form-dash margin-bottom-4x classleft"></span>
+								<div data-ng-repeat="list in data.attribute_options">
+									<textarea 
+											 data-ng-model="details[outerIndex].attribute_options[$index].attribute_value" 
+											 name="field-{{ data.id }}"
+											 placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+											 cols="30" rows="10"
+											 data-ng-maxlength="500"
+											 data-ng-required="data.is_mandatory == '1'" 
+											  ></textarea>
+									
+							<div ng-messages="profile['field-'+data.id].$error" 
+									 class="text-danger" data-ng-if="submitted || profile['field-'+data.id].$touched">
+									 <div ng-message="required">Please enter {{ data.title }} .</div>
+									 <div ng-message="maxlength">Maximum 500 characters allowed</div>
+							 </div>
+								</div>
+								
+							</div>	 
+						</div> 	  
+						<!--  textarea elements ends here -->
+						
+						<!--  url elements -->
+						<div data-ng-if="data.input_type=='url'">
+							
+							<div class="col-md-12 margin-top-8x">
+								<h4 class="margin-bottom-3x semibold">
+								 {{ data.title }} 
+								 <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+								</h4>
+								
+								<span class="form-dash margin-bottom-4x"></span>
+								<div class="form-group" data-ng-repeat="list in data.attribute_options">
+									<input 
+										   class="margin-bottom-4x margin-top-4x form-control" 
+										   data-ng-model="details[outerIndex].attribute_options[$index].attribute_value" 
+										   name="field-{{data.id}}"
+										   placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+										   placeholder="Enter video url" 
+										   type="url"
+										   data-ng-pattern="/^(http:\/\/|https:\/\/|)(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/">
+									<!--
+                                          data-ng-pattern="/^(http:\/\/|https:\/\/|)(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/"
+
+									     - Supported YouTube URL formats:
+										   - http://www.youtube.com/watch?v=My2FRPA3Gf8
+										   - http://youtu.be/My2FRPA3Gf8
+										   - https://youtube.googleapis.com/v/My2FRPA3Gf8
+										 - Supported Vimeo URL formats:
+										   - http://vimeo.com/25451551
+										  - http://player.vimeo.com/video/25451551
+										 - Also supports relative URLs:
+									     - //player.vimeo.com/video/25451551
+									-->
+									<div ng-messages="profile['field-'+data.id].$error" 
+											 class="text-danger" data-ng-if="submitted || profile['field-'+data.id].$touched">
+											 <div ng-message="required">Please enter {{ data.title }} .</div>
+											 <div ng-message="url">Please enter valid url.</div>
+											 <div ng-message="pattern">Youtube & vimeo's video url supported only. </div>
+									 </div>
+									
+								</div>
+							</div>	
+							
+						</div>	 
+						<!--  url elements ends here -->
+						
+						<!--  url elements -->
+						<div data-ng-if="data.input_type=='group-text'">
+							<div class="form-box margin-top-6x">
+								<div class="form-box-heading form-box-heading-light semibold">
+									{{ data.title }} 
+								   <span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+								</div>
+								<div class="form-box-body margin-top-4x">
+										<div class="form-box-item" data-ng-repeat="list in data.attribute_options">
+											<p data-ng-bind="list.title"></p>
+											<input 
+											   name="field-{{$index}}-group-text"	   
+										       data-ng-model="details[outerIndex].attribute_options[$index].attribute_value" 
+											   placeholder="{{details[outerIndex].attribute_options[$index].placeholder}}"
+											   type="text"
+											   data-ng-maxlength="80">
+											<div style="padding-top:18px; padding-left:25px;" 
+												 ng-messages="profile['field-'+$index+'-group-text'].$error" 
+											     class="text-danger" data-ng-if="submitted || profile['field-'+$index+'-group-text'].$touched">
+											 <div ng-message="maxlength">Maximum 80 characters allowed</div>
+									        </div>
+										</div> 
+
+								</div>  
+							</div>
+							
+						</div>	 
+						<!--  url elements ends here -->
+						
+						
+						<!--  add-more-text elements -->
+						<div data-ng-if="data.input_type=='more-text'">
+							<div class="margin-top-2x">
+								Work Experience
+								<span data-ng-show="data.is_mandatory == '1'" class="text-danger">&#9733</span>
+								
+								<div data-ng-repeat="list in data.attribute_options[0].attribute_value">
+								   <input class="margin-bottom-4x" 
+									   type="text" 
+									   name="field-{{$index}}-more"	  
+									   data-ng-model="details[outerIndex].attribute_options[0].attribute_value[$index].name"
+									   data-ng-maxlength="100"
+									   data-ng-required="data.is_mandatory == '1'" 	  
+									   >
+									
+									<div ng-messages="profile['field-'+$index+'-more'].$error" 
+											 class="text-danger" data-ng-if="submitted || profile['field-'+$index+'-more'].$touched">
+											 <div ng-message="required">Please enter {{ data.title }} .</div>
+											 <div ng-message="maxlength">Maximum 100 characters allowed</div>
+									 </div>
+								<a class="text-danger pull-right" data-ng-show="$index > 0" href="javascript:void(0)" data-ng-click="removeExperience(outerIndex,$index)">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>
+								</div>
+										
+							</div>
+							
+							<a  class="add-more margin-top-2x btnaddmore"
+							    href="javascript:void(0)"
+							    data-ng-click="addMoreExperience(outerIndex)">
+							   <span class="fa fa-plus margin-right-2x"></span>
+								Add More
+							</a>
+						</div>	 
+						<!--  add-more-text elements ends here -->
+					</div>
+			    
+			 </div> <!-- first reapeat Ends here -->
+		</div>
+        </div>
+
+		   <div class="container two-face-end margin-bottom-lg">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+				 <input type="submit" class="bold h4 inputprofile" value="Continue to personality Questionnaire" name="submit" />
+            </div>
+            <div class="col-md-3 pull-right"></div>
+        </div>
+		 </form>	
+
+       </main>

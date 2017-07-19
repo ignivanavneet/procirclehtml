@@ -1,0 +1,83 @@
+<header class="header-wrap" data-ng-init="getAllSubscriptionPlans()">
+    <div class="masthead-wrap">    
+        <div class="banner-4 masthead">
+            <div class="container masthead-heading masthead-heading--a">
+                <div>
+                    <h1><span class="light">Pricing & </span><span class="green-wrap">Plans</span></h1>
+                </div>
+                <div class="">
+                    <span class="beam-right">   </span>
+                    <span class="dash-forward">//</span>
+                    <span class="beam-left"></span>
+                </div>
+                <div>
+                    <div class="breadcrumbs margin-top-4x">
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Pricing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<main class="">
+    <h4 class="semibold fees-title employeetitle">Employers Subscription Fees</h4>
+    <div class="margin-bottom-4x">
+        <span class="beam-right">   </span>
+        <span class="dash-forward">//</span>
+        <span class="beam-left"></span>
+    </div>
+    <p class="container">We believe in transparent pricing, so that you know exactly what you get for your money.</p>
+    <p class="container">Our packages are tailored to suit employers of any size and are based on how many accounting professionals you recruit a year.</p>
+    <section class="pricing-parent">
+        <div class="container pricing">
+            <div class="col-md-3 pricing-block" data-ng-repeat="plans in all_plans">
+                <div class="plan-flag">
+                    <h4 data-ng-if="plans.special_offer == true">SPECIAL OFFER</h4>
+                </div>
+                <div class="plan-title">
+                    <h4 data-ng-bind="plans.name"></h4>
+                    <p class="semibold">{{plans.max_emp_text}} <br>{{plans.recruit_per_year_txt}}</p>
+                    <h3><span>&pound;</span>{{plans.amount}}<sub data-ng-hide="plans.special_offer == true">/pcm</sub></h3>
+                </div>
+                <div class="plan-info">
+                    <p class="bold" data-ng-if="plans.special_offer == false">
+                        <span data-ng-bind="plans.discount"></span>% discount if they sign up for a year
+                    </p>
+                    <div data-ng-bind-html="plans.description"></div>
+                </div>
+                    <a data-ng-show="suggested_plans.indexOf(plans.id) != -1" class="selectmargin buttonselect"
+                       data-ui-sref="subscription_select({suggested_plan:plans.encodede_plan_id})">Select</a>
+            </div>  
+        </div>
+        <div class="container pricing-beta">
+            <div class="row">
+                <div data-ng-hide="isLoggedIn == true" class="col-md-4 pricing-card">
+                    <!-- <div class="pricing-card-inner"> -->
+                    <div class="offer-tag">
+                        <span class="icon-user-2"></span>
+                    </div>
+                    <h4>PROFESSIONALS</h4>
+                    <div class="dash-sml-left"></div>
+                    <p>Free for Professional User</p>
+                    <a data-ui-sref="login">Sign In <span class="icon-right-arrow"></span></a>
+                    <!-- </div> -->
+                </div>
+                <div class="col-md-4 pricing-card" data-ng-if="all_offers != ''">
+                    <div class="offer-tag offershow">
+                        <span class="icon-user-2"></span>
+                    </div>
+                    <h4>SPECIAL OFFERS</h4>
+                    <div class="dash-sml-left"></div>
+                    <div data-ng-repeat="offer in all_offers">
+                        <div data-ng-bind-html="offer.display_offer_frontend"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

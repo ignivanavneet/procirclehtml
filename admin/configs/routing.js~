@@ -1,0 +1,503 @@
+/* Admin routing file
+ * @file: routing.js
+ * @description:
+ * @author: Mukesh
+ * @date: 08-03-2017
+ * */
+
+
+ignitrack.config(['$locationProvider', '$httpProvider', function ($locationProvider, $httpProvider) {
+        $locationProvider.hashPrefix('');
+        $httpProvider.interceptors.push('httpInjector');
+        // $locationProvider.html5Mode(true);
+
+    }]);
+
+ignitrack.config(function ($stateProvider, $urlRouterProvider) {
+
+
+    // For any unmatched url, redirect to /state1
+    $urlRouterProvider.when("/", "/login");
+    $urlRouterProvider.when("", "/login");
+    $urlRouterProvider.otherwise("404");
+
+
+    // Now set up the states
+    $stateProvider
+            .state('/', {
+                url: "/login",
+                templateUrl: "views/users/login.html",
+                controller: "userCtrl",
+                authenticate: false,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    store: function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load([{
+                                name: "login",
+                                files: [
+                                    "services/userService.js",
+                                    "services/roleService.js",
+                                    "controllers/userCtrl.js",
+                                    "assets/css/custom/login.css",
+                                    "directives/modals/master_modal_layout.js",
+                                ]
+                            }, {
+                                name: 'ngFileUpload',
+                                files: [
+                                    'node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+                                    'node_modules/ng-file-upload/dist/ng-file-upload.min.js'
+                                ]
+
+                            }
+
+                        ]);
+                    }
+                }
+            })
+
+            .state('users', {
+                url: "/users",
+                templateUrl: "views/users/manage_users.html",
+                controller: "userCtrl",
+                authenticate: true,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    store: function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load([{
+                                name: "users",
+                                files: [
+                                    "services/roleService.js",
+                                    "services/userService.js",
+                                    "controllers/userCtrl.js",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "directives/modals/master_modal_layout.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            }, {
+                                name: 'ngFileUpload',
+                                files: [
+                                    'node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+                                    'node_modules/ng-file-upload/dist/ng-file-upload.min.js'
+                                ]
+
+                            }
+
+                        ]);
+                    }
+                }
+            })
+            .state('signup', {
+                url: '/signup/:token',
+                templateUrl: "views/users/signup.html",
+                controller: "userCtrl",
+                authenticate: false,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load({
+                            name: "users",
+                            files: [
+                                "controllers/userCtrl.js",
+                                "services/roleService.js",
+                                "services/userService.js",
+                                "directives/headerDirective.js",
+                                "directives/passwordMatch.js",
+                                "assets/css/custom/custom_style.css",
+                            ]
+                        });
+                    }]
+                }
+            })
+            .state('roles', {
+                url: "/roles",
+                templateUrl: "views/users/manage_roles.html",
+                controller: "roleCtrl",
+                authenticate: true,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load({
+                                name: "roles",
+                                files: [
+                                    "services/roleService.js",
+                                    "controllers/roleCtrl.js",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "directives/modals/master_modal_layout.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+
+                            });
+                        }]
+                }
+            })
+      .state('changePassword', {
+                url: "/changePassword",
+                templateUrl: "views/users/change_password.html",
+                controller: "userCtrl",
+                authenticate: true,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    store: function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load([{
+                                files: [
+                                    "controllers/userCtrl.js",
+                                    "services/userService.js",
+                                    "services/roleService.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "directives/headerDirective.js",
+                                    "directives/passwordMatch.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            }, {
+                                name: 'ngFileUpload',
+                                files: [
+                                    'node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+                                    'node_modules/ng-file-upload/dist/ng-file-upload.min.js'
+                                ]
+
+                            }
+
+                        ]);
+                    }
+                }
+            })
+    .state('reset_password', {
+        url: "/reset_password/:token",
+        templateUrl: "views/users/reset_password.html",
+        controller: "userCtrl",
+        authenticate: false,
+        resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    return $ocLazyLoad.load({
+                        files: [
+                            "controllers/userCtrl.js",
+                            "services/userService.js",
+                            "services/roleService.js",
+                            "assets/css/custom/custom_style.css",
+                            "directives/headerDirective.js",
+                            "directives/passwordMatch.js",
+                        ]
+                    });
+                }]
+        }
+    })
+   
+      .state('editProfile', {
+                url: "/editProfile",
+                templateUrl: "views/users/edit_profile.html",
+                controller: "userCtrl",
+                authenticate: true,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    store: function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load([{
+                                files: [
+                                    "controllers/userCtrl.js",
+                                    "services/userService.js",
+                                    "services/roleService.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            }, {
+                                name: 'ngFileUpload',
+                                files: [
+                                    'node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+                                    'node_modules/ng-file-upload/dist/ng-file-upload.min.js'
+                                ]
+
+                            }
+
+                        ]);
+                    }
+                }
+            })
+      .state('dashboard', {
+                    url: "/dashboard",
+                    templateUrl: "views/dashboard/dashboard.html",
+                    controller: "dashboardCtrl",
+                    authenticate: true,
+                    resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                // you can lazy load files for an existing module
+                                return $ocLazyLoad.load([
+                                    {
+                                        name: "dashboard",
+                                        files: [
+                                            "controllers/dashboardCtrl.js",
+                                            "directives/headerDirective.js",
+                                            "directives/notificationDirective.js",
+                                            "directives/accordian_toggle.js",
+                                            "directives/filter.js",
+                                            "directives/search.js",
+                                            "assets/css/custom/dashboard_sidebar_widget.css",
+                                            "assets/css/custom/custom_style.css",
+                                            "assets/css/custom/side_notification.css",
+                                            "assets/css/custom/dashbaord_comment.css"
+                                        ]
+                                    }
+
+                                ]);
+                            }]
+                    }
+                })
+        .state('projectView', {
+                url: "/view/{id}",
+                templateUrl: "views/projects/project-view.html",
+                controller: "projectCtrl",
+                authenticate: true,
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load({
+                                name: "view",
+                                files: [
+                                    "controllers/projectCtrl.js",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/projects.css",
+                                    "assets/css/custom/custom_style.css",
+                                    "assets/css/custom/project_comments.css",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            });
+                        }]
+                }
+            })
+      .state('allprojects', {
+                    url: "/projects",
+                    authenticate: true,
+                    templateUrl: "views/projects/manage_projects.html",
+                    controller: "projectCtrl",
+                    resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                        loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                // you can lazy load files for an existing module
+                                return $ocLazyLoad.load({
+                                    name: "projects",
+                                    files: [
+                                        "controllers/projectCtrl.js",
+                                        "directives/headerDirective.js",
+                                        "directives/notificationDirective.js",
+                                        "assets/css/custom/projects.css",
+                                        "assets/css/custom/custom_style.css",
+                                        "assets/css/custom/side_notification.css"
+                                    ]
+                                });
+                            }]
+                    }
+                })
+      .state('tasks', {
+                url: "/tasks",
+                authenticate: true,
+                templateUrl: "views/tasks/manage_tasks.html",
+                controller: "taskCtrl",
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load({
+                                name: "tasks",
+                                files: [
+                                    "controllers/taskCtrl.js",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "directives/taskDragDropDirective.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "assets/css/custom/task.css",
+                                    "directives/modals/master_modal_layout.js",
+                                    "directives/dynamicTaskPopup.js",
+                                    "directives/taskPopup.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            });
+                        }]
+                }
+            })
+      .state('editProject', {
+                url: "/editProject",
+                authenticate: true,
+                templateUrl: "views/projects/project-add.html",
+                controller: "projectCtrl",
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load([
+                                {
+                                    name: "add",
+                                    files: [
+                                        "controllers/projectCtrl.js",
+                                        "directives/headerDirective.js",
+                                        "directives/notificationDirective.js",
+                                        "assets/css/custom/projects.css",
+                                        "assets/css/custom/custom_style.css",
+                                        "assets/css/custom/side_notification.css"
+
+
+
+                                            
+                                    ]
+                                }]);
+                        }]
+                }
+      })
+      .state('progress', {
+                url: "/progress",
+                authenticate: true,
+                templateUrl: "views/progress/progress.html",
+                controller: "progressCtrl",
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load({
+                                name: "progress",
+                                files: [
+                                    "controllers/progressCtrl.js",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "assets/css/custom/progress.css",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            });
+                        }]
+                }
+      })
+    .state('404', {
+            url: "/404",
+            templateUrl: "views/404.html",
+            controller: "404Ctrl",
+            resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                store: function ($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    return $ocLazyLoad.load({
+                        // serie: true,
+                        name: "404",
+                        files: [
+                            "controllers/404Ctrl.js", //controller function of the view
+                                    //"directives/emptyHeaderDirective.js"
+                        ]
+                    });
+                }
+            }
+    })
+    .state('meetings', {
+                url: "/meetings",
+                authenticate: true,
+                templateUrl: "views/meetings/index.html",
+                controller: "meetings",
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    store: function ($ocLazyLoad) {
+                        // you can lazy load files for an existing module
+                        return $ocLazyLoad.load([
+                            {
+                                files: [
+                                    "assets/css/custom/custom_style.css",
+                                    "controllers/meetings.js", //controller function of the view
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    'node_modules/angular-bootstrap-calendar/node_modules/interactjs/interact.js',
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            },
+                            {
+                                name: 'moment',
+                                files: [
+                                    'node_modules/moment/moment.js'
+                                ]
+                            }, {
+                                name: 'mwl.calendar',
+                                files: [
+                                    'node_modules/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css',
+                                    'node_modules/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js'
+                                ]
+                            }, {
+                                name: 'colorpicker.module',
+                                files: [
+                                    'node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css',
+                                    'node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min.js'
+                                ]
+                            }, {
+                                name: 'ngTagsInput',
+                                files: [
+                                    'node_modules/ng-tags-input/build/ng-tags-input.css',
+                                    'node_modules/ng-tags-input/build/ng-tags-input-ignitrack.js'
+                                ]
+                            }
+
+                        ]);
+                    }
+                }
+    })
+    .state('activities', {
+        url: "/activities",
+        authenticate: true,
+        templateUrl: "views/activities/manage_activities.html",
+        controller: "activityCtrl",
+        resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    return $ocLazyLoad.load({
+                        name: "activities",
+                        files: [
+                            "controllers/activityCtrl.js",
+                            "directives/headerDirective.js",
+                            "directives/notificationDirective.js",
+                            "assets/css/custom/custom_style.css",
+                            "assets/css/custom/activities.css",
+                            "assets/css/custom/side_notification.css"
+
+                        ]
+                    });
+                }]
+        }
+    })
+    .state('activityView', {
+        url: "/activity/view/{id}",
+        authenticate: true,
+        templateUrl: "views/activities/view-activity.html",
+        controller: "activityCtrl",
+        resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    return $ocLazyLoad.load({
+                        name: "activities",
+                        files: [
+                            "controllers/activityCtrl.js",
+                            "directives/headerDirective.js",
+                            "directives/notificationDirective.js",
+                            "assets/css/custom/custom_style.css",
+                            "assets/css/custom/activities.css",
+                            "assets/css/custom/side_notification.css"
+                        ]
+                    });
+                }]
+        }
+    })
+    .state('sprints', {
+                url: "/sprints",
+                authenticate: true,
+                templateUrl: "views/sprints/manage_sprint.html",
+                controller: "sprintCtrl",
+                resolve: {// Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            // you can lazy load files for an existing module
+                            return $ocLazyLoad.load({
+                                name: "sprints",
+                                files: [
+                                    "controllers/sprintCtrl.js",
+                                    "assets/css/custom/custom_style.css",
+                                    "directives/headerDirective.js",
+                                    "directives/notificationDirective.js",
+                                    "assets/css/custom/side_notification.css"
+                                ]
+                            });
+                        }]
+                }
+            })
+});

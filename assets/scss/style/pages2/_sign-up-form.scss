@@ -1,0 +1,23 @@
+// beta
+
+main {
+    .block-last-beta {
+        margin: 40px auto 0;
+
+        //width: 54%;
+        padding: 700px 0px 40px 0px;
+        max-width: 880px;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+
+        ul {
+            li {
+                display: inline;
+            }
+        }
+    }
+}
