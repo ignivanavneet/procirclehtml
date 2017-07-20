@@ -5,12 +5,11 @@
  * @date: 07 June 2017
  * */
 procircle.config(['$locationProvider', '$httpProvider', function ($locationProvider, $httpProvider) {
-        $locationProvider.hashPrefix('');
-        $locationProvider.html5Mode(true);
-        $httpProvider.interceptors.push('httpInjector');
+      $locationProvider.hashPrefix('');   
+	  $httpProvider.interceptors.push('httpInjector');
     }]);
 
-procircle.config(function ($stateProvider, $urlRouterProvider) {
+procircle.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.when("", "/");
     $urlRouterProvider.otherwise("404");
     $stateProvider
@@ -101,7 +100,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
             .state('signup', {
                 url: "/signup",
                 authenticate: false,
-		        not_public: true, 
+                not_public: true,
                 parent: "main",
                 views: {
                     'header': {
@@ -263,7 +262,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('login', {
                 url: "/login/:type/:id/:social_id/:popup",
-		        not_public: true,
+                not_public: true,
                 params: {
                     id: {squash: true, value: null},
                     type: {squash: true, value: null},
@@ -302,7 +301,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
             .state('second_signup', {
                 url: "/:url/:type/",
                 authenticate: false,
-		        not_public: true,
+                not_public: true,
                 parent: "main",
                 views: {
                     'header': {
@@ -541,7 +540,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-	      .state('employer_profile_view', {
+	        .state('employer_profile_view', {
                 url: "/employer/profile-view",
                 authenticate: true,
                 parent: "main",
@@ -574,7 +573,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-	        .state('employer_profile_edit', {
+            .state('employer_profile_edit', {
                 url: "/employer/profile-edit",
                 authenticate: true,
                 parent: "main",
@@ -606,7 +605,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                         ]);
                     }
                 }
-            }) 
+            })
             .state('employer_profile_listing', {
                 url: "/employer/profile_listing",
                 authenticate: true,
@@ -929,7 +928,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-	        .state('professional_profile_edit', {
+            .state('professional_profile_edit', {
                 url: "/professionals/profile-edit",
                 authenticate: true,
                 parent: "main",
@@ -1145,7 +1144,7 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
-	       .state('professional-search', {
+	        .state('professional-search', {
                 url: "/professionals/search",
                 authenticate: true,
                 parent: "main",
@@ -1163,13 +1162,55 @@ procircle.config(function ($stateProvider, $urlRouterProvider) {
                 },
                 data: {
                     pageTitle: 'Procircle : Search'
+                },
+		        resolve: {
+                    store: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([{
+                                files: [
+                                    "controllers/usersCtrl.js"
+                                ]
+                            }
+                        ]);
+                    }
+                }
+            })
+            .state('change_subscription', {
+                url: "/change/subscription",
+                authenticate: true,
+                parent: "main",
+                views: {
+                    'header': {
+                        templateUrl: 'views/frontend/elements/header.html',
+                        controller: 'headerCtrl'
+                    },
+                    'content': {
+                        templateUrl: 'views/frontend/users/change_subscription.html',
+                        controller: 'usersCtrl'
+                    },
+                    'footer': {
+                        templateUrl: 'views/frontend/elements/footer.html'
+                    }
+                },
+                data: {
+                    pageTitle: 'Procircle : Change Subscription'
+                },
+                resolve: {
+                    store: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([{
+                                files: [
+                                    "controllers/usersCtrl.js"
+                                ]
+                            }
+                        ]);
+                    }
                 }
             })
 
+           
 });
 
 
-procircle.run(function ($rootScope, $stateParams,$window, $location, $state, $cookieStore) {
+procircle.run(function ($rootScope, $stateParams, $window, $location, $state, $cookieStore) {
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, from, fromParams) {
         $window.scrollTo(0, 0);
         var token = $cookieStore.get('X-Token');
@@ -1181,34 +1222,34 @@ procircle.run(function ($rootScope, $stateParams,$window, $location, $state, $co
             $rootScope.isLoggedIn = true;
             $rootScope.role_id = loginUserCookie.role_id;
             $rootScope.profile_image = loginUserCookie.profile_image;
-			$rootScope.step_completed = parseInt(loginUserCookie.steps_completed);
+            $rootScope.step_completed = parseInt(loginUserCookie.steps_completed);
         } else {
             $rootScope.isLoggedIn = false;
             $rootScope.role_id = undefined;
-        }		
-		//Redirect to dashboard if already loggedin
-        if (!toState.authenticate && token && toState.not_public) {
-			$state.transitionTo("main.index");
-            event.preventDefault();
         }
-		
+        //Redirect to dashboard if already loggedin
+        if (!toState.authenticate && token && toState.not_public) {
+            //	$state.transitionTo("main.index");
+            //event.preventDefault();
+        }
+
         //If Not loggedin then redirect to login
         if (toState.authenticate && !token) {
             $state.transitionTo("login");
             event.preventDefault();
         }
     });
-	
-	
-	 $rootScope.$on("$statechangesuccess", function (event, toState, toParams, fromState, from, fromParams) {
-	       var token = $cookieStore.get('X-Token');
-	       if(token){
-			  console.log($state.current.name);
-			  
-			 }
-	 });
-	
-	
+
+
+    $rootScope.$on("$statechangesuccess", function (event, toState, toParams, fromState, from, fromParams) {
+        var token = $cookieStore.get('X-Token');
+        if (token) {
+            //console.log($state.current.name);
+
+        }
+    });
+
+
 });
 
 

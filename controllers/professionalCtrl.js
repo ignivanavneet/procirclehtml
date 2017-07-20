@@ -4,9 +4,9 @@
  * @description: This Js Controller is used for all the functioning related to users.
  * */
 
-angular.module('procircle').controller("professionalCtrl", function ($q, $window, $scope, $cookieStore, $stateParams, $http, $timeout, $state, $rootScope, $window, userService, commonService, ModalService, Upload, BASE_PATH,API_URL) {
+angular.module('procircle').controller("professionalCtrl", function ($q, $window, $scope, $cookieStore, $stateParams, $http, $timeout, $state, $rootScope, $window, userService, commonService, ModalService, Upload, BASE_PATH, API_URL) {
 
-	$scope.baseurl = BASE_PATH;
+    $scope.baseurl = BASE_PATH;
     $scope.heading = "Professionals";
     $scope.currentPage = 1;
 
@@ -325,11 +325,11 @@ angular.module('procircle').controller("professionalCtrl", function ($q, $window
             name: $scope.name,
             data_type: 1
         };
-        
+
         userService.createProfessionalProfile(request, function (response) {
             if (response.data.status == 200) {
                 userService.getStepCompletedValues({}, function (response) {
-                   if (response.data.status == 200) {
+                    if (response.data.status == 200) {
                         var loginUserCookie = $cookieStore.get('user_data');
                         loginUserCookie.steps_completed = response.data.data.steps_completed;
                         userService.saveUserData(loginUserCookie);
@@ -340,7 +340,7 @@ angular.module('procircle').controller("professionalCtrl", function ($q, $window
                             $state.go('start_professional_personality_test');
                         }
                         $timeout(commonService.closePopup(), 200); // hide processing popup
-                       
+
                     } else {
                         var data = {title: 'oops', text: response.data.message, type: 'error'};
                         commonService.showMessage(data);
@@ -416,7 +416,7 @@ angular.module('procircle').controller("professionalCtrl", function ($q, $window
             }).then(function (response) {
                 if (response.data.status == 200) {
                     $scope.details[outerIndex].attribute_options[innerIndex].attribute_value = response.data.cv;
-                    swal({title:"Success.", text:'File uploaded successfully.', type:'success',timer:2000});
+                    swal({title: "Success.", text: 'File uploaded successfully.', type: 'success', timer: 2000});
                 } else {
                     swal("Oops...", response.data.message, 'error');
                     $scope.requestSend = false;
@@ -455,8 +455,19 @@ angular.module('procircle').controller("professionalCtrl", function ($q, $window
         commonService.loadingPopup();
         userService.submitProfessionalTest({}, function (response) {
             if (response.data.status == 200) {
-                $state.go('professional_personality_test_result');
-                $timeout(commonService.closePopup(), 1000); // hide processing popup
+                userService.getStepCompletedValues({}, function (response) {
+                    if (response.data.status == 200) {
+                        var loginUserCookie = $cookieStore.get('user_data');
+                        loginUserCookie.steps_completed = response.data.data.steps_completed;
+                        userService.saveUserData(loginUserCookie);
+                        $rootScope.step_completed = parseInt(response.data.data.steps_completed);
+                        $state.go('professional_personality_test_result');
+                        $timeout(commonService.closePopup(), 1000); // hide processing popup
+                    } else {
+                        var data = {title: 'oops', text: response.data.message, type: 'error'};
+                        commonService.showMessage(data);
+                    }
+                });
             } else {
                 var data = {title: 'oops', text: response.data.message, type: 'error'};
                 commonService.showMessage(data);
@@ -498,18 +509,18 @@ angular.module('procircle').directive('myYoutube', function ($sce) {
         link: function (scope) {
             scope.$watch('code', function (newVal) {
                 if (newVal) {
-					 var res = newVal.split("/");
-					 if(res[2] == 'www.youtube.com' || res[2] == 'youtube.com'){
-						 var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-						 var match = newVal.match(regExp);
-						 if (match && match[2].length == 11){
-							 scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + match[2]);
-						 }else{
-							 scope.url = $sce.trustAsResourceUrl('' + newVal);
-						 }
-					 }else{
-						  scope.url = $sce.trustAsResourceUrl('' + newVal);
-					 }
+                    var res = newVal.split("/");
+                    if (res[2] == 'www.youtube.com' || res[2] == 'youtube.com') {
+                        var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                        var match = newVal.match(regExp);
+                        if (match && match[2].length == 11) {
+                            scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + match[2]);
+                        } else {
+                            scope.url = $sce.trustAsResourceUrl('' + newVal);
+                        }
+                    } else {
+                        scope.url = $sce.trustAsResourceUrl('' + newVal);
+                    }
                 }
             });
         }

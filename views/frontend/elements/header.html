@@ -7,27 +7,38 @@
         </div>
         <div class="nav headernav">
             <ul>
-                <!--<li ng-if="role_id == 2" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="employer_about_us">About Us</a></li>
-                <li ng-if="role_id == 3" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="professional_about_us">About Us</a></li>
-                <li ng-if="role_id == undefined" data-ui-sref-active="active" class="nav-item"><a data-ui-sref="about_us">About Us</a></li>-->
                 <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="about_us">About</a></li>
                 <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="employers">Employers</a></li>
                 <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="professionals">Professionals</a></li>
                 <li data-ui-sref-active="active" class="nav-item"><a href="#">Pricing</a></li>
                 <li data-ui-sref-active="active" class="nav-item"><a href="#">Community</a></li>
-                <li data-ui-sref-active="active" class="nav-item"><a href="http://procircle.ignivastaging.com/blog/">Blog</a></li>
-                <!--                <li data-ui-sref-active="active" class="nav-item"><a href="#">Personality Trait</a></li>-->
-                <li data-ui-sref-active="active" class="nav-item"><a data-ui-sref="contact-us">Contact Us</a></li>
-                <div  data-ng-hide="isLoggedIn == true" class="nav-2 margin-right-6x">
+                <li data-ui-sref-active="active" class="nav-item">
+					<a href="http://procircle.ignivastaging.com/blog/">Blog</a>
+				</li>
+                <li data-ui-sref-active="active" class="nav-item">
+					<a data-ui-sref="contact-us">Contact Us</a>
+				</li>
+                <div data-ng-hide="isLoggedIn == true" class="nav-2 margin-right-6x">
                     <ul>
-                        <li data-ui-sref-active="active"><span class="margin-right-2x icon-login vm"></span><a data-ui-sref="login">Log In</a></li>
-                        <li data-ui-sref-active="active"><span class="margin-right-2x"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><a data-ui-sref="signup">Sign Up</a></li>
+                        <li data-ui-sref-active="active">
+							<span class="margin-right-2x icon-login vm"></span>
+							<a data-ui-sref="login">Log In</a>
+						</li>
+                        <li data-ui-sref-active="active">
+							<span class="margin-right-2x">
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+							<a data-ui-sref="signup">Sign Up</a>
+						</li>
                     </ul>
                 </div>
                 <!-- After Login -->
                 <div data-ng-show="isLoggedIn == true" class="nav-2 margin-right-6x">
                     <ul class="nav-signed">
-                        <li class="nav-signed-item"><a href=""><span class="icon-search"></span></a></li>
+                        <li class="nav-signed-item">
+							<a href="javascript:void(0);">
+								<span class="icon-search"></span>
+							</a>
+						</li>
                         <li class="nav-signed-item matches-trigger">
                             <a href=""><span class="icon-three-dots"></span></a>
                             <ul class="matches-drp-dwn">
@@ -103,19 +114,15 @@
                             </ul>
                         </li>
                         <li class="nav-signed-item notif-trigger ">
-                            <a ng-if="role_id == 3"
-                               data-ui-sref-opts="{reload: true}" 
-                               data-ui-sref="get_professional_profile">
-                                <img data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
+                              <a ng-show="role_id == 3" data-ui-sref-opts="{reload: true}" data-ui-sref="get_professional_profile">
+                                <img data-ng-src="{{ profile_image == undefined || profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
                             </a>
-                            <a ng-if="role_id == 2"
-                               data-ui-sref-opts="{reload: true}" 
-                               data-ui-sref="employer_profile_view">
-                                <img data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
+                            <a ng-show="role_id == 2" data-ui-sref-opts="{reload: true}" data-ui-sref="employer_profile_view">
+                                <img data-ng-src="{{ profile_image == undefined || profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} " alt="">
                             </a>
                             <ul class="notif-drp-dwn">
                                 <li>
-                                    <h5><a href="">Change Subscription</a></h5>
+                                    <h5><a data-ui-sref="change_subscription">Change Subscription</a></h5>
                                 </li>
                                 <li>
                                     <h5><a href="">Change Password</a></h5>
@@ -157,7 +164,6 @@
         </button>
     </div>
 </nav>
-
 <aside class="aside" id="asideOpen">
     <span class="close closetime">&times;</span>
     <nav>
@@ -170,11 +176,9 @@
                 <a data-ui-sref="signup">Sign Up</a>
             </li>
         </ul>
-
         <center>
             <img class="img-circle" width="80" data-ng-show="isLoggedIn == true" data-ng-src="{{ profile_image == '' ? 'assets/images/avatar-placeholder.png' : profile_image }} ">
         </center>
-
         <ul class="global-items-m">			
             <li data-ui-sref-active="active" class="nav-item-m">
                 <a data-ui-sref="about_us">About</a>
@@ -186,6 +190,7 @@
             <li data-ui-sref-active="active" class="nav-item-m"><a href="#">Blog</a></li>
             <li data-ui-sref-active="active" class="nav-item-m"><a data-ui-sref="contact-us">Contact Us</a></li>
         </ul>
+		
     </nav>
 </aside>
 
@@ -197,7 +202,7 @@
     lineyBtn.onclick = function () {
         mobileMenu.style.right = "0";
     };
-    span.onclick = function () {
+    span.onclick = function () {   
         mobileMenu.style.right = "-250px";
     };
     window.onclick = function (event) {
@@ -206,3 +211,5 @@
         }
     };
 </script>
+
+

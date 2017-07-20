@@ -23,7 +23,6 @@ angular.module("procircle").factory('httpInjector', function ($q, $rootScope, jw
                 $injector.get('$state').transitionTo('login');
 
             } else if (response.headers('X-Token') && response.data.status == 200) {
-
                 var access_token = response.headers('X-Token');
                 var user_data = response.data.data;
                 var userService = $injector.get('userService');
@@ -32,10 +31,9 @@ angular.module("procircle").factory('httpInjector', function ($q, $rootScope, jw
                 userService.saveUserData(user_data);//Save Token returned from api
                 /* Redirect user's on dashboard according their dashboard */
                 if (parseInt(user_data.role_id) == 2) {
-                    angular.element(".modalbackdrop").remove();
-
+                    angular.element(".modal-backdrop").remove();
+                    angular.element("body").removeClass("modal-open");
                     if (user_data.steps_completed == "1") {
-                        console.log(user_data.steps_completed);
                         $injector.get('$state').transitionTo('employer_profile');
                     }
                     if (user_data.steps_completed == "2") {
@@ -43,16 +41,17 @@ angular.module("procircle").factory('httpInjector', function ($q, $rootScope, jw
                     }
                     if (user_data.steps_completed == "3") {
                         $injector.get('$state').transitionTo('subscription_plans', {plan_id: user_data.plan_id});
-
                     }
                     if (user_data.steps_completed == "4") {
                         $injector.get('$state').transitionTo('employer_profile_step_two', {id: 0, type: 1});
-                    } else if (user_data.steps_completed == "5") {
+                    } 
+                    if (user_data.steps_completed == "5") {
                         $injector.get('$state').transitionTo('employer_profile_view');
                     }
 
                 } else if (parseInt(user_data.role_id) == 3) {
-                    angular.element(".modalbackdrop").remove();
+                    angular.element(".modal-backdrop").remove();
+                    angular.element("body").removeClass("modal-open");
                     if (user_data.steps_completed == "1") {
                         $injector.get('$state').transitionTo('main.create-professional-profile');
                     }

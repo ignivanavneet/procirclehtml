@@ -861,6 +861,31 @@ angular.module("procircle").factory('userService',
 
                     }
                 };
+				
+				 obj.getFilters = function (sendData, callback) {
+                    var req = {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: API_URL + 'user/getUserTokenData'
+                    };
+                    if (typeof callback === "function") {
+                        $http(req).then(function successCallback(response) {
+                            callback(response);
+
+                        }, function errorCallback(response) {
+                            callback(response);
+                        });
+                    } else {
+                        var deferred = $q.defer();
+                        $http(req).then(function (response) {
+                            deferred.resolve(response);
+                        });
+                        return deferred.promise;
+
+                    }
+                };
                 
                 return obj;
 

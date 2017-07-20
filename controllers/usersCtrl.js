@@ -985,6 +985,28 @@ angular.module('procircle').controller("usersCtrl", function ($q, $scope, $cooki
             }
         });
     }
+	
+	
+	$scope.getProfessionalSearch = function(){
+		commonService.loadingPopup();
+        var methods = {
+            filter: userService.getFilters({}),
+        };
+        $q.all(methods).then(function (methods) {
+            var response = _.filter(methods, function (obj) {
+                return obj.status != 200 || !obj.data || obj.data.status != 200
+            });
+
+            if (response.length > 0) {
+                swal("Oops...", 'Technical error. Please try again later', 'error');
+            } else {
+                $scope.filters = methods.filter.data.data;
+                $timeout(commonService.closePopup(), 200); // hide processing popup 
+            }
+        });
+	}
+	
+	
 });
 
 angular.module('procircle').controller("childUsersCtrl", function ($scope, $cookieStore, $stateParams, $http, $timeout, $state, $rootScope, $window, userService, commonService, ModalService) {
