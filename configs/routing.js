@@ -6,6 +6,7 @@
  * */
 procircle.config(['$locationProvider', '$httpProvider', function ($locationProvider, $httpProvider) {
       $locationProvider.hashPrefix('');   
+      $locationProvider.html5Mode(true);
 	  $httpProvider.interceptors.push('httpInjector');
     }]);
 
@@ -1154,7 +1155,8 @@ procircle.config(function ($stateProvider, $urlRouterProvider, $locationProvider
                         controller: 'headerCtrl'
                     },
                     'content': {
-                        templateUrl: 'views/frontend/professional/search.html'
+                        templateUrl: 'views/frontend/professional/search.html',
+						controller: 'usersCtrl'
                     },
                     'footer': {
                         templateUrl: 'views/frontend/elements/footer.html'

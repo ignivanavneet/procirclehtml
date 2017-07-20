@@ -967,7 +967,6 @@ angular.module('procircle').controller("usersCtrl", function ($q, $scope, $cooki
                 $scope.user = {'name': '', 'email': '', 'message': ''}; //empty $scope.use data from form
                 $scope.submitted = false;
                 $scope.contact.$setUntouched();
-
                 swal({
                     title: "Success!",
                     text: response.data.message,
@@ -987,10 +986,15 @@ angular.module('procircle').controller("usersCtrl", function ($q, $scope, $cooki
     }
 	
 	
-	$scope.getProfessionalSearch = function(){
+	$scope.getProfessionalSearch = function(page){
 		commonService.loadingPopup();
+		var filter = [];
+		$scope.currentPage = page;
+		$scope.maxSize = 5;
+		var request = { name : $scope.str != undefined ? $scope.str : '' , data: filter, data_type:1 ,page:$scope.currentPage};
         var methods = {
             filter: userService.getFilters({}),
+            searchRecords: userService.searchProfessionals(request),
         };
         $q.all(methods).then(function (methods) {
             var response = _.filter(methods, function (obj) {
@@ -1001,9 +1005,59 @@ angular.module('procircle').controller("usersCtrl", function ($q, $scope, $cooki
                 swal("Oops...", 'Technical error. Please try again later', 'error');
             } else {
                 $scope.filters = methods.filter.data.data;
+                console.log(methods.searchRecords);
+                $scope.result = methods.searchRecords.data.data.records;
+				$scope.total = methods.searchRecords.data.data.count;
                 $timeout(commonService.closePopup(), 200); // hide processing popup 
             }
         });
+	}
+	
+	$scope.pageChanged = function(){
+		  $scope.getProfessionalSearch($scope.currentPage);
+		}
+		
+	 /* Suggessions */
+	  $scope.getSuggestions = function(val) {
+			return $http.get(API_URL+'employer/getAutocompleteSearchData', {
+			  params: {
+				keyword: val
+			  }
+			}).then(function(response){
+			  return response.data.data.map(function(item){
+				return item.name;
+			  });
+			});
+		  };
+	
+	$scope.applyFilter = function(name){
+		
+		var filter = [];
+		for(var i=0;i<$scope.filters.length;i++){
+			var checked = [];
+			for(var k=0;k<$scope.filters[i].attribute_options.length;k++){
+				if($scope.filters[i].attribute_options[k].checked == true){
+					checked.push({id:$scope.filters[i].attribute_options[k].id});
+				}
+			}
+			if(checked.length>0){
+				filter.push({id:$scope.filters[i].id, attribute_options:checked});
+			}
+		}
+		
+		var request = { name : $scope.str != undefined ? $scope.str : '' , data: filter, data_type:1 ,page:1};
+		commonService.loadingPopup();
+        userService.searchProfessionals(request, function (response) {
+            if (response.data.status == 200) {
+				$scope.result = response.data.data.records;
+				$scope.total = response.data.data.count;
+                $timeout(commonService.closePopup(), 200); // hide processing popup
+            } else {
+                var data = {title: 'oops', text: response.data.response, type: 'error'};
+                commonService.showMessage(data);
+            }
+        });
+		
 	}
 	
 	

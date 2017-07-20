@@ -35,7 +35,8 @@
                 <div data-ng-show="isLoggedIn == true" class="nav-2 margin-right-6x">
                     <ul class="nav-signed">
                         <li class="nav-signed-item">
-							<a href="javascript:void(0);">
+							<a data-ui-sref-opts="{reload: true}" 
+							   data-ui-sref="professional-search">
 								<span class="icon-search"></span>
 							</a>
 						</li>

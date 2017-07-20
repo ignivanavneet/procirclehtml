@@ -868,7 +868,32 @@ angular.module("procircle").factory('userService',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        url: API_URL + 'user/getUserTokenData'
+                        url: API_URL + 'employer/getEmployerFilterOptions'
+                    };
+                    if (typeof callback === "function") {
+                        $http(req).then(function successCallback(response) {
+                            callback(response);
+
+                        }, function errorCallback(response) {
+                            callback(response);
+                        });
+                    } else {
+                        var deferred = $q.defer();
+                        $http(req).then(function (response) {
+                            deferred.resolve(response);
+                        });
+                        return deferred.promise;
+
+                    }
+                };
+				obj.searchProfessionals = function (sendData, callback) {
+                    var req = {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: API_URL + 'employer/getProfessionalSearchResults',
+						data:sendData
                     };
                     if (typeof callback === "function") {
                         $http(req).then(function successCallback(response) {

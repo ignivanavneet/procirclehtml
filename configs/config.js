@@ -7,8 +7,8 @@
 
 angular.module('app.constants', [])
     //.constant('API_URL','http://localhost/Procircle/public/api/')  
-    // .constant('API_URL','http://local.procircle.com/api/')  
-    .constant('API_URL','http://procircle.ignivastaging.com/api/')  
+     .constant('API_URL','http://local.procircle.com/api/')  
+    //.constant('API_URL','http://procircle.ignivastaging.com/api/')  
     .constant('BASE_PATH', '')
 
 
